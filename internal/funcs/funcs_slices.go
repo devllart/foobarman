@@ -1,8 +1,8 @@
 package funcs
 
-func Contains[T string | float64 | int](s []T, str T) bool {
+func Contains[T string | float64 | int](s []T, el T) bool {
 	for _, v := range s {
-		if v == str {
+		if v == el {
 			return true
 		}
 	}
