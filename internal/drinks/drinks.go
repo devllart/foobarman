@@ -1,7 +1,7 @@
 package drinks
 
 import (
-	"devllart/foobarman/internal/funcs"
+	"devllart/foobarman/src/funcs"
 	"fmt"
 )
 

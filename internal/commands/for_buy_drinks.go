@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/drinks"
-	"devllart/foobarman/internal/funcs"
+	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/internal/state"
 	"fmt"
 	"strconv"

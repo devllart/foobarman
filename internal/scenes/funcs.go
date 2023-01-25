@@ -1,7 +1,7 @@
 package scenes
 
 import (
-	"devllart/foobarman/internal/funcs"
+	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/internal/state"
 	"fmt"
 )

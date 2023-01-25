@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/config"
-	"devllart/foobarman/internal/funcs"
+	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"fmt"
