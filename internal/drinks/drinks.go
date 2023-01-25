@@ -1,34 +1,39 @@
 package drinks
 
-import (
-	"devllart/foobarman/src/funcs"
-	"fmt"
-)
-
-type Drink struct {
-	Name       string
-	Volume     float64
-	Count      int
-	LastVolume float64
-	Info       DrinkInfo
-}
-
-func New(name string, volume float64, count int) Drink {
-	info, exitst := AviableDrinks[name]
-	if exitst == false {
-		err := fmt.Errorf("Напитка %s не существует", name)
-		panic(err)
-	}
-	if funcs.Contains(info.AviableVolume, volume) == false {
-		err := fmt.Errorf("%s с объёмом %g не существует", name, volume)
-		panic(err)
-
-	}
-
-	return Drink{name, volume, count, volume, info}
-}
-
-func (drink Drink) Show() {
-	fmt.Printf("   %s (%g .л) %dX | в последней бутылке осталось %g .л\n", drink.Name, drink.Volume, drink.Count, drink.LastVolume)
-	drink.Info.PrettyDescription()
+var AviableDrinks = map[string]DrinkInfo{
+	"Эбботтс биттер": {
+		Type:          "Добавка/Ароматический биттер",
+		Taste:         "Горький",
+		Alc:           41.5,
+		AviableVolume: []float64{.1},
+		Prices:        []float64{20.50},
+		Description: `
+Старинный биттер из бобов тонка производили в Балтиморе еще в 1865 году. 
+Спустя 60 лет после запрета на употребление тонка в США, 
+оригинальная рецептура была воссоздана экспертом по биттерам Бобом Петри
+с помощью газохроматографического анализа закрытой бутылки тех времен.
+`,
+	},
+	"Апероль": {
+		Type:          "Слабоалкогольное/Апероль",
+		Taste:         "Горький",
+		Alc:           22,
+		AviableVolume: []float64{0.75, 1},
+		Prices:        []float64{27.99, 34.71},
+		Description: `
+Знаменитый итальянский аперитив производят с 1919 года по секретной рецептуре братьев Барбьери из Падуи.
+В состав напитка входит более 30 компонентов, включая цедру горьких апельсинов, травы и ревень.`,
+	},
+	"Просекко": {
+		Type:          "Слабоалкогольное/Сухое вино",
+		Taste:         "Полусладкое",
+		AviableVolume: []float64{0.75},
+		Prices:        []float64{14.94},
+		Description: `
+Согласно Апелласьону 2009 года, Просекко могут носить лишь вина с виноградников данного региона.
+Собранный в ручную виноград Глера подвергается брожению в вакуумной таре, что позволяет сохранять его вкус намного дольше.
+Игристое вино отличается выразительным ароматом с оттенками весенних белых цветов, зеленого яблока и цитрусовых плодов,
+обладает притяным вкусом с нежным фруктовым наполнением и тонкой минеральностью в послевкусии.
+Идеально в гастрономическом сочетании с морепродуктами и твёрдыми сырами.`,
+	},
 }

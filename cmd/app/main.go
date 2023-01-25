@@ -15,7 +15,7 @@ func main() {
 	var command, arg, arg2 string
 	for state.Run == true {
 		scenes.Show(state.Scene) // В scenes.Hello контекст сцены меняется на Store
-		state.Info = ""          // Отчищаем подскаки и варнинги
+		state.Info = ""          // Отчищаем подсказки и варнинги
 
 		fmt.Print("> ") // Пользователь вводит команды после > |  — TerminalStyle ;)
 		fmt.Scanf("%s %s %s", &command, &arg, &arg2)
