@@ -1,10 +1,8 @@
 package drinks
 
 import (
-	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/funcs"
 	"fmt"
-	"strings"
 )
 
 type Drink struct {
@@ -32,15 +30,5 @@ func New(name string, volume float64, count int) Drink {
 
 func (drink Drink) Show() {
 	fmt.Printf("   %s (%g .л) %dX | в последней бутылке осталось %g .л\n", drink.Name, drink.Volume, drink.Count, drink.LastVolume)
-	if config.ShowDescription {
-		drink.PrettyDescription()
-	}
-}
-
-func (drink Drink) PrettyDescription() {
-	lines := strings.Split(drink.Info.Description, "\n")
-
-	for _, line := range lines {
-		fmt.Printf("      | %s\n", line)
-	}
+	drink.Info.PrettyDescription()
 }

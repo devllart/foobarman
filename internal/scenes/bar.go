@@ -1,13 +1,13 @@
 package scenes
 
 import (
-	"devllart/foobarman/internal/bars"
+	"devllart/foobarman/internal/state"
 	"fmt"
 )
 
 func Bar() {
-	fmt.Println("           [ВАШ БАР]")
-	for _, drink := range bars.Bar {
+	fmt.Print("           [ВАШ БАР]\n\n")
+	for _, drink := range state.Bar {
 		drink.Show()
 	}
 }
