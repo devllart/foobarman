@@ -2,7 +2,6 @@ package commands
 
 import (
 	"devllart/foobarman/internal/config"
-	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"fmt"
@@ -12,32 +11,30 @@ import (
 var AviableCommand = map[string][]string{
 	"exit":        {"Exit", "Quit", "Выйти", "Пока"},
 	"description": {"Desc", "Description", "Описание"},
+	"ok":          {"Ok", "Ок", "Всё", "Закончить"},
+	"store":       {"Store", "Магазин"},
+	"mix":         {"Mix", "Смешать"},
 }
 
-func Exec(command, arg, arg2 string) {
+func Exec(command, arg1, arg2 string) {
 	command = strings.Title(command)
+	state.Command = command
+	state.Arg1 = arg1
+	state.Arg2 = arg2
 
-	if funcs.Contains(AviableCommand["exit"], command) {
+	if command == "" {
+		return
+	} else if CommandIs("exit") {
 		state.Run = false
-	} else if funcs.Contains(AviableCommand["description"], command) {
+	} else if CommandIs("description") {
 		config.ShowDescription = !config.ShowDescription
 	} else if scenes.CurrentIs(scenes.Store) {
-		if command == "" {
-			return
-		} else if command == "Ок" {
-			state.Scene = scenes.Bar
-			return
-		} else {
-			volume := CorrectVolume(arg)
-			count := CorrectCount(arg2)
-			if count != 0 {
-				BayDrink(command, volume, count)
-			}
-		}
-	} else if scenes.CurrentIs(scenes.Store) == false {
+		Buy()
+	} else if !scenes.CurrentIs(scenes.Store) && CommandIs("store") {
 		state.Scene = scenes.Store
+	} else if CommandIs("mix") {
+		Mix()
 	} else {
 		state.Info += fmt.Sprintf("! Незивестная комманда: %s\n", command)
 	}
-
 }

@@ -10,17 +10,19 @@ func Show(scene func()) {
 	funcs.CliClear()
 	scene()
 
-	fmt.Printf("\n\nБармен %s   денег: %.2f $\n\n", state.Name, state.Money)
-	if state.Info != "" {
-		fmt.Printf("%s\n", state.Info)
-	}
-	fmt.Print("\nДоступные команды (регистр не важен):\n\n")
+	fmt.Printf("\nБармен %s   денег: %.2f $\n\n", state.Name, state.Money)
+
+	fmt.Print("Доступные команды (регистр не важен):\n")
 	fmt.Print("exit или выйти — выйти из игры\n")
 	fmt.Print("desc, description или описание — спрятать/показать описание\n")
 	if CurrentIs(Store) {
 		fmt.Print("ok или ок — закончить покупку алкоголя\n")
 	} else {
-		fmt.Print("store или магазин — пойти в магазин за ингридиентами\n")
+		fmt.Print("store или магазин — пойти в магазин за ингридиентами\n\n")
+	}
+
+	if state.Info != "" {
+		fmt.Printf("\n%s", state.Info)
 	}
 }
 

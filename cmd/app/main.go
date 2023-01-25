@@ -2,9 +2,9 @@ package main
 
 import (
 	"devllart/foobarman/internal/commands"
-	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/src/funcs"
 	"fmt"
 )
 

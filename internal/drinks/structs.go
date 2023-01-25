@@ -16,3 +16,7 @@ type DrinkInfo struct {
 	Prices        []float64
 	Description   string
 }
+
+type Coctail struct {
+	Ingredients []string
+}

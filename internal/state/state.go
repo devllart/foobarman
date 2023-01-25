@@ -10,3 +10,6 @@ var Money = 300.33
 var Name = ""
 var Scene func()
 var Bar = []drinks.Drink{}
+var Command = ""
+var Arg1 = ""
+var Arg2 = ""
