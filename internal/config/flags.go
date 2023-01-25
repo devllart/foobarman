@@ -1,3 +1,6 @@
 package config
 
-var ShowDescription = true
+var ShowBarman = true
+var ShowCommands = true
+var ShowHits = true
+var ShowDescription = false

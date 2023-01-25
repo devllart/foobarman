@@ -25,9 +25,9 @@ func Mix() {
 	for name, coctail := range drinks.AviableCoctail {
 		sort.Sort(sort.StringSlice(recipes))
 		if slices.Equal(coctail.Ingredients, recipes) {
-			state.Info += fmt.Sprintf("У вас поличился %s\n", name)
+			state.AddInfof("У вас поличился %s\n", name)
 			return
 		}
 	}
-	state.Info += fmt.Sprint("Чтож жаль, но такого рецепта нет\n")
+	state.AddInfo("Чтож жаль, но такого рецепта нет\n")
 }

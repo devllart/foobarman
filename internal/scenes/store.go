@@ -13,12 +13,16 @@ func Store() {
 Например "> Просекко 0.75 3"
 `
 
+	i := 1
 	for name, drink := range drinks.AviableDrinks {
-		fmt.Printf("%s (%.2f процентов алкоголя) | %s (вкус %s)\n", name, drink.Alc, drink.Type, drink.Taste)
+		fmt.Printf("%d. %s (%.2f процентов алкоголя) | %s (вкус %s)\n", i, name, drink.Alc, drink.Type, drink.Taste)
 		drink.PrettyDescription()
+
+		state.DrinksIds = append(state.DrinksIds, name)
 		for i, price := range drink.Prices {
 			fmt.Printf("| %.3f$ за %.3f .л ", price, drink.AviableVolume[i])
 		}
 		fmt.Print(" |\n\n")
+		i += 1
 	}
 }

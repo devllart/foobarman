@@ -10,15 +10,17 @@ import (
 
 func main() {
 	funcs.CliClear()
-	scenes.Hello()
+	// scenes.Hello()
 
-	var command, arg, arg2 string
+	state.Name = "Пётр"
+	state.Scene = scenes.Store
+
 	for state.Run == true {
 		scenes.Show(state.Scene) // В scenes.Hello контекст сцены меняется на Store
 		state.Info = ""          // Отчищаем подсказки и варнинги
 
 		fmt.Print("> ") // Пользователь вводит команды после > |  — TerminalStyle ;)
-		fmt.Scanf("%s %s %s", &command, &arg, &arg2)
-		commands.Exec(command, arg, arg2)
+		fmt.Scanf("%s %s %s", &state.Command, &state.Arg1, &state.Arg2)
+		commands.Exec()
 	}
 }

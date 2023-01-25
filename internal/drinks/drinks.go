@@ -3,7 +3,7 @@ package drinks
 var AviableDrinks = map[string]DrinkInfo{
 	"Содовая": {
 		Type:          "Безалкольное",
-		Taste:         "Вкус газировоной воды что тут ещё скажешь",
+		Taste:         "Обуховской",
 		Alc:           0,
 		AviableVolume: []float64{.25, .5, 1, 1.5},
 		Prices:        []float64{.3, .5, .7, 1},

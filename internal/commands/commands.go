@@ -4,7 +4,6 @@ import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
-	"fmt"
 	"strings"
 )
 
@@ -16,16 +15,19 @@ var AviableCommand = map[string][]string{
 	"mix":         {"Mix", "Смешать"},
 }
 
-func Exec(command, arg1, arg2 string) {
-	command = strings.Title(command)
-	state.Command = command
-	state.Arg1 = arg1
-	state.Arg2 = arg2
+func Exec() {
+	state.Command = strings.Title(state.Command)
 
-	if command == "" {
+	if state.Command == "" {
 		return
 	} else if CommandIs("exit") {
 		state.Run = false
+	} else if state.Command == "Hideall" {
+		config.HideAll()
+	} else if state.Command == "Showall" {
+		config.ShowAll()
+	} else if state.Command == "Cmds" {
+		config.ShowCommands = !config.ShowCommands
 	} else if CommandIs("description") {
 		config.ShowDescription = !config.ShowDescription
 	} else if scenes.CurrentIs(scenes.Store) {
@@ -35,6 +37,8 @@ func Exec(command, arg1, arg2 string) {
 	} else if CommandIs("mix") {
 		Mix()
 	} else {
-		state.Info += fmt.Sprintf("! Незивестная комманда: %s\n", command)
+		state.AddInfof("! Незивестная комманда: %s\n", state.Command)
 	}
+
+	state.ClearTemp()
 }
