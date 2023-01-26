@@ -2,6 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/config"
+	"devllart/foobarman/internal/dontpanic"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"strings"
@@ -16,6 +17,7 @@ var AviableCommand = map[string][]string{
 }
 
 func Exec() {
+	defer dontpanic.RecoverAll()
 	state.Command = strings.Title(state.Command)
 
 	if state.Command == "" {

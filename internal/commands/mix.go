@@ -1,7 +1,9 @@
 package commands
 
 import (
+	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/ptf"
 	"devllart/foobarman/internal/state"
 	"fmt"
 	"sort"
@@ -12,7 +14,7 @@ import (
 func Mix() {
 	recipes := []string{}
 	state.Command = ""
-	fmt.Print("Из каких ингридиентов будет ваш коктель?\n")
+	ptf.SelectIngredients()
 	for !CommandIs("mix") {
 		fmt.Print(" | ")
 		fmt.Scanf("%s", &state.Command)
@@ -25,9 +27,10 @@ func Mix() {
 	for name, coctail := range drinks.AviableCoctail {
 		sort.Sort(sort.StringSlice(recipes))
 		if slices.Equal(coctail.Ingredients, recipes) {
-			state.AddInfof("У вас поличился %s\n", name)
+			alert.CoctailIsReady(name)
 			return
 		}
+		alert.DontTheRecipies()
 	}
-	state.AddInfo("Чтож жаль, но такого рецепта нет\n")
+
 }

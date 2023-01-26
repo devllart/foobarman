@@ -1,5 +1,9 @@
 package config
 
+/**
+ *
+ */
+
 var ShowBarman = true
 var ShowCommands = true
 var ShowHits = true

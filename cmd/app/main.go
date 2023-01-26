@@ -8,19 +8,22 @@ import (
 	"fmt"
 )
 
+/**
+ * This game is simulator barman.
+ * By playing it, you yourself may become a barman.
+ * So be careful... Good luck ;)
+ */
 func main() {
-	funcs.CliClear()
-	// scenes.Hello()
+	funcs.CliClear() // Clear console
+	scenes.Hello()   // Run scene "Hello", In the scene ask name's barman
 
-	state.Name = "Пётр"
-	state.Scene = scenes.Store
-
+	// Run game cycle
 	for state.Run == true {
-		scenes.Show(state.Scene) // В scenes.Hello контекст сцены меняется на Store
-		state.Info = ""          // Отчищаем подсказки и варнинги
+		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
+		state.Info = ""          // Clear hints and warning message
 
-		fmt.Print("> ") // Пользователь вводит команды после > |  — TerminalStyle ;)
-		fmt.Scanf("%s %s %s", &state.Command, &state.Arg1, &state.Arg2)
-		commands.Exec()
+		fmt.Print("> ")                                                 // User will enter command after symbol > |  — TerminalStyle ;)
+		fmt.Scanf("%s %s %s", &state.Command, &state.Arg1, &state.Arg2) // Gets command and args from STDIN
+		commands.Exec()                                                 // Try execute user command's
 	}
 }

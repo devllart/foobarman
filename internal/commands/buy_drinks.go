@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/drinks"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
@@ -21,23 +22,31 @@ func Buy() {
 	}
 }
 
-func BayDrink(drinkName string, volume float64, count int) {
-
-	indexDrink, err := strconv.Atoi(drinkName)
+/**
+ * Get Name or Index drink's and return correct its name.
+ * + alerting user if his index out of range drink's menu.
+ */
+func CorrectDrinkName(drinkNameOrIndex string) string {
+	drinkIndex, err := strconv.Atoi(drinkNameOrIndex)
 	if err == nil {
-		indexDrink -= 1
-		if indexDrink >= len(state.DrinksIds) {
-			state.AddInfof("! Напитка под номером %d нет\n", indexDrink)
-			return
+		if drinkIndex > len(state.DrinksIds) {
+			alert.NotAvailableIndexDrink(drinkIndex)
 		}
-		drinkName = state.DrinksIds[indexDrink]
+		return state.DrinksIds[drinkIndex-1]
 	}
+
+	return drinkNameOrIndex
+}
+
+func BayDrink(drinkNameOrIndex string, volume float64, count int) {
+	drinkName := CorrectDrinkName(drinkNameOrIndex)
 
 	drink, exist := drinks.AviableDrinks[drinkName]
 	if exist == false {
-		state.AddInfof("! Напитка %s нет продаже\n", drinkName)
-		return
+		alert.NotAvailableDrink(drinkName)
 	}
+
+	// If user not inputed volume or input "0" then assign minimal avliable value (firt in slice)
 	if volume == 0 {
 		volume = drink.AviableVolume[0]
 	}
@@ -46,14 +55,13 @@ func BayDrink(drinkName string, volume float64, count int) {
 	if index == -1 {
 		index = 0
 	}
+
 	sumPrice := float64(count) * drink.Prices[index]
 	if state.Money-sumPrice < 0 {
-		state.AddInfof("! Недостаточно средст для покупки (общая сумма составила %.2f $)\n", sumPrice)
-		return
+		alert.NotEnoughtFundsToBuy(sumPrice)
 	}
 	if funcs.Contains(drink.AviableVolume, volume) == false {
-		state.AddInfof("! %s с объёмом %.3f .л нет в продаже, возьмите другой объём\n", drinkName, volume)
-		return
+		alert.NotVolumeOfDrink(drinkName, volume)
 	}
 
 	state.Money -= sumPrice
@@ -66,7 +74,7 @@ func BayDrink(drinkName string, volume float64, count int) {
 		}
 	}
 	state.Bar = append(state.Bar, drinks.New(drinkName, volume, count))
-	state.AddInfof("+ %s %.3f .л (количество: %d) куплено (-%.2f $)\n", drinkName, volume, count, sumPrice)
+	alert.DrinkBought(drinkName, volume, count, sumPrice)
 }
 
 func CorrectCount(arg string) int {
@@ -76,7 +84,7 @@ func CorrectCount(arg string) int {
 		count, err = strconv.Atoi(arg)
 	}
 	if err != nil || count <= 0 {
-		state.AddInfo("Неверно указанно количество напитка\n")
+		alert.IncorrectAmountOfDrink()
 		return 0
 	}
 
@@ -90,7 +98,7 @@ func CorrectVolume(arg string) float64 {
 		volume, err = strconv.ParseFloat(arg, 64)
 	}
 	if err != nil || volume <= 0 {
-		state.AddInfo("Неверно указан объём напитка\n")
+		alert.IncorrectVolumeOfDrink()
 		return 0
 	}
 
