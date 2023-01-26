@@ -11,7 +11,7 @@ and maybe even teach you somthing else
 
 ## User manual
 
-* All control on the command line - hints are present ( supported languages are English and Russian — so far only commands( )
+All control on the command line - hints are present ( supported languages are English and Russian — so far only commands( )
 
 Look, if you want playing this game you just should run execute file called like "foobarman"
 First thing you need to do its select name for your bartender.
