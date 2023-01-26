@@ -1,22 +1,32 @@
 package ptf
 
-import "fmt"
+import (
+	"devllart/foobarman/internal/data"
+	"devllart/foobarman/internal/texts"
+	"fmt"
+
+	"github.com/TwiN/go-color"
+)
 
 func StandartCommands() {
-	fmt.Print("Доступные команды (регистр не важен):\n")
-	fmt.Print("exit или выйти — выйти из игры\n")
-	fmt.Print("desc, description или описание — спрятать/показать описание\n")
+	fmt.Print(texts.AllowCommands)
+	for i := range data.StandartCommands {
+		data.StandartCommands[i].ShowClue()
+	}
 }
 
 func FinishShoopingCommand() {
-	fmt.Print("ok или ок — закончить покупку алкоголя\n")
+	for i := range data.ShopCommands {
+		data.ShopCommands[i].ShowClue()
+	}
 }
 
 func StartShoopingCommand() {
-	fmt.Print("store или магазин — пойти в магазин за ингридиентами\n\n")
+	for i := range data.BarCommands {
+		data.BarCommands[i].ShowClue()
+	}
 }
 
 func ShowBarmanStatus(name string, money float64) {
-	fmt.Printf("\nБармен %s   денег: %.2f $\n\n", name, money)
-
+	fmt.Printf(texts.BarmanStatus, name, color.Yellow, money, color.Reset)
 }

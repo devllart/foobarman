@@ -22,6 +22,7 @@ func init() {
 	}
 	for i := range data {
 		drink := data[i]
+		drink.Valid()
 		AviableDrinks[drink.Name] = drink
 	}
 }

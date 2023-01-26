@@ -6,6 +6,8 @@ import (
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/funcs"
 	"fmt"
+
+	"github.com/TwiN/go-color"
 )
 
 /**
@@ -22,8 +24,9 @@ func main() {
 		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
 		state.Info = ""          // Clear hints and warning message
 
-		fmt.Print("> ")                                                 // User will enter command after symbol > |  — TerminalStyle ;)
+		fmt.Printf("%s\\>%s ", color.Yellow, color.Blue)                // User will enter command after symbol > |  — TerminalStyle ;)
 		fmt.Scanf("%s %s %s", &state.Command, &state.Arg1, &state.Arg2) // Gets command and args from STDIN
-		commands.Exec()                                                 // Try execute user command's
+		fmt.Print(color.Reset)
+		commands.Exec() // Try execute user command's
 	}
 }

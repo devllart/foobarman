@@ -33,5 +33,5 @@ func Show(scene func()) {
 }
 
 func CurrentIs(scene func()) bool {
-	return fmt.Sprintf("%v", state.Scene) == fmt.Sprintf("%v", scene) // Совсем немного говнокода
+	return fmt.Sprintf("%v", state.Scene) == fmt.Sprintf("%v", scene) // Just a little bit of codesshit
 }

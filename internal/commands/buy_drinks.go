@@ -6,40 +6,36 @@ import (
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/funcs"
-	"strconv"
+	"fmt"
+	"math/rand"
 )
 
-func Buy() {
+func buy() {
 	if CommandIs("ok") {
 		state.Scene = scenes.Bar
 		return
+	} else if CommandIs("rand") {
+		buyRandom()
 	} else {
-		volume := CorrectVolume(state.Arg1)
-		count := CorrectCount(state.Arg2)
+		volume := correctVolume(state.Arg1)
+		count := correctCount(state.Arg2)
 		if count != 0 {
-			BayDrink(state.Command, volume, count)
+			buyDrink(state.Command, volume, count)
 		}
 	}
 }
 
-/**
- * Get Name or Index drink's and return correct its name.
- * + alerting user if his index out of range drink's menu.
- */
-func CorrectDrinkName(drinkNameOrIndex string) string {
-	drinkIndex, err := strconv.Atoi(drinkNameOrIndex)
-	if err == nil {
-		if drinkIndex > len(state.DrinksIds) {
-			alert.NotAvailableIndexDrink(drinkIndex)
-		}
-		return state.DrinksIds[drinkIndex-1]
-	}
+func buyRandom() {
 
-	return drinkNameOrIndex
+	for state.Money > 0 {
+		index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
+
+		buyDrink(index, 0, 1)
+	}
 }
 
-func BayDrink(drinkNameOrIndex string, volume float64, count int) {
-	drinkName := CorrectDrinkName(drinkNameOrIndex)
+func buyDrink(drinkNameOrIndex string, volume float64, count int) {
+	drinkName := correctDrinkName(drinkNameOrIndex)
 
 	drink, exist := drinks.AviableDrinks[drinkName]
 	if exist == false {
@@ -76,32 +72,4 @@ func BayDrink(drinkNameOrIndex string, volume float64, count int) {
 	}
 	state.Bar = append(state.Bar, drinks.New(drinkName, volume, count))
 	alert.DrinkBought(drinkName, volume, count, sumPrice)
-}
-
-func CorrectCount(arg string) int {
-	var count int = 1
-	var err error
-	if arg != "" {
-		count, err = strconv.Atoi(arg)
-	}
-	if err != nil || count <= 0 {
-		alert.IncorrectAmountOfDrink()
-		return 0
-	}
-
-	return count
-}
-
-func CorrectVolume(arg string) float64 {
-	var volume float64 = 0
-	var err error
-	if arg != "" {
-		volume, err = strconv.ParseFloat(arg, 64)
-	}
-	if err != nil || volume <= 0 {
-		alert.IncorrectVolumeOfDrink()
-		return 0
-	}
-
-	return volume
 }

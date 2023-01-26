@@ -7,6 +7,6 @@ import (
 	"github.com/TwiN/go-color"
 )
 
-func SelectIngredients() {
-	fmt.Printf(texts.SelectIngredients, color.Yellow, color.Reset)
+func StoreHello(name string) {
+	fmt.Printf(texts.StoreHello, color.Red, color.Reset, name)
 }

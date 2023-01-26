@@ -12,6 +12,8 @@ var Scene func()
 var Bar = []drinks.Drink{}
 
 // Temp State
+var TempStr = ""
+
 var Command = ""
 var Arg1 = ""
 var Arg2 = ""

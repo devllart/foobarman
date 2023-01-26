@@ -8,32 +8,24 @@ import (
 	"strings"
 )
 
-var AviableCommand = map[string][]string{
-	"exit":        {"Exit", "Quit", "Выйти", "Пока"},
-	"description": {"Desc", "Description", "Описание"},
-	"ok":          {"Ok", "Ок", "Всё", "Закончить"},
-	"store":       {"Store", "Магазин"},
-	"mix":         {"Mix", "Смешать"},
-}
-
 func Exec() {
 	defer dontpanic.RecoverAll()
-	state.Command = strings.Title(state.Command)
+	state.Command = strings.ToLower(state.Command)
 
 	if state.Command == "" {
 		return
 	} else if CommandIs("exit") {
 		state.Run = false
-	} else if state.Command == "Hideall" {
+	} else if state.Command == "hideall" {
 		config.HideAll()
-	} else if state.Command == "Showall" {
+	} else if state.Command == "showall" {
 		config.ShowAll()
-	} else if state.Command == "Cmds" {
+	} else if state.Command == "cmds" {
 		config.ShowCommands = !config.ShowCommands
 	} else if CommandIs("description") {
 		config.ShowDescription = !config.ShowDescription
 	} else if scenes.CurrentIs(scenes.Store) {
-		Buy()
+		buy()
 	} else if !scenes.CurrentIs(scenes.Store) && CommandIs("store") {
 		state.Scene = scenes.Store
 	} else if CommandIs("mix") {
