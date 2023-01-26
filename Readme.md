@@ -11,7 +11,7 @@ and maybe even teach you somthing else
 
 ## User manual
 
-* All control on the command line - hints are present (supported languages are English and Russian)
+* All control on the command line - hints are present ( supported languages are English and Russian — so far only commands( )
 
 Look, if you want playing this game you just should run execute file called like "foobarman"
 First thing you need to do its select name for your bartender.
@@ -24,6 +24,6 @@ And now the real game begins...
   You must have installed golang | how do it manual link: https://go.dev/doc/install
 ```
 
-* Prepare envrimoment: ```go install```
-* Run without compiling: ```go run ./cmd/app/main.go```
-* Build execute file with name "foobarman": ```go build -o foobarman ./cmd/app/main.go```
+* Prepare envrimoment: ```go tidy```
+* Run without compiling: ```go run ./cmd/app```
+* Build execute file with name "foobarman": ```go build -o foobarman ./cmd/app```
