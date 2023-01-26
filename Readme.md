@@ -1,7 +1,7 @@
 # Simulator Barman (cli-game)
 
 <p align="center">
-  <img src="./assests/logogame.jpg" alt="Foobarman cli-game"/>
+  <img src="./assets/logogame.jpg" alt="Foobarman cli-game"/>
 </p>
 
 ## Hello
