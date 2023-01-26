@@ -10,5 +10,8 @@ func RecoverAll() {
 
 	if err := recover(); err != nil {
 		log.Println(err)
+		if err != "UncorrectInput" {
+			panic(err)
+		}
 	}
 }
