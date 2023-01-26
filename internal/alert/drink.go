@@ -2,8 +2,7 @@ package alert
 
 import (
 	"devllart/foobarman/internal/state"
-
-	"github.com/TwiN/go-color"
+	"devllart/foobarman/internal/texts"
 )
 
 /**
@@ -11,22 +10,22 @@ import (
  */
 
 func NotAvailableDrink(drinkName string) {
-	state.AddInfof("! Напитка %s нет продаже в продаже\n", drinkName)
+	state.AddInfof(texts.NotAvailableDrink, drinkName)
 	panic("UncorrectInput")
 }
 
 func NotAvailableIndexDrink(drinkIndex int) {
-	state.AddInfof("! Напитка под номером %d нет в продаже\n", drinkIndex)
+	state.AddInfof(texts.NotAvailableIndexDrink, drinkIndex)
 	panic("UncorrectInput")
 }
 
 func NotEnoughtFundsToBuy(sumPrice float64) {
-	state.AddInfof("! Недостаточно средст для покупки (общая сумма составила %.2f $)\n", sumPrice)
+	state.AddInfof(texts.NotEnoughFundsToBuy, sumPrice)
 	panic("UncorrectInput")
 }
 
 func NotVolumeOfDrink(drinkName string, volume float64) {
-	state.AddInfof("! %s с объёмом %.3f .л нет в продаже, возьмите другой объём\n", drinkName, volume)
+	state.AddInfof(texts.NotVolumeOfDrink, drinkName, volume)
 	panic("UncorrectInput")
 }
 
@@ -35,19 +34,18 @@ func NotVolumeOfDrink(drinkName string, volume float64) {
  */
 
 func IncorrectAmountOfDrink() {
-	state.AddInfo("Неверно указанно количество напитка\n")
+	state.AddInfo(texts.IncorrectAmountOfDrink)
 }
 
 func IncorrectVolumeOfDrink() {
-	state.AddInfo("Неверно указан объём напитка\n")
+	state.AddInfo(texts.IncorrectVolumeOfDrink)
 }
 
 func DrinkBought(drinkName string, volume float64, count int, sumPrice float64) {
-	state.AddInfof("%s+%s %s%s%s %s%.3f .л%s %s%dX%s куплено (%s-%.2f $%s)\n", color.Yellow, color.Reset, color.Red, drinkName, color.Reset, color.Green, volume, color.Reset, color.Yellow, count, color.Reset, color.Yellow, sumPrice, color.Reset)
+	state.AddInfof("%Y+%C %B%s%C %G%.3f .л%C %Y%dX%C куплено (%Y-%.2f $%C)\n", drinkName, volume, count, sumPrice)
 }
 
 func DrinkBoughtYet(drinkName string, volume float64, count, countSum int, sumPrice float64) {
 
-	state.AddInfof("%s+%s %s%s%s %s%.3f .л%s %s%dX%s куплено ещё (общее количество: %s%d%s) (%s-%.2f $%s)\n", color.Yellow, color.Reset, color.Red, drinkName, color.Reset, color.Green, volume, color.Reset, color.Yellow, count, color.Reset, color.Green, countSum, color.Reset, color.Yellow, sumPrice, color.Reset)
-	// state.AddInfof("+ %s %.3f .л (количество: %d) куплено ещё (общее колиство: %d) (-%.2f $)\n", drinkName, volume, count, countSum, sumPrice)
+	state.AddInfof("%Y+%C %B%s%C %G%.3f .л%C %Y%dX%C куплено ещё (общее количество: %G%d%C) (%Y-%.2f $%C)\n", drinkName, volume, count, countSum, sumPrice)
 }

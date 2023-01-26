@@ -4,6 +4,8 @@ import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/ptf"
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/texts"
+	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
 	"fmt"
 )
@@ -13,7 +15,7 @@ func Show(scene func()) {
 	scene()
 
 	if config.ShowBarman {
-		ptf.ShowBarmanStatus(state.Name, state.Money)
+		fmtc.Printf(texts.BarmanStatus, state.Name, state.Money)
 	}
 
 	if config.ShowCommands {

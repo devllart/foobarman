@@ -1,13 +1,16 @@
 package state
 
-import "fmt"
+import (
+	"devllart/foobarman/src/fmtc"
+	"fmt"
+)
 
 func AddInfo(args ...any) {
 	Info += fmt.Sprint(args...)
 }
 
 func AddInfof(textf string, args ...any) {
-	Info += fmt.Sprintf(textf, args...)
+	Info += fmtc.Sprintf(textf, args...)
 }
 
 func ClearTemp() {

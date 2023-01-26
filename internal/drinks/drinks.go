@@ -8,18 +8,18 @@ import (
 var AviableDrinks = map[string]DrinkInfo{}
 
 func init() {
-	file, err := ioutil.ReadFile("data/drinks.json")
-	if err != nil {
-		panic(err)
-	}
+	var err error
+	var file []byte
 
 	data := []DrinkInfo{}
 
-	err = json.Unmarshal([]byte(file), &data)
-
-	if err != nil {
+	if file, err = ioutil.ReadFile("data/drinks.json"); err != nil {
 		panic(err)
 	}
+	if err = json.Unmarshal([]byte(file), &data); err != nil {
+		panic(err)
+	}
+
 	for i := range data {
 		drink := data[i]
 		drink.Valid()
