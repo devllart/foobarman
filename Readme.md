@@ -1,6 +1,8 @@
 # Simulator Barman (cli-game)
 
-![image info](./assets/logogame.jpg) {style=text-align:center}
+<p align="center">
+  <img src="./assests/logogame.jpg" alt="Foobarman cli-game"/>
+</p>
 
 ## Hello
 
