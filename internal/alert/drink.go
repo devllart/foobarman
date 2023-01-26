@@ -26,11 +26,6 @@ func NotVolumeOfDrink(drinkName string, volume float64) {
 	panic("UncorrectInput")
 }
 
-func DrinkBought(drinkName string, volume float64, count int, sumPrice float64) {
-	state.AddInfof("+ %s %.3f .л (количество: %d) куплено (-%.2f $)\n", drinkName, volume, count, sumPrice)
-	panic("UncorrectInput")
-}
-
 /**
  * Don't panic
  */
@@ -41,4 +36,12 @@ func IncorrectAmountOfDrink() {
 
 func IncorrectVolumeOfDrink() {
 	state.AddInfo("Неверно указан объём напитка\n")
+}
+
+func DrinkBought(drinkName string, volume float64, count int, sumPrice float64) {
+	state.AddInfof("+ %s %.3f .л (количество: %d) куплено (-%.2f $)\n", drinkName, volume, count, sumPrice)
+}
+
+func DrinkBoughtYet(drinkName string, volume float64, count, countSum int, sumPrice float64) {
+	state.AddInfof("+ %s %.3f .л (количество: %d) куплено ещё (общее колиство: %d) (-%.2f $)\n", drinkName, volume, count, countSum, sumPrice)
 }
