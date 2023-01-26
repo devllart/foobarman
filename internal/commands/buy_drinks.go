@@ -70,6 +70,7 @@ func BayDrink(drinkNameOrIndex string, volume float64, count int) {
 		drink := state.Bar[i]
 		if drink.Name == drinkName && drink.Volume == volume {
 			state.Bar[i].Count += count
+			alert.DrinkBoughtYet(drinkName, volume, count, state.Bar[i].Count, sumPrice)
 			return
 		}
 	}

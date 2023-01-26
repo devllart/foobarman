@@ -19,7 +19,8 @@ func Store() {
 		drink.PrettyDescription()
 
 		state.DrinksIds = append(state.DrinksIds, name)
-		for i, price := range drink.Prices {
+		for i := range drink.Prices {
+			price := drink.Prices[i]
 			fmt.Printf("| %.3f$ за %.3f .л ", price, drink.AviableVolume[i])
 		}
 		fmt.Print(" |\n\n")
