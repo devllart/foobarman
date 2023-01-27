@@ -1,2 +1,4 @@
-cmd/playground
+.git
+.repl
 tmp/
+^.air.toml
