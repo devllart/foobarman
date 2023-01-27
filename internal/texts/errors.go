@@ -4,5 +4,5 @@ package texts
  * Text with erors
  */
 
-var NotExistDrinkError = "Напитка %s не существует"
-var NotVolumeOfDrinkError = "%s с объёмом %g не существует"
+var NotExistDrinkError = "%BНапитка %s не существует%C"
+var NotVolumeOfDrinkError = "%B%s с объёмом %g не существует%C"

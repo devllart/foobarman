@@ -3,4 +3,4 @@ build:
 	go build -o ./bin/foobarman.exe ./cmd/app
 
 run:
-	go run cmd/app
+	go run ./cmd/app

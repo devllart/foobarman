@@ -17,8 +17,8 @@ func buy() {
 	} else if CommandIs("rand") {
 		buyRandom()
 	} else {
-		volume := correctVolume(state.Arg1)
-		count := correctCount(state.Arg2)
+		volume := correctVolume(state.Args[0])
+		count := correctCount(state.Args[1])
 		if count != 0 {
 			buyDrink(state.Command, volume, count)
 		}

@@ -15,6 +15,7 @@ var Bar = []drinks.Drink{}
 var TempStr = ""
 
 var Command = ""
+var Args = []string{}
 var Arg1 = ""
 var Arg2 = ""
 

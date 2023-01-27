@@ -14,7 +14,8 @@ func Store() {
 	alert.ClueStore()
 	i := 1
 	for name, drink := range drinks.AviableDrinks {
-		fmtc.Printf(texts.StoreDrinkInfo, i, name, drink.Alc, drink.Type, drink.Taste)
+
+		fmtc.Printf(texts.StoreDrinkInfo, i, name, drink.Alc, drink.Type, drink.GetTaste())
 		drink.PrettyDescription()
 
 		state.DrinksIds = append(state.DrinksIds, name)

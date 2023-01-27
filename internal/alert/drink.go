@@ -20,7 +20,9 @@ func NotAvailableIndexDrink(drinkIndex int) {
 }
 
 func NotEnoughtFundsToBuy(sumPrice float64) {
-	state.AddInfof(texts.NotEnoughFundsToBuy, sumPrice)
+	if state.Command != "rand" {
+		state.AddInfof(texts.NotEnoughFundsToBuy, sumPrice)
+	}
 	panic("IncorrectInput")
 }
 
@@ -29,17 +31,19 @@ func NotVolumeOfDrink(drinkName string, volume float64) {
 	panic("IncorrectInput")
 }
 
-/**
- * Don't panic
- */
-
 func IncorrectAmountOfDrink() {
-	state.AddInfo(texts.IncorrectAmountOfDrink)
+	state.AddInfof(texts.IncorrectAmountOfDrink)
+	panic("IncorrectInput")
 }
 
 func IncorrectVolumeOfDrink() {
-	state.AddInfo(texts.IncorrectVolumeOfDrink)
+	state.AddInfof(texts.IncorrectVolumeOfDrink)
+	panic("IncorrectInput")
 }
+
+/**
+ * Don't panic
+ */
 
 func DrinkBought(drinkName string, volume float64, count int, sumPrice float64) {
 	state.AddInfof("%Y+%C %B%s%C %G%.3f .л%C %Y%dX%C куплено (%Y-%.2f $%C)\n", drinkName, volume, count, sumPrice)
