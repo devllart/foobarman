@@ -1,4 +1,5 @@
 .git
 .repl
-tmp/
+tmp
+bin
 ^.air.toml
