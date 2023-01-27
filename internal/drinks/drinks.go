@@ -28,7 +28,7 @@ var AviableDrinks = map[string]DrinkInfo{
 		Description:   texts.DrinkDescAperrol,
 	},
 	"Просекко": {
-		Type:          "Сухое вино",
+		Type:          "Просекко",
 		Alc:           11,
 		AviableVolume: []float64{0.75},
 		Prices:        []float64{14.94},

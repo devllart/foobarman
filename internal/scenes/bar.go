@@ -16,5 +16,6 @@ func Bar() {
 	for i, drink := range state.Bar {
 		fmt.Printf("%d. ", i+1)
 		drink.Show()
+		state.DrinksIds = append(state.DrinksIds, drink.Name)
 	}
 }

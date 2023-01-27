@@ -30,7 +30,7 @@ func Show(scene func()) {
 		if CurrentIs(Store) {
 			// If context scene "Store" then show command finis shooping.
 			ptf.FinishShoopingCommand()
-		} else {
+		} else if CurrentIs(Bar) && !state.Mix {
 			// Otherwise show command go to store
 			ptf.StartShoopingCommand()
 		}

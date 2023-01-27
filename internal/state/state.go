@@ -11,6 +11,10 @@ var Name = ""
 var Scene func()
 var Bar = []drinks.Drink{}
 
+// Flags
+
+var Mix = false
+
 // Temp State
 var TempStr = ""
 

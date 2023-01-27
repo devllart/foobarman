@@ -10,7 +10,7 @@ import (
 )
 
 var Reader = bufio.NewReader(os.Stdin)
-var Replacer = strings.NewReplacer("%R", color.Red, "%G", color.Green, "%B", color.Blue, "%Y", color.Yellow, "%C", color.Reset)
+var Replacer = strings.NewReplacer("%R", color.Red, "%G", color.Green, "%B", color.Blue, "%Y", color.Yellow, "%C", color.Reset, "%f", "%.3f")
 
 func Scan(sym byte) string {
 	text, _ := Reader.ReadString(sym)
