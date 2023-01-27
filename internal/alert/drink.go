@@ -11,22 +11,22 @@ import (
 
 func NotAvailableDrink(drinkName string) {
 	state.AddInfof(texts.NotAvailableDrink, drinkName)
-	panic("UncorrectInput")
+	panic("IncorrectInput")
 }
 
 func NotAvailableIndexDrink(drinkIndex int) {
 	state.AddInfof(texts.NotAvailableIndexDrink, drinkIndex)
-	panic("UncorrectInput")
+	panic("IncorrectInput")
 }
 
 func NotEnoughtFundsToBuy(sumPrice float64) {
 	state.AddInfof(texts.NotEnoughFundsToBuy, sumPrice)
-	panic("UncorrectInput")
+	panic("IncorrectInput")
 }
 
 func NotVolumeOfDrink(drinkName string, volume float64) {
 	state.AddInfof(texts.NotVolumeOfDrink, drinkName, volume)
-	panic("UncorrectInput")
+	panic("IncorrectInput")
 }
 
 /**
