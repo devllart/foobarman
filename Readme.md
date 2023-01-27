@@ -1,4 +1,4 @@
-# Simulator Barman (cli-game)
+# Simulator Barman (cli-game) SOURCES FILE
 
 <p align="center">
   <img src="./assets/logogame.jpg" alt="Foobarman cli-game"/>
