@@ -2,7 +2,6 @@ package drinks
 
 import (
 	"devllart/foobarman/internal/config"
-	"devllart/foobarman/internal/errors"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
@@ -12,10 +11,10 @@ import (
 func New(name string, volume float64, count int) Drink {
 	info, exitst := AviableDrinks[name]
 	if exitst == false {
-		errors.NotExistDrink(name)
+		fmtc.Perrorf(texts.NotExistDrinkError, name)
 	}
 	if funcs.Contains(info.AviableVolume, volume) == false {
-		errors.NoVolumeOfDrink(name, volume)
+		fmtc.Perrorf(texts.NotVolumeOfDrinkError, name, volume)
 	}
 
 	return Drink{name, volume, count, volume, info}

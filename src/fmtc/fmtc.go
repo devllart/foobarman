@@ -28,3 +28,12 @@ func Printf(text string, args ...any) {
 func ReplaceText(text string) string {
 	return Replacer.Replace(text)
 }
+
+func Errorf(text string, args ...any) error {
+	return fmt.Errorf(Sprintf(text, args...))
+}
+
+func Perrorf(text string, args ...any) {
+	err := Errorf(text, args...)
+	panic(err)
+}
