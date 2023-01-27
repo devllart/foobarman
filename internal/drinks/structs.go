@@ -9,7 +9,6 @@ type Drink struct {
 }
 
 type DrinkInfo struct {
-	Name          string
 	Type          string
 	Taste         string
 	Alc           float64
