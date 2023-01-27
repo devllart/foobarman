@@ -3,8 +3,9 @@ package commands
 import (
 	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/drinks"
-	"devllart/foobarman/internal/ptf"
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/texts"
+	"devllart/foobarman/src/fmtc"
 	"fmt"
 	"sort"
 
@@ -14,7 +15,7 @@ import (
 func Mix() {
 	recipes := []string{}
 	state.Command = ""
-	ptf.SelectIngredients()
+	fmtc.Printf(texts.SelectIngredients)
 	for !CommandIs("mix") {
 		fmt.Print(" | ")
 		fmt.Scanf("%s", &state.Command)

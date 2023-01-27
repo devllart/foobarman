@@ -1,13 +1,21 @@
 package fmtc
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/TwiN/go-color"
 )
 
+var Reader = bufio.NewReader(os.Stdin)
 var Replacer = strings.NewReplacer("%R", color.Red, "%G", color.Green, "%B", color.Blue, "%Y", color.Yellow, "%C", color.Reset)
+
+func Scan(sym byte) string {
+	text, _ := Reader.ReadString(sym)
+	return strings.Trim(text, "\n")
+}
 
 func Sprintf(text string, args ...any) string {
 	return fmt.Sprintf(ReplaceText(text), args...)
