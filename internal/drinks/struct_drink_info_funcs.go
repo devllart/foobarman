@@ -2,6 +2,7 @@ package drinks
 
 import (
 	"devllart/foobarman/internal/config"
+	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"strings"
 )
@@ -30,5 +31,25 @@ func (drink DrinkInfo) GetTaste() string {
 		return taste
 	}
 
-	return "Неизвестен"
+	return texts.Unknown
+}
+
+func (drink DrinkInfo) GetTypeVolume() string {
+	if typeVolume, exist := DrinksTypesVolume[drink.Type]; exist == true {
+		return typeVolume
+	}
+
+	return ".л"
+}
+
+func (drink DrinkInfo) PrintPrices() {
+	for i := range drink.Prices {
+		price := drink.Prices[i]
+		fmtc.Printf(texts.StoreDrinkInfoPrice, price, drink.AviableVolume[i], drink.GetTypeVolume())
+	}
+	fmtc.Printf(" |\n\n")
+}
+
+func (drink DrinkInfo) PrintInStore(index int) {
+	fmtc.Printf(texts.StoreDrinkInfo, index, drink.Name, drink.Alc, drink.Type, drink.GetTaste())
 }

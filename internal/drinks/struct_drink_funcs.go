@@ -6,7 +6,7 @@ import (
 )
 
 func (drink Drink) Show() {
-	fmtc.Printf(texts.ShowDrinkInBar, drink.Name, drink.Info.Alc, drink.Volume, drink.Count, drink.LastVolume)
+	fmtc.Printf(texts.ShowDrinkInBar, drink.Name, drink.Info.Alc, drink.Volume, drink.Info.GetTypeVolume(), drink.Count, "в последней бутылке осталось", drink.LastVolume, drink.Info.GetTypeVolume())
 	drink.Info.PrettyDescription()
 }
 
@@ -16,6 +16,10 @@ func (drink Drink) StandartFlow() float64 {
 	}
 
 	return 0.1
+}
+
+func (drink Drink) TypeVolume() string {
+	return drink.Info.GetTypeVolume()
 }
 
 func (drink *Drink) SubVolume() error {
