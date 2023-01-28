@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -70,7 +68,9 @@ func replaceInFile(listFiles []string, oldText, newText string) {
 				inBlockImport = true
 			} else if strings.HasPrefix(line, "import") || inBlockImport {
 				output = append(output, strings.Replace(line, oldText, newText, -1))
+				continue
 			}
+			output = append(output, line)
 		}
 
 		if err = ioutil.WriteFile(pathFile, []byte(strings.Join(output, "\n")), 0666); err != nil {
