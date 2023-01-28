@@ -1,7 +1,7 @@
 package drinks
 
 import (
-	"devllart/foobarman/internal/config"
+	"devllart/foobarman/config"
 	"devllart/foobarman/src/fmtc"
 	"strings"
 )

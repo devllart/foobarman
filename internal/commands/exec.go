@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"devllart/foobarman/internal/config"
+	"devllart/foobarman/config"
 	"devllart/foobarman/internal/dontpanic"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
