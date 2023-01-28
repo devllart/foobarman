@@ -57,8 +57,6 @@ func replaceInFile(listFiles []string, oldText, newText string) {
 
 		lines := strings.Split(string(data), "\n")
 		output := []string{}
-		// fileScanner := bufio.NewScanner(input)
-		// fileScanner.Split(bufio.ScanLines)
 
 		inBlockImport := false
 		for _, line := range lines {
