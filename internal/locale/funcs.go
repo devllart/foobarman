@@ -1,7 +1,7 @@
 package locale
 
 import (
-	"devllart/foobarman/config"
+	"devllart/foobarman/internal/config"
 
 	"golang.org/x/text/message"
 )

@@ -1,7 +1,7 @@
 package scenes
 
 import (
-	"devllart/foobarman/config"
+	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/ptf"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
