@@ -1,8 +1,9 @@
 package texts
 
 /**
- * Text with erors
+ * Texts for errors
  */
 
-var NotExistDrinkError = "%BНапитка %s не существует%C"
-var NotVolumeOfDrinkError = "%B%s с объёмом %g не существует%C"
+const ErrorNotExistDrink = "%BНапитка %s не существует%C"
+const ErrorNotVolumeOfDrink = "%B%s с объёмом %g не существует%C"
+const ErrorNotEnoughtVolume = "%RНе хватает объёма%C"

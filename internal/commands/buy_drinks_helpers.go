@@ -11,11 +11,12 @@ import (
  * Get Name or Index drink's and return correct its name.
  * + alerting user if his index out of range drink's menu.
  */
+
 func correctDrinkName(drinkNameOrIndex string) string {
 	drinkIndex, err := strconv.Atoi(drinkNameOrIndex)
 	if err == nil {
 		if drinkIndex > len(state.DrinksIds) {
-			alert.NotAvailableIndexDrink(drinkIndex)
+			alert.PanicNotAvailableIndexDrink(drinkIndex)
 		}
 		return state.DrinksIds[drinkIndex-1]
 	}

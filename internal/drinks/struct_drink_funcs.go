@@ -6,20 +6,28 @@ import (
 )
 
 func (drink Drink) Show() {
-	fmtc.Printf(texts.ShowDrinkInBar, drink.Name, drink.Info.Alc, drink.Volume, drink.Info.GetTypeVolume(), drink.Count, "в последней бутылке осталось", drink.LastVolume, drink.Info.GetTypeVolume())
-	drink.Info.PrettyDescription()
+	fmtc.Printf(texts.ShowDrinkInBar, drink.Name, drink.Alc, drink.Volume, drink.TypeVolume(), drink.Count, drink.LeftVolumeText(), drink.GetLastVolume(), drink.TypeVolume())
+	drink.PrettyDescription()
 }
 
 func (drink Drink) StandartFlow() float64 {
-	if flow, exist := DrinksStandartFlow[drink.Info.Type]; exist == true {
+	if flow, exist := DrinksStandartFlow[drink.Type]; exist == true {
 		return flow
 	}
 
 	return 0.1
 }
 
-func (drink Drink) TypeVolume() string {
-	return drink.Info.GetTypeVolume()
+func (drink Drink) GetLastVolume() float64 {
+	return GetLastVolume(drink.TypeVolume(), drink.Count, drink.Volume)
+}
+
+func (drink Drink) LeftVolumeText() string {
+	if drink.TypeVolume() != ".л" {
+		return texts.TotalLeftVolume
+	}
+
+	return texts.LeftVolumeInLastBottle
 }
 
 func (drink *Drink) SubVolume() error {
@@ -35,7 +43,7 @@ func (drink *Drink) SubVolume() error {
 			newCount -= 1
 			newVol += drink.Volume
 			if newCount < 1 {
-				return fmtc.Errorf("%RНе хватает объёма%C")
+				return fmtc.Errorf(texts.ErrorNotEnoughtVolume)
 			}
 		}
 	}

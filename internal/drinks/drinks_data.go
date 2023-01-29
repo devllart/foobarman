@@ -1,0 +1,148 @@
+package drinks
+
+import (
+	"devllart/foobarman/internal/texts"
+)
+
+var AviableDrinks = map[string]DrinkInfo{
+	"BACARDÍ Spiced Rum": {
+		Type:          "Ром",
+		Alc:           35,
+		AviableVolume: []float64{.75, 1.75},
+		Prices:        []float64{15.89, 24.14},
+		Description:   texts.DescRum,
+	},
+	"BACARDÍ Black Rum": {
+		Type:          "Тёмный ром",
+		Alc:           40,
+		AviableVolume: []float64{.2, .75},
+		Prices:        []float64{5.49, 15.49},
+		Description:   texts.DescRum,
+	},
+	"Havana Club Anejo Clasico": {
+		Type:          "Ром",
+		Alc:           40,
+		AviableVolume: []float64{.05, 0.750},
+		Prices:        []float64{1.49, 22.99},
+		Description:   texts.DescRum,
+	},
+	"Havana Club Rum": {
+		Type:          "Белый ром",
+		Alc:           40,
+		AviableVolume: []float64{.05, 0.750},
+		Prices:        []float64{1.49, 23.09},
+		Description:   texts.DescRum,
+	},
+	"Cherry Bomb Cocktail Syrup": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{.4},
+		Prices:        []float64{19},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Petite Canne Sugar Cane Syrup": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{.5, 1},
+		Prices:        []float64{12.00, 24.99},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Collins Simple Syrup Cocktail Mix": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{.36, .750},
+		Prices:        []float64{5.99, 6.99},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Daily's Simple Syrup": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{.935},
+		Prices:        []float64{6.22},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Barsmith Simple Syrup": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{.36},
+		Prices:        []float64{4.99},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Лёд": {
+		Type:          "Лёд",
+		Alc:           0,
+		AviableVolume: []float64{1, 2, 5, 10},
+		Prices:        []float64{.5, .8, 1.5, 2},
+		Description:   texts.DescIce,
+	},
+	"Лимон": {
+		Type:          "Фрукт",
+		Alc:           0,
+		AviableVolume: []float64{1, 2, 3, 5},
+		Prices:        []float64{5, 8, 12, 14},
+		Description:   texts.DescLimon,
+	},
+	"Лайм": {
+		Type:          "Фрукт",
+		Alc:           0,
+		AviableVolume: []float64{1, 2, 3, 5},
+		Prices:        []float64{6, 10, 13, 16.5},
+		Description:   texts.DescLaim,
+	},
+	"Содовая": {
+		Type:          "Содовая",
+		Alc:           0,
+		AviableVolume: []float64{.25, .5, 1, 1.5},
+		Prices:        []float64{.3, .5, .7, 1},
+		Description:   texts.DescSoda,
+	},
+	"Эбботтс Биттер": {
+		Type:          "Ароматический биттер",
+		Alc:           41.5,
+		AviableVolume: []float64{.1},
+		Prices:        []float64{20.50},
+		Description:   texts.DescAbbotsBitter,
+	},
+	"Апероль": {
+		Type:          "Апероль",
+		Alc:           22,
+		AviableVolume: []float64{0.75, 1},
+		Prices:        []float64{27.99, 34.71},
+		Description:   texts.DescAperrol,
+	},
+	"Просекко": {
+		Type:          "Просекко",
+		Alc:           11,
+		AviableVolume: []float64{0.75},
+		Prices:        []float64{14.94},
+		Description:   texts.DescProsecco,
+	},
+	"Cruzan Aged Light Rum": {
+		Type:          "Белый ром",
+		Alc:           40,
+		AviableVolume: []float64{0.375, 0.75},
+		Prices:        []float64{7.99, 13.19},
+		Description:   texts.DescWhiteRum,
+	},
+	"Rum Mocambo 20 Year Old": {
+		Type:          "Ром",
+		Alc:           40,
+		AviableVolume: []float64{0.75},
+		Prices:        []float64{42.99},
+		Description:   texts.DescWhiteRum,
+	},
+	"Titos Handmade Vodka": {
+		Type:          "Водка",
+		Alc:           40,
+		AviableVolume: []float64{1, 1.75},
+		Prices:        []float64{28.40, 36.29},
+		Description:   texts.DescVodka,
+	},
+	"Belsazar Vermouth": {
+		Type:          "Красный вермут",
+		Alc:           40,
+		AviableVolume: []float64{0.375, 0.75},
+		Prices:        []float64{7.99, 13.19},
+		Description:   texts.DescVermouth,
+	},
+}

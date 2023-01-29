@@ -18,6 +18,12 @@ func Scan(sym byte) string {
 }
 
 func Sprintf(text string, args ...any) string {
+	for i, arg := range args {
+		switch v := arg.(type) {
+		case string:
+			args[i] = ReplaceText(v)
+		}
+	}
 	return fmt.Sprintf(ReplaceText(text), args...)
 }
 

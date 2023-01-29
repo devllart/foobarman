@@ -5,7 +5,7 @@ type Drink struct {
 	Volume     float64
 	Count      int
 	LastVolume float64
-	Info       DrinkInfo
+	DrinkInfo
 }
 
 type DrinkInfo struct {
@@ -15,8 +15,10 @@ type DrinkInfo struct {
 	AviableVolume []float64
 	Prices        []float64
 	Description   string
+	Taste         string
 }
 
 type Coctail struct {
+	Name        string
 	Ingredients []string
 }

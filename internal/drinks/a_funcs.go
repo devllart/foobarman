@@ -9,11 +9,19 @@ import (
 func New(name string, volume float64, count int) Drink {
 	info, exitst := AviableDrinks[name]
 	if exitst == false {
-		fmtc.Perrorf(texts.NotExistDrinkError, name)
+		fmtc.Perrorf(texts.ErrorNotExistDrink, name)
 	}
 	if funcs.Contains(info.AviableVolume, volume) == false {
-		fmtc.Perrorf(texts.NotVolumeOfDrinkError, name, volume)
+		fmtc.Perrorf(texts.ErrorNotVolumeOfDrink, name, volume)
 	}
 
-	return Drink{name, volume, count, volume, info}
+	return Drink{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), info}
+}
+
+func GetLastVolume(typeVolume string, count int, volume float64) float64 {
+	if typeVolume != ".л" {
+		return volume * float64(count)
+	}
+
+	return volume
 }

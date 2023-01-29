@@ -26,11 +26,15 @@ func buy() {
 }
 
 func buyRandom() {
-
 	for state.Money > 0 {
 		index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
 
-		buyDrink(index, 0, 1)
+		drinkName := correctDrinkName(index)
+		aviableVolume := drinks.AviableDrinks[drinkName].AviableVolume
+		// if len(aviableVolume) != 0 {
+		indexVolume := rand.Intn(len(aviableVolume))
+		// }
+		buyDrink(index, aviableVolume[indexVolume], rand.Intn(2)+1)
 	}
 }
 
@@ -39,7 +43,7 @@ func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 
 	drink, exist := drinks.AviableDrinks[drinkName]
 	if exist == false {
-		alert.NotAvailableDrink(drinkName)
+		alert.PanicNotAvailableDrink(drinkName)
 	}
 
 	// If user not inputed volume or input "0" then assign minimal avliable value (firt in slice)
@@ -52,24 +56,33 @@ func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 		index = 0
 	}
 
+	// Calculate the total sum
 	sumPrice := float64(count) * drink.Prices[index]
+	// If money not enought, alert user and panic "IncorrectInput"
 	if state.Money-sumPrice < 0 {
-		alert.NotEnoughtFundsToBuy(sumPrice)
+		alert.PanicNotEnoughtFundsToBuy(sumPrice)
 	}
+	// If selected volume not exist, alert user and panic "IncorrectInput"
 	if funcs.Contains(drink.AviableVolume, volume) == false {
-		alert.NotVolumeOfDrink(drinkName, volume)
+		alert.PanicNotVolumeOfDrink(drinkName, volume)
 	}
 
+	// Buy transaction
 	state.Money -= sumPrice
+	newDrink := drinks.New(drinkName, volume, count)
 
+	// Cycle cycle through the bar's drinks list
 	for i := range state.Bar {
 		drink := state.Bar[i]
+
+		// If the drink has in the bar yet, then added to exist drink
 		if drink.Name == drinkName && drink.Volume == volume {
 			state.Bar[i].Count += count
-			alert.DrinkBoughtYet(drinkName, volume, count, state.Bar[i].Count, sumPrice)
+			alert.DrinkBoughtYet(drinkName, newDrink.TypeVolume(), volume, sumPrice, count, state.Bar[i].Count)
 			return
 		}
 	}
-	state.Bar = append(state.Bar, drinks.New(drinkName, volume, count))
-	alert.DrinkBought(drinkName, volume, count, sumPrice)
+	// Buy the first drink (not in the bar yet)
+	state.Bar = append(state.Bar, newDrink)
+	alert.DrinkBought(drinkName, newDrink.TypeVolume(), volume, sumPrice, count)
 }

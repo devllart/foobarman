@@ -8,7 +8,12 @@ import (
 	"fmt"
 )
 
-func Hello() {
+/**
+ * For decency, you need to say hello and ask for a name.
+ * (Otherwise, how are we going to contact our bartender?)
+ */
+
+func Hello() { // Hello
 	for state.Name == "" {
 		funcs.CliClear()              // Clear console
 		fmtc.Printf(texts.WhatIsName) // Ask Name

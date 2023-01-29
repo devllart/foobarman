@@ -5,6 +5,7 @@ import (
 	"devllart/foobarman/internal/dontpanic"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/texts"
 	"strings"
 )
 
@@ -16,11 +17,13 @@ func Exec() {
 		return
 	} else if CommandIs("exit") {
 		state.Run = false
-	} else if state.Command == "hideall" {
+	} else if CommandIs("recipes") {
+		state.Scene = scenes.Recipes
+	} else if CommandIs("hideall") {
 		config.HideAll()
-	} else if state.Command == "showall" {
+	} else if CommandIs("showall") {
 		config.ShowAll()
-	} else if state.Command == "cmds" {
+	} else if CommandIs("cmds") {
 		config.ShowCommands = !config.ShowCommands
 	} else if CommandIs("description") {
 		config.ShowDescription = !config.ShowDescription
@@ -31,7 +34,7 @@ func Exec() {
 	} else if CommandIs("mix") {
 		Mix()
 	} else {
-		state.AddInfof("! Незивестная комманда: %s\n", state.Command)
+		state.AddInfof(texts.UnknownCommand, "%B"+state.Command+"%C")
 	}
 
 	state.ClearTemp()

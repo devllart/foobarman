@@ -9,13 +9,17 @@ import (
 	"fmt"
 )
 
+/**
+ * Come often to our modest tavern.
+ */
+
 func Bar() {
-	fmtc.Printf(texts.SceneBar, funcs.Indent(15))
+	fmtc.Printf(texts.SceneBar, funcs.Indent(15)) // Print scene
 
 	// Print all barmans've drink to console
 	for i, drink := range state.Bar {
-		fmt.Printf("%d. ", i+1)
-		drink.Show()
-		state.DrinksIds = append(state.DrinksIds, drink.Name)
+		state.DrinksIds = append(state.DrinksIds, drink.Name) // Added drink to slice DrinksIds for available by index
+		fmt.Printf("%d. ", i+1)                               // Print index
+		drink.Show()                                          // Print info of drink
 	}
 }

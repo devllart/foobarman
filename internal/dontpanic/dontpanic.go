@@ -2,6 +2,7 @@ package dontpanic
 
 import (
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/texts"
 	"log"
 )
 
@@ -10,7 +11,7 @@ func RecoverAll() {
 
 	if err := recover(); err != nil {
 		log.Println(err)
-		if err != "IncorrectInput" {
+		if err != texts.IncorrectInput {
 			panic(err)
 		}
 	}

@@ -14,10 +14,30 @@ var StandartCommands = map[string]structs.Command{
 		Aliases:     []string{"exit", "quit", "выйти", "пока"},
 		Description: "Выйти из игры",
 	},
+	"recipes": {
+		Name:        "recipes",
+		Aliases:     []string{"recipes", "res", "рецепты"},
+		Description: "Посмотреть рецепты приготовления коктелей",
+	},
+	"hideall": {
+		Name:        "hediall",
+		Aliases:     []string{"hideall", "hide", "спрятать всё", "спрятать"},
+		Description: "Спрятать все подсказки/команды и описание",
+	},
+	"showall": {
+		Name:        "showall",
+		Aliases:     []string{"showeall", "show", "показть всё", "показать"},
+		Description: "Показать все подсказки/команды и описание",
+	},
 	"description": {
 		Name:        "description",
 		Aliases:     []string{"description", "desc", "описание"},
 		Description: "Показать/спрятать описание",
+	},
+	"cmds": {
+		Name:        "Спрятать/показать команды",
+		Aliases:     []string{"commands", "cmds", "команды"},
+		Description: "Показать/спрятать команды",
 	},
 }
 
