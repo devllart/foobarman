@@ -51,7 +51,7 @@ func mix() {
 		if index != -1 {
 			drink := state.Bar[index]
 			recipes = append(recipes, drink.Type)
-			if err := state.Bar[index].SubVolume(); err != nil {
+			if err := (&state.Bar[index]).SubVolume(); err != nil {
 				fmtc.Printf("%s\n", err)
 			} else {
 				fmtc.Printf("%Y+ %B%s%C\n", drink.Name)

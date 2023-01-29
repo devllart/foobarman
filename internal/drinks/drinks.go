@@ -7,6 +7,7 @@ import (
 
 func init() {
 	for name, drink := range AviableDrinks {
+		delete(AviableDrinks, name)
 		name = strings.Title(name)
 		drink.Name = name
 		drink.Taste = getTaste(drink)
@@ -14,6 +15,7 @@ func init() {
 	}
 
 	for name, coctail := range AviableCoctail {
+		delete(AviableCoctail, name)
 		name = strings.Title(name)
 		coctail.Name = name
 		AviableCoctail[name] = coctail

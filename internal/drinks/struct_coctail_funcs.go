@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (coctail Coctail) PrettyDescription() {
+func (coctail *Coctail) PrettyDescription() {
 	if config.ShowDescription {
 		if coctail.Description == "" {
 			fmtc.Printf(texts.NotSayAboutCoctail, funcs.Indent(4), coctail.Name)
@@ -23,7 +23,7 @@ func (coctail Coctail) PrettyDescription() {
 	}
 }
 
-func (coctail Coctail) PrettyInstruction() {
+func (coctail *Coctail) PrettyInstruction() {
 	if config.ShowInstruction {
 		if coctail.Instruction == "" {
 			fmtc.Printf(texts.UnknownRecipes, funcs.Indent(4), coctail.Name)
@@ -41,7 +41,7 @@ func (coctail Coctail) PrettyInstruction() {
 	}
 }
 
-func (coctail Coctail) Show() {
+func (coctail *Coctail) Show() {
 	fmtc.Printf("%R%s%C — ингредиенты: ", coctail.Name)
 
 	for i, ingredient := range coctail.Ingredients {

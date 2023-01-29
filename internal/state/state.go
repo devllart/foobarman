@@ -6,7 +6,7 @@ import "devllart/foobarman/internal/drinks"
 
 var Run = true
 var Info = ""
-var Money float64 = 300000.33
+var Money float64 = 300000000.33
 var Name = ""
 var Scene func()
 var Bar = []drinks.Drink{}
@@ -17,6 +17,9 @@ var Mix = false
 
 // Temp State
 var TempStr = ""
+var TempBool = false
+var Alerts = []string{}
+var RandomBuy = false
 
 var Command = ""
 var Args = []string{}

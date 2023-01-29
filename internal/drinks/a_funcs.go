@@ -15,7 +15,7 @@ func New(name string, volume float64, count int) Drink {
 		fmtc.Perrorf(texts.ErrorNotVolumeOfDrink, name, volume)
 	}
 
-	return Drink{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), info}
+	return Drink{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), &info}
 }
 
 func GetLastVolume(typeVolume string, count int, volume float64) float64 {

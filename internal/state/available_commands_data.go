@@ -42,7 +42,7 @@ var ShopCommands = map[string]CommandStruct{
 	"rand": {
 		Name:        "rand",
 		Aliases:     []string{"rand", "random", "рандомно"},
-		Description: "Закупиться рандомно",
+		Description: "Закупиться рандомно и перейти в бар",
 	},
 }
 

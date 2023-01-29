@@ -18,6 +18,8 @@ func AddInfof(textf string, args ...any) {
 func ClearTemp() {
 	Command = ""
 	Args = []string{}
+	RandomBuy = false
+	Alerts = []string{}
 
 	DrinksIds = []string{}
 }

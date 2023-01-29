@@ -1,7 +1,7 @@
 package config
 
 /**
- *
+ * Flags
  */
 
 var ShowBarman = true

@@ -9,6 +9,10 @@ import (
 	"fmt"
 )
 
+/**
+ * The best recipes only with us | ru.inshaker.com
+ */
+
 func Recipes() {
 	fmtc.Printf(texts.SceneRecipes, funcs.Indent(15)) // Print scene
 

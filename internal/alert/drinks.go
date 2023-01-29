@@ -3,10 +3,11 @@ package alert
 import (
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
+	"devllart/foobarman/src/fmtc"
 )
 
 /**
- * Don't panic
+ * Alert for drinks don't panic
  */
 
 // Bought drink
@@ -19,9 +20,11 @@ func IncorrectVolumeOfDrink() {
 }
 
 func DrinkBought(drinkName, typeVolume string, volume float64, sumPrice float64, count int) {
-	state.AddInfof(texts.DrinkBought, drinkName, volume, typeVolume, count, sumPrice)
+	text := fmtc.Sprintf(texts.DrinkBought, drinkName, volume, typeVolume, count, sumPrice)
+	state.Alerts = append(state.Alerts, text)
 }
 
 func DrinkBoughtYet(drinkName, typeVolume string, volume, sumPrice float64, count, countSum int) {
-	state.AddInfof(texts.DrinkBoughtYet, drinkName, volume, typeVolume, count, countSum, sumPrice)
+	text := fmtc.Sprintf(texts.DrinkBoughtYet, drinkName, volume, typeVolume, count, countSum, sumPrice)
+	state.Alerts = append(state.Alerts, text)
 }
