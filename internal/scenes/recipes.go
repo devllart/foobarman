@@ -13,7 +13,7 @@ func Recipes() {
 	fmtc.Printf(texts.SceneRecipes, funcs.Indent(15)) // Print scene
 
 	i := 1
-	// Print all barmans've drink to console
+	// Print all recipes to console
 	for _, coctail := range drinks.AviableCoctail {
 		state.DrinksIds = append(state.DrinksIds, coctail.Name) // Added coctail to slice DrinksIds for available by index
 		fmt.Printf("%d. ", i)                                   // Print index

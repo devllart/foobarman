@@ -15,7 +15,7 @@ func (drink Drink) StandartFlow() float64 {
 		return flow
 	}
 
-	return 0.1
+	return drink.AviableVolume[0] / 25
 }
 
 func (drink Drink) GetLastVolume() float64 {

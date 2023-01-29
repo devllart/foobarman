@@ -68,8 +68,8 @@ func Mix() {
 			alert.CoctailIsReady(name)
 			return
 		}
-		alert.DontTheRecipies()
 	}
+	alert.DontTheRecipies()
 	state.Mix = false
 
 }

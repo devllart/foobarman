@@ -11,7 +11,7 @@ const UnknownCommand = "%R!%C Неизвестная комманда: %s\n"
 const StoreHello = "Добро пожаловать в магазин %RBrizly%C названый в честь Бри Ларсон.\n%s выбирай, что хочешь.\n\n"
 
 const StoreDrinkInfo = "%d. %B%s%C (%R%.2f%C%%) | %Y%s%C (вкус %G%s%C)\n"
-const StoreDrinkInfoPrice = " | %Y%.3f$%C за %G%.3f %s%C"
+const StoreDrinkInfoPrice = " | %Y%.2f$%C за %G%.3f %s%C"
 
 // ** Hello
 const WhatIsName = "%CНу и как тебя зовут юный бармен: %B"

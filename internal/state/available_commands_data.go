@@ -1,14 +1,6 @@
-package data
+package state
 
-import (
-	"devllart/foobarman/internal/structs"
-
-	"golang.org/x/exp/maps"
-)
-
-var AvailableCommands = map[string]structs.Command{}
-
-var StandartCommands = map[string]structs.Command{
+var StandartCommands = map[string]CommandStruct{
 	"exit": {
 		Name:        "exit",
 		Aliases:     []string{"exit", "quit", "выйти", "пока"},
@@ -41,7 +33,7 @@ var StandartCommands = map[string]structs.Command{
 	},
 }
 
-var ShopCommands = map[string]structs.Command{
+var ShopCommands = map[string]CommandStruct{
 	"ok": {
 		Name:        "ok",
 		Aliases:     []string{"ok", "ок", "всё", "закончить"},
@@ -54,7 +46,7 @@ var ShopCommands = map[string]structs.Command{
 	},
 }
 
-var BarCommands = map[string]structs.Command{
+var BarCommands = map[string]CommandStruct{
 	"store": {
 		Name:        "store",
 		Aliases:     []string{"store", "магазин"},
@@ -65,10 +57,4 @@ var BarCommands = map[string]structs.Command{
 		Aliases:     []string{"mix", "смешать"},
 		Description: "Смешать напитки",
 	},
-}
-
-func init() {
-	maps.Copy(AvailableCommands, StandartCommands)
-	maps.Copy(AvailableCommands, ShopCommands)
-	maps.Copy(AvailableCommands, BarCommands)
 }

@@ -2,7 +2,6 @@ package scenes
 
 import (
 	"devllart/foobarman/internal/config"
-	"devllart/foobarman/internal/ptf"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
@@ -14,6 +13,7 @@ import (
  * Func print scene, barman status and hints
  * ( Depending on config flags )
  */
+
 func Show(scene func()) {
 	funcs.CliClear() // Clear Console
 	scene()          // Print scene to console
@@ -25,14 +25,8 @@ func Show(scene func()) {
 
 	// If show commands is on, then show commands
 	if config.ShowCommands {
-		ptf.StandartCommands() // Show standart commands
-
-		if CurrentIs(Store) {
-			// If context scene "Store" then show command finis shooping.
-			ptf.FinishShoopingCommand()
-		} else if CurrentIs(Bar) && !state.Mix {
-			// Otherwise show command go to store
-			ptf.StartShoopingCommand()
+		for _, command := range state.AvailableCommands() {
+			command.ShowClue()
 		}
 	}
 
@@ -48,6 +42,7 @@ func Show(scene func()) {
  * Check current context scenes and compare with gets scene
  * PS: All scenes its functions
  */
-func CurrentIs(scene func()) bool {
-	return fmt.Sprintf("%v", state.Scene) == fmt.Sprintf("%v", scene) // Just a little bit of codesshit
+
+func CurrentIs(scene interface{}) bool {
+	return funcs.IsFunc(state.Scene, funcs.FuncName(scene))
 }
