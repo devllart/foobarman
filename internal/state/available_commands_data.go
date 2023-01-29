@@ -58,3 +58,11 @@ var BarCommands = map[string]CommandStruct{
 		Description: "Смешать напитки",
 	},
 }
+
+var RecipesCommands = map[string]CommandStruct{
+	"instruction": {
+		Name:        "instruction",
+		Aliases:     []string{"instruction", "inst", "инструкция"},
+		Description: "Показать, скрыть инструкцию по приготовлению напитка",
+	},
+}

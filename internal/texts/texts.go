@@ -60,3 +60,10 @@ const DrinkBoughtYet = "%Y+%C %B%s%C %G%.3f %s%C %Y%dX%C куплено ещё (
 
 const CoctailIsReady = "У вас получился %B%s%C — очень хорошо\n"
 const DontTheRecipies = "Чтож жаль, но такого %Bрецепта нет%C\n"
+
+const NotSayAboutCoctail = "%sО коктейле \"%B%s%C\" нечего сказать\n\n"
+
+// ** Recipes
+
+const UnknownRecipes = "\n%s%R):%C Тебе пока неизветен рецепт для коктейля \"%R%s%C\"\n"
+const RecipesCoctail = "%sРецепт коктейля %R%s%C\n\n"

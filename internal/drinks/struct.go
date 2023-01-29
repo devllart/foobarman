@@ -19,6 +19,9 @@ type DrinkInfo struct {
 }
 
 type Coctail struct {
-	Name        string
+	Drink
 	Ingredients []string
+	Grammar     []float64
+	Description string
+	Instruction string
 }

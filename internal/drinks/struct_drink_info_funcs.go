@@ -4,21 +4,24 @@ import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
+	"devllart/foobarman/src/funcs"
+	"fmt"
 	"strings"
 )
 
 func (drink DrinkInfo) PrettyDescription() {
 	if config.ShowDescription {
 		if drink.Description == "" {
-			fmtc.Printf("      | О %s ничего неизвестно\n", drink.Name)
+			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(4), drink.Name)
 			return
 		}
 
 		lines := strings.Split(drink.Description, "\n")
 
 		for _, line := range lines {
-			fmtc.Printf("      | %s\n", line)
+			fmtc.Printf("%s%s\n", funcs.Indent(4), line)
 		}
+		fmt.Println()
 	}
 }
 

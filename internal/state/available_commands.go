@@ -14,6 +14,8 @@ func AvailableCommands() map[string]CommandStruct {
 		maps.Copy(cmds, ShopCommands)
 	} else if funcs.IsFunc(Scene, "Bar") {
 		maps.Copy(cmds, BarCommands)
+	} else if funcs.IsFunc(Scene, "Recipes") {
+		maps.Copy(cmds, RecipesCommands)
 	}
 
 	return cmds

@@ -1,5 +1,7 @@
 package drinks
 
+import "devllart/foobarman/internal/texts"
+
 var AviableCoctail = map[string]Coctail{
 	"Пиво": {
 		Ingredients: []string{"Пиво"},
@@ -26,7 +28,7 @@ var AviableCoctail = map[string]Coctail{
 	},
 
 	"Тёмный ром с колой": {
-		Ingredients: []string{"Тёмный ром", "Лаймовый сок", "Кола", "Лайм в кубиках"},
+		Ingredients: []string{"Тёмный ром", "Лаймовый сок", "Кола", "Лайм", "Лёд в кубиках"},
 	},
 
 	"Мохито": {
@@ -35,5 +37,11 @@ var AviableCoctail = map[string]Coctail{
 
 	"Маргарита": {
 		Ingredients: []string{"Серебренная текила", "Трипл сек", "Сахарный сироп", "Лаймовый сок", "Лайм", "Соль", "Лёд в кубиках"},
+	},
+
+	"Негрони": {
+		Ingredients: []string{"Лондонский сухой джин", "Красный вермут", "Красный биттер", "Апельсиновая цедра", "Лед в кубиках"},
+		Description: texts.DescCoctailNegroni,
+		Instruction: texts.InstCoctailNegroni,
 	},
 }

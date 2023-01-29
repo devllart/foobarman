@@ -5,6 +5,13 @@ import (
 )
 
 var AviableDrinks = map[string]DrinkInfo{
+	"Листья лайма": {
+		Type:          "Листья лайма",
+		Alc:           35,
+		AviableVolume: []float64{100, 500},
+		Prices:        []float64{2, 6},
+		Description:   texts.DescRum,
+	},
 	"BACARDÍ Spiced Rum": {
 		Type:          "Ром",
 		Alc:           35,
@@ -69,7 +76,7 @@ var AviableDrinks = map[string]DrinkInfo{
 		Description:   texts.DescSugarSyrup,
 	},
 	"Лёд": {
-		Type:          "Лёд",
+		Type:          "Лёд в кубиках",
 		Alc:           0,
 		AviableVolume: []float64{1, 2, 5, 10},
 		Prices:        []float64{.5, .8, 1.5, 2},

@@ -13,29 +13,31 @@ func Exec() {
 	defer dontpanic.RecoverAll()
 	state.Command = strings.ToLower(state.Command)
 
-	if state.Command == "" {
+	if state.Command == "" { // Empty command -> None action
 		return
-	} else if CommandIs("exit") {
+	} else if CommandIs("exit") { // command exit -> close app, exit from app, .... you undestened
 		state.Run = false
-	} else if CommandIs("recipes") {
-		state.Scene = scenes.Recipes
-	} else if CommandIs("hideall") {
+	} else if CommandIs("hideall") { // Standart commands start here
 		config.HideAll()
 	} else if CommandIs("showall") {
 		config.ShowAll()
 	} else if CommandIs("cmds") {
-		config.ShowCommands = !config.ShowCommands
+		config.TurnShowCommands()
 	} else if CommandIs("description") {
-		config.ShowDescription = !config.ShowDescription
-	} else if scenes.CurrentIs(scenes.Store) {
-		buy()
-	} else if !scenes.CurrentIs(scenes.Store) && CommandIs("store") {
+		config.TurnShowDescription()
+	} else if CommandIs("instruction") {
+		config.TurnShowInstruction()
+	} else if CommandIs("recipes") { // Change scenes context commands start here
+		state.Scene = scenes.Recipes
+	} else if CommandIs("store") {
 		state.Scene = scenes.Store
-	} else if CommandIs("mix") {
-		Mix()
-	} else {
+	} else if scenes.CurrentIs(scenes.Store) { // Context dependent commands start here
+		buy()
+	} else if scenes.CurrentIs(scenes.Bar) && CommandIs("mix") {
+		mix()
+	} else { // otherwise say user "not command"
 		state.AddInfof(texts.UnknownCommand, "%B"+state.Command+"%C")
 	}
 
-	state.ClearTemp()
+	state.ClearTemp() // Cleaning
 }

@@ -6,7 +6,7 @@ import "devllart/foobarman/internal/drinks"
 
 var Run = true
 var Info = ""
-var Money = 300.33
+var Money float64 = 300000.33
 var Name = ""
 var Scene func()
 var Bar = []drinks.Drink{}

@@ -31,7 +31,7 @@ func correctIndexDrinkName(drinkName string) int {
 	return -1
 }
 
-func Mix() {
+func mix() {
 	state.Command = ""
 	recipes := []string{}
 	fmtc.Printf(texts.SelectIngredients)
