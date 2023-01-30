@@ -8,6 +8,6 @@ import (
 )
 
 func (command *CommandStruct) ShowClue() {
-	commands := strings.Join(command.Aliases, color.Reset+", "+color.Red)
-	fmtc.Printf(" %Y\\>%C %R%v%C — %G%s%C\n", commands, command.Description)
+	commands := strings.Join(command.Aliases, color.Reset+", "+color.Blue)
+	fmtc.Printf(" %Y\\>%C %B%v%C — %G%s%C\n", commands, command.Description)
 }

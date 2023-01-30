@@ -26,9 +26,10 @@ func buy() {
 	}
 	if CommandIs("rand") {
 		state.Scene = scenes.Bar
-	} else {
-		alert.Show()
 	}
+	//  else {
+	// 	alert.Show()
+	// }
 }
 
 func buyRandom() {
@@ -36,10 +37,12 @@ func buyRandom() {
 		index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
 
 		drinkName := correctDrinkName(index)
-		aviableVolume := drinks.AviableDrinks[drinkName].AviableVolume
+		drink := drinks.AviableDrinks[drinkName]
+		aviableVolume := drink.AviableVolume
 		indexVolume := rand.Intn(len(aviableVolume))
 
-		buyDrink(index, aviableVolume[indexVolume], rand.Intn(int(state.Money/300+1)))
+		count := rand.Intn(int(state.Money/(10*drink.Prices[indexVolume])+1)) + 1
+		buyDrink(index, aviableVolume[indexVolume], count)
 	}
 }
 

@@ -27,6 +27,8 @@ func Exec() {
 		config.TurnShowDescription()
 	} else if CommandIs("instruction") {
 		config.TurnShowInstruction()
+	} else if CommandIs("bar") { // Change scenes context commands start here
+		state.Scene = scenes.Bar
 	} else if CommandIs("recipes") { // Change scenes context commands start here
 		state.Scene = scenes.Recipes
 	} else if CommandIs("store") {

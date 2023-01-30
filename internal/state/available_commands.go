@@ -7,16 +7,15 @@ import (
 )
 
 func AvailableCommands() map[string]CommandStruct {
-	cmds := map[string]CommandStruct{}
-	maps.Copy(cmds, StandartCommands)
-
-	if funcs.IsFunc(Scene, "Store") {
-		maps.Copy(cmds, ShopCommands)
-	} else if funcs.IsFunc(Scene, "Bar") {
-		maps.Copy(cmds, BarCommands)
-	} else if funcs.IsFunc(Scene, "Recipes") {
-		maps.Copy(cmds, RecipesCommands)
+	sceneName := funcs.FuncName(Scene)
+	if LastScene == sceneName {
+		return cmds
 	}
 
+	LastScene = sceneName
+	cmds = map[string]CommandStruct{}
+
+	maps.Copy(cmds, GetCommandsForScenes(sceneName))
+	maps.Copy(cmds, StandartCommands)
 	return cmds
 }

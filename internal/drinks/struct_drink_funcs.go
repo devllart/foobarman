@@ -3,7 +3,6 @@ package drinks
 import (
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
-	"fmt"
 )
 
 func (drink *Drink) Show() {
@@ -43,8 +42,6 @@ func (drink *Drink) SubVolume() error {
 		if newVol > 0 {
 			drink.Count = newCount
 			drink.LastVolume = newVol
-			fmt.Println(newVol)
-			fmt.Println(drink.StandartFlow())
 			return nil
 		} else {
 			newCount -= 1

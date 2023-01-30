@@ -5,6 +5,69 @@ import (
 )
 
 var AviableDrinks = map[string]DrinkInfo{
+	"Обуховская": {
+		Type:          "Обуховская",
+		Alc:           0,
+		AviableVolume: []float64{0.500, 1, 1.500, 2},
+		Prices:        []float64{0.50, 0.70, 1, 1.20},
+		Description:   texts.DescObukhovskaya,
+	},
+	"Deep Eddy Lemon Vodka": {
+		Type:          "Цитрусовая водка",
+		Alc:           35,
+		AviableVolume: []float64{0.750, 1.750},
+		Prices:        []float64{18.69, 27.99},
+		Description:   texts.DescOrangeLiqueurTrpleSec,
+	},
+	"Cointreau Orange Liqueur Triple Sec": {
+		Type:          "Трипл сек",
+		Alc:           40,
+		AviableVolume: []float64{0.750, 1},
+		Prices:        []float64{40.65, 45.97},
+		Description:   texts.DescOrangeLiqueurTrpleSec,
+	},
+	"Jameson Orange Irish Whiskey": {
+		Type:          "Ирладндский виски",
+		Alc:           30,
+		AviableVolume: []float64{0.750, 1.500},
+		Prices:        []float64{31.99, 54.99},
+		Description:   texts.DescJamesonOrangeIrishWhiskey,
+	},
+	"Пиво Белый Медведь": {
+		Type:          "Пиво",
+		Alc:           6.2,
+		AviableVolume: []float64{1, 1.500},
+		Prices:        []float64{1.30, 2},
+		Description:   texts.DescBeer,
+	},
+	"Пиво Gold": {
+		Type:          "Пиво",
+		Alc:           6.5,
+		AviableVolume: []float64{1, 1.500},
+		Prices:        []float64{1.30, 2},
+		Description:   texts.DescBeer,
+	},
+	"Три Медведя": {
+		Type:          "Пиво",
+		Alc:           6.1,
+		AviableVolume: []float64{1, 1.500},
+		Prices:        []float64{1.30, 2},
+		Description:   texts.DescBeer,
+	},
+	"Пиво Bad": {
+		Type:          "Пиво",
+		Alc:           5.9,
+		AviableVolume: []float64{0.500, 1, 1.500},
+		Prices:        []float64{1.10, 1.80, 2.30},
+		Description:   texts.DescBeer,
+	},
+	"Пиво Клинское": {
+		Type:          "Пиво",
+		Alc:           5.7,
+		AviableVolume: []float64{0.500, 1, 1.500},
+		Prices:        []float64{0.90, 1.60, 2},
+		Description:   texts.DescBeer,
+	},
 	"Coca-cola": {
 		Type:          "Кола",
 		Alc:           0,
@@ -27,7 +90,7 @@ var AviableDrinks = map[string]DrinkInfo{
 		Description:   texts.DescGordonsLondonDryGin,
 	},
 	"Bombay Dry Gin": {
-		Type:          "Лондоский сухой джин",
+		Type:          "Лондонский сухой джин",
 		Alc:           43,
 		AviableVolume: []float64{0.750, 1.750},
 		Prices:        []float64{22.99, 34.49},

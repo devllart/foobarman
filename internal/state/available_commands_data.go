@@ -1,16 +1,7 @@
 package state
 
-var StandartCommands = map[string]CommandStruct{
-	"exit": {
-		Name:        "exit",
-		Aliases:     []string{"exit", "quit", "выйти", "пока"},
-		Description: "Выйти из игры",
-	},
-	"recipes": {
-		Name:        "recipes",
-		Aliases:     []string{"recipes", "res", "рецепты"},
-		Description: "Посмотреть рецепты приготовления коктелей",
-	},
+var AllCommands = map[string]CommandStruct{
+	// Standart commands
 	"hideall": {
 		Name:        "hediall",
 		Aliases:     []string{"hideall", "hide", "спрятать всё", "спрятать"},
@@ -31,9 +22,12 @@ var StandartCommands = map[string]CommandStruct{
 		Aliases:     []string{"commands", "cmds", "команды"},
 		Description: "Показать/спрятать команды",
 	},
-}
-
-var ShopCommands = map[string]CommandStruct{
+	"exit": {
+		Name:        "exit",
+		Aliases:     []string{"exit", "quit", "выйти", "пока"},
+		Description: "Выйти из игры",
+	},
+	// Main commands
 	"ok": {
 		Name:        "ok",
 		Aliases:     []string{"ok", "ок", "всё", "закончить"},
@@ -44,25 +38,61 @@ var ShopCommands = map[string]CommandStruct{
 		Aliases:     []string{"rand", "random", "рандомно"},
 		Description: "Закупиться рандомно и перейти в бар",
 	},
-}
-
-var BarCommands = map[string]CommandStruct{
-	"store": {
-		Name:        "store",
-		Aliases:     []string{"store", "магазин"},
-		Description: "Пойти в магазин",
-	},
 	"mix": {
 		Name:        "mix",
 		Aliases:     []string{"mix", "смешать"},
 		Description: "Смешать напитки",
 	},
-}
 
-var RecipesCommands = map[string]CommandStruct{
+	// Turn show
 	"instruction": {
 		Name:        "instruction",
 		Aliases:     []string{"instruction", "inst", "инструкция"},
 		Description: "Показать, скрыть инструкцию по приготовлению напитка",
 	},
+
+	// Change context scene
+	"bar": {
+		Name:        "bar",
+		Aliases:     []string{"bar", "бар"},
+		Description: "Пойти в бар",
+	},
+	"store": {
+		Name:        "store",
+		Aliases:     []string{"store", "магазин"},
+		Description: "Пойти в магазин",
+	},
+	"recipes": {
+		Name:        "recipes",
+		Aliases:     []string{"recipes", "res", "рецепты"},
+		Description: "Посмотреть рецепты приготовления коктелей",
+	},
+}
+
+var StandartCommands = map[string]CommandStruct{
+	"hideall":     AllCommands["hideall"],
+	"showall":     AllCommands["showall"],
+	"description": AllCommands["description"],
+	"cmds":        AllCommands["cmds"],
+	"exit":        AllCommands["exit"],
+}
+
+var ShopCommands = map[string]CommandStruct{
+
+	"rand":    AllCommands["rand"],
+	"ok":      AllCommands["ok"],
+	"bar":     AllCommands["bar"],
+	"recipes": AllCommands["recipes"],
+}
+
+var BarCommands = map[string]CommandStruct{
+	"mix":     AllCommands["mix"],
+	"store":   AllCommands["store"],
+	"recipes": AllCommands["recipes"],
+}
+
+var RecipesCommands = map[string]CommandStruct{
+	"instruction": AllCommands["instruction"],
+	"bar":         AllCommands["bar"],
+	"store":       AllCommands["store"],
 }

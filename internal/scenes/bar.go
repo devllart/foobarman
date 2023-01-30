@@ -5,8 +5,6 @@ import (
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
-
-	"fmt"
 )
 
 /**
@@ -19,7 +17,7 @@ func Bar() {
 	// Print all barmans've drink to console
 	for i, drink := range state.Bar {
 		state.DrinksIds = append(state.DrinksIds, drink.Name) // Added drink to slice DrinksIds for available by index
-		fmt.Printf("%d. ", i+1)                               // Print index
+		fmtc.Printf("%d. ", i+1)                              // Print index
 		drink.Show()                                          // Print info of drink
 	}
 }

@@ -44,7 +44,7 @@ func correctVolume(arg string) float64 {
 	if arg != "" {
 		volume, err = strconv.ParseFloat(arg, 64)
 	}
-	if err != nil || volume <= 0 {
+	if err != nil || volume < 0 {
 		alert.IncorrectVolumeOfDrink()
 		return 0
 	}
