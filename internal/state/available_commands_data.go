@@ -22,6 +22,16 @@ var AllCommands = map[string]CommandStruct{
 		Aliases:     []string{"commands", "cmds", "команды"},
 		Description: "Показать/спрятать команды",
 	},
+	"restart": {
+		Name:        "restart",
+		Aliases:     []string{"restart", "рестарт"},
+		Description: "Начать игру заново не меняя имя",
+	},
+	"restartrand": {
+		Name:        "restartrand",
+		Aliases:     []string{"restartrand"},
+		Description: "Начать игру заново с тем же иминем и закупится рандомными продуктами",
+	},
 	"exit": {
 		Name:        "exit",
 		Aliases:     []string{"exit", "quit", "выйти", "пока"},
@@ -74,6 +84,8 @@ var StandartCommands = map[string]CommandStruct{
 	"showall":     AllCommands["showall"],
 	"description": AllCommands["description"],
 	"cmds":        AllCommands["cmds"],
+	"restart":     AllCommands["restart"],
+	"restartrand": AllCommands["restartrand"],
 	"exit":        AllCommands["exit"],
 }
 

@@ -1,6 +1,7 @@
 package state
 
 import (
+	"devllart/foobarman/internal/drinks"
 	"devllart/foobarman/src/fmtc"
 	"fmt"
 	"strconv"
@@ -18,10 +19,16 @@ func AddInfof(textf string, args ...any) {
 func ClearTemp() {
 	Command = ""
 	Args = []string{}
-	RandomBuy = false
 	Alerts = []string{}
+	TempBool = false
 
 	DrinksIds = []string{}
+}
+
+func Restart() {
+	ClearTemp()
+	Bar = []drinks.Drink{}
+	Money = 300.33
 }
 
 func SetCommand(text string) {

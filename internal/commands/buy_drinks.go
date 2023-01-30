@@ -17,6 +17,7 @@ func buy() {
 	} else if CommandIs("rand") {
 		state.RandomBuy = true
 		buyRandom()
+		state.RandomBuy = false
 	} else {
 		volume := correctVolume(state.Args[0])
 		count := correctCount(state.Args[1])
@@ -24,9 +25,9 @@ func buy() {
 			buyDrink(state.Command, volume, count)
 		}
 	}
-	if CommandIs("rand") {
-		state.Scene = scenes.Bar
-	}
+	// if CommandIs("rand") {
+	// 	state.Scene = scenes.Bar
+	// }
 	//  else {
 	// 	alert.Show()
 	// }
@@ -34,15 +35,32 @@ func buy() {
 
 func buyRandom() {
 	for state.Money > 10 {
-		index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
+		state.TempBool = false
+		for !state.TempBool {
+			index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
 
-		drinkName := correctDrinkName(index)
-		drink := drinks.AviableDrinks[drinkName]
-		aviableVolume := drink.AviableVolume
-		indexVolume := rand.Intn(len(aviableVolume))
+			drinkName := correctDrinkName(index)
+			drink := drinks.AviableDrinks[drinkName]
+			aviableVolume := drink.AviableVolume
+			indexVolume := rand.Intn(len(aviableVolume))
+			price := drink.Prices[indexVolume]
+			volume := aviableVolume[indexVolume]
+			count := rand.Intn(int(state.Money/(20*price)+1)) + 1
+			sumPrice := price * float64(count)
 
-		count := rand.Intn(int(state.Money/(10*drink.Prices[indexVolume])+1)) + 1
-		buyDrink(index, aviableVolume[indexVolume], count)
+			if state.Money/sumPrice < 5 {
+				continue
+			}
+			if state.Money > 1 && state.Money-sumPrice < 0 {
+				continue
+			}
+			if state.Money/sumPrice < 10 && DrinkExistYet(drinkName, volume) != nil {
+				continue
+			}
+
+			// buyDrink(index, volume, count)
+			go buyTransaction(drinkName, count, volume, price, state.RandomBuy)
+		}
 	}
 }
 
@@ -59,10 +77,7 @@ func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 		volume = drink.AviableVolume[0]
 	}
 
-	index := funcs.IndexOf(volume, drink.AviableVolume)
-	if index == -1 {
-		index = 0
-	}
+	index := funcs.IndexOfOrNull(volume, drink.AviableVolume)
 
 	// Calculate the total sum
 	// If selected volume not exist, alert user and panic "IncorrectInput"
@@ -70,17 +85,21 @@ func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 		alert.PanicNotVolumeOfDrink(drinkName, volume)
 	}
 
-	// Buy transaction
-	// Buy the first drink (not in the bar yet)
-	// state.Bar = append(state.Bar, newDrink)
-	go bbuy(drinkName, count, volume, drink.Prices[index])
+	// Buy drink transaction in goroutine (Oh yes I'm a pervert)
+	buyTransaction(drinkName, count, volume, drink.Prices[index], state.RandomBuy)
 }
 
-func bbuy(drinkName string, count int, volume, price float64) {
+func buyTransaction(drinkName string, count int, volume, price float64, rand bool) {
+	if state.TempBool {
+		return
+	}
+
 	sumPrice := float64(count) * price
 
 	if state.Money-sumPrice < 0 {
-		// alert.NotEnoughtFundsToBuy(sumPrice)
+		if !rand {
+			alert.NotEnoughtFundsToBuy(sumPrice)
+		}
 		state.TempBool = true
 		return
 	}
@@ -89,17 +108,14 @@ func bbuy(drinkName string, count int, volume, price float64) {
 
 	newDrink := drinks.New(drinkName, volume, count)
 
-	// Cycle cycle through the bar's drinks list
-	for i := range state.Bar {
-		drink := state.Bar[i]
-
-		// If the drink has in the bar yet, then added to exist drink
-		if drink.Name == drinkName && drink.Volume == volume {
-			state.Bar[i].Count += count
-			alert.DrinkBoughtYet(drinkName, newDrink.TypeVolume(), volume, sumPrice, count, state.Bar[i].Count)
-			return
-		}
+	// Buy the not first drink (exitst in the bar yet)
+	if drink := DrinkExistYet(newDrink.Name, newDrink.Volume); drink != nil {
+		drink.Count += count
+		alert.DrinkBoughtYet(drinkName, newDrink.TypeVolume(), volume, sumPrice, count, drink.Count)
+		return
 	}
+
+	// Buy the first drink (not in the bar yet)
 	state.Bar = append(state.Bar, newDrink)
 	alert.DrinkBought(drinkName, newDrink.TypeVolume(), volume, sumPrice, count)
 }

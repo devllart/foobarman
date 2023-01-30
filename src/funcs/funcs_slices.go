@@ -28,3 +28,11 @@ func IndexOf[T string | float32 | float64 | int](val T, sliceMap []T) int {
 	}
 	return -1
 }
+
+func IndexOfOrNull[T string | float32 | float64 | int](val T, sliceMap []T) int {
+	index := IndexOf(val, sliceMap)
+	if index == -1 {
+		return 0
+	}
+	return index
+}

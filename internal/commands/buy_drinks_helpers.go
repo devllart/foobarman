@@ -2,6 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
+	"devllart/foobarman/internal/drinks"
 	"devllart/foobarman/internal/state"
 	"strconv"
 	"strings"
@@ -11,6 +12,19 @@ import (
  * Get Name or Index drink's and return correct its name.
  * + alerting user if his index out of range drink's menu.
  */
+
+func DrinkExistYet(drinkName string, volume float64) *drinks.Drink {
+	// Cycle cycle through the bar's drinks list
+	for i := range state.Bar {
+		drink := state.Bar[i]
+
+		// If the drink has in the bar yet, then added to exist drink
+		if drink.Name == drinkName && drink.Volume == volume {
+			return &drink
+		}
+	}
+	return nil
+}
 
 func correctDrinkName(drinkNameOrIndex string) string {
 	drinkIndex, err := strconv.Atoi(drinkNameOrIndex)

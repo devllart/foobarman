@@ -9,7 +9,7 @@ var cmds = map[string]CommandStruct{}
 
 var Run = true
 var Info = ""
-var Money float64 = 300000000.33
+var Money float64 = 300.33
 var Name = ""
 var Scene func()
 var LastScene string
