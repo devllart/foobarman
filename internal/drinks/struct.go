@@ -20,8 +20,9 @@ type DrinkInfo struct {
 
 type Coctail struct {
 	Drink
-	Ingredients []string
-	Grammar     []float64
-	Description string
-	Instruction string
+	NecessaryTings []string
+	Ingredients    []string
+	Grammar        []float64
+	Description    string
+	Instruction    string
 }

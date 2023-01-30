@@ -4,7 +4,11 @@ import "devllart/foobarman/internal/texts"
 
 var AviableCoctail = map[string]Coctail{
 	"Апероль Шприц": {
-		Ingredients: []string{"Апероль", "Содовая", "Просекко"},
+		NecessaryTings: []string{"Бокал для вина", "Джиггер", "Коктейльная ложка", "Трубочки"},
+		Ingredients:    []string{"Апероль", "Просекко", "Содовая", "Апельсин", "Лёд в кубиках"},
+		Grammar:        []float64{0.100, 0.100, 0.020, 0.040, 0.060},
+		Instruction:    texts.InstCoctailAperrolShprits,
+		Description:    texts.DescCoctailAperrolShprits,
 	},
 
 	"Пина Колада": {
@@ -28,7 +32,10 @@ var AviableCoctail = map[string]Coctail{
 	},
 
 	"Мохито": {
-		Ingredients: []string{"Белый ром", "Сахарный сироп", "Содовая", "Лайм", "Лайм", "Мята", "Дроблённый лёд"},
+		NecessaryTings: []string{"Хайлбол", "Мадлер", "Джиггер", "Коктейльная ложка", "Трубочка"},
+		Ingredients:    []string{"Белый ром", "Сахарный сироп", "Содовая", "Лайм", "Мята", "Дроблённый лёд"},
+		Instruction:    texts.InstCoctailMohito,
+		Description:    texts.DescCoctailMohito,
 	},
 
 	"Маргарита": {

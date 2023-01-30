@@ -65,6 +65,7 @@ var AllCommands = map[string]CommandStruct{
 	},
 }
 
+// Context commands
 var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
 var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
 var BarCommands = getCommands("mix", "store", "recipes")
