@@ -19,4 +19,13 @@ func getCommandsForScenes() func(sceneName string) map[string]CommandStruct {
 	}
 }
 
+func getCommands(keys ...string) map[string]CommandStruct {
+	cmds := map[string]CommandStruct{}
+	for _, key := range keys {
+		cmds[key] = AllCommands[key]
+	}
+
+	return cmds
+}
+
 var GetCommandsForScenes = getCommandsForScenes()
