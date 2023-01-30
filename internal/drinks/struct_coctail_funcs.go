@@ -48,7 +48,16 @@ func (coctail *Coctail) Show() {
 		if i > 0 {
 			fmtc.Printf(", ")
 		}
-		fmtc.Printf("%B%s%C", ingredient)
+		if i < len(coctail.Grammar) {
+			typeVolume := ".л"
+			if DrinksTypesVolume[ingredient] != "" {
+				typeVolume = DrinksTypesVolume[ingredient]
+			}
+
+			fmtc.Printf("%B%s%C (%.3f%s)", ingredient, coctail.Grammar[i], typeVolume)
+		} else {
+			fmtc.Printf("%B%s%C", ingredient)
+		}
 	}
 	fmt.Println()
 }

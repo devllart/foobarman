@@ -29,7 +29,7 @@ var AviableCoctail = map[string]Coctail{
 	"Ураган": {
 		NecessaryTings: []string{"Харрикейн", "Шейкер", "Стрейнер", "Джиггер", "Пресс для цитрусовых", "Трубочки"},
 		Ingredients:    []string{"Белый ром", "Тёмный ром", "Сироп маракуйи", "Гренандин", "Анансовый сок", "Апельсиновый сок", "Лаймовый сок", "Лимон", "Лёд в кубиках"},
-		Grammar:        []float64{0.030, 0.030, 0.015, 0.005, 0.060, 0.030, 0.020, 0.400},
+		Grammar:        []float64{0.030, 0.030, 0.015, 0.005, 0.060, 0.060, 0.030, 0.020, 0.400},
 		Description:    texts.DescCoctailHurricane,
 		Instruction:    texts.InstCoctailHurricane,
 	},

@@ -33,7 +33,7 @@ var AllCommands = map[string]CommandStruct{
 	// Main commands
 	"ok": {
 		Aliases:     []string{"ok", "ок", "всё", "закончить"},
-		Description: "Закончить покупку ингридиентов",
+		Description: "Закончить покупку продуктов",
 	},
 	"rand": {
 		Aliases:     []string{"rand", "random", "рандомно"},
