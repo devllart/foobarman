@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"fmt"
+	"devllart/foobarman/src/fmtc"
 	"strings"
 
 	"github.com/TwiN/go-color"
@@ -15,5 +15,5 @@ type Command struct {
 
 func (command Command) ShowClue() {
 	commands := strings.Join(command.Aliases, color.Reset+", "+color.Red)
-	fmt.Printf(" %s\\>%s %s%v%s — %s%s%s\n", color.Yellow, color.Reset, color.Red, commands, color.Reset, color.Green, command.Description, color.Reset)
+	fmtc.Printf(" %Y\\>%C %R%v%C — %G%s%C\n", commands, command.Description)
 }

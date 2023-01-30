@@ -7,7 +7,7 @@ var AllCommands = map[string]CommandStruct{
 		Description: "Спрятать все подсказки/команды и описание",
 	},
 	"showall": {
-		Aliases:     []string{"showeall", "show", "показть всё", "показать"},
+		Aliases:     []string{"showall", "show", "показть всё", "показать"},
 		Description: "Показать все подсказки/команды и описание",
 	},
 	"description": {
