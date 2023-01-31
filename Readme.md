@@ -17,6 +17,7 @@ Second thing its shoping in the store... Choose the right ingredients, you only 
 And now the real game begins... 
 
 ### Screenshots
+
 <p align="center">
   <img src="./assets/start_game.png" alt="Foobarman cli-game (start game)"/>
 </p>
@@ -31,7 +32,7 @@ And now the real game begins...
 
 ## References
 
-* Most of the information is taken from open sources. In particular from the sites:
+Most of the information is taken from open sources. In particular from the sites:
 - https://ru.inshaker.com (most cocktail recipes, their description and description of drinks)
 - https://drizly.com (Most drinks, their prices and thier descriptions)
 
@@ -40,9 +41,9 @@ And now the real game begins...
 - foobarman.exe (windows v0.2.6) virustotal: https://www.virustotal.com/gui/file/c125e8074b702aef19ada9734d79ff3c2f654ee139ab3eb3278788a8a117a8b0?nocache=1)
 - foobarman (linux v0.2.6) virustotal: https://www.virustotal.com/gui/file/c125e8074b702aef19ada9734d79ff3c2f654ee139ab3eb3278788a8a117a8b0
 
-* If you wish, you can check it yourself.
-* When uploading a file to virustotal, it asks for a password (I don't know why) — there is no password, 
-* just leave the fields empty and press confirm.
+If you wish, you can check it yourself.
+When uploading a file to virustotal, it asks for a password (I don't know why) — there is no password, 
+just leave the fields empty and press confirm.
 
 ## Copyright
 
@@ -54,9 +55,9 @@ And now the real game begins...
 
 ## PS 
 
-* The source code is closed so as not to spoil the impression of the game, 
-* since there are many non-typical situations, 
-* knowing which in advance you will not get such pleasure from the game
+The source code is closed so as not to spoil the impression of the game, 
+since there are many non-typical situations, 
+knowing which in advance you will not get such pleasure from the game
 
 ## Technical information
 
