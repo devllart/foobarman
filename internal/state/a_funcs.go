@@ -47,3 +47,22 @@ func SetCommand(text string) {
 	}
 	Command = Command[:len(Command)-1]
 }
+
+func HandlerStatus() {
+	fmtc.Printf("Ok")
+	if Money < 10 {
+		SetStatusBad()
+	} else {
+		SetStatusNorm()
+	}
+}
+
+func SetStatusBad() {
+	Status = "Bad"
+	drinks.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/ — но твоя девушка суше ;) ")
+}
+
+func SetStatusNorm() {
+	Status = "Norm"
+	drinks.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/")
+}

@@ -7,27 +7,31 @@ var cmds = map[string]CommandStruct{}
 
 // Global state and variables
 
-var Run = true
-var Info = ""
-var Money float64 = 300.33
-var Name = ""
-var Scene func()
-var LastScene string
-var Bar = []drinks.Drink{}
+// ** Flags
 
-// Flags
+var Run = true        // State game loop
+var Mix = false       // Is command mix?
+var RandomBuy = false // For seperate logics rand buy and buy of user
 
-var Mix = false
+// ** Temp State
+var TempBool = false // Nothing say
+var TempStr = ""     // Nothing say
 
-// Temp State
-var TempStr = ""
-var TempBool = false
+// ** For manipulation with views
+var DrinksIds = []string{} // Printer drinks
+
+// ** For alerts user
 var Alerts = []string{}
-var RandomBuy = false
+var Info = ""
 
-var Command = ""
-var Args = []string{}
-var Arg1 = ""
-var Arg2 = ""
+// ** State of player
+var Scene func()           // Context of scenes
+var LastScene string       // Last scene
+var Name = ""              // Barman name
+var Status = "Norm"        // Status barman
+var Money float64 = 300.33 // Player money
+var Bar = []drinks.Drink{} // State of bar
 
-var DrinksIds = []string{}
+// ** For work with commands
+var Command = ""      // Current command
+var Args = []string{} // Current args of command
