@@ -68,8 +68,3 @@ knowing which in advance you will not get such pleasure from the game <br>
 Game version: 0.2.6 <br>
 Main development language: Go (Golang) <br>
 Golang version: 1.19 <br>
-
-Used external golang libraries (from go.mod):
-- github.com/TwiN/go-color v1.4.0
-- golang.org/x/exp v0.0.0-20230124195608-d38c7dcee874
-

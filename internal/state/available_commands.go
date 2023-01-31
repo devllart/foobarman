@@ -2,8 +2,6 @@ package state
 
 import (
 	"devllart/foobarman/src/funcs"
-
-	"golang.org/x/exp/maps"
 )
 
 func AvailableCommands() map[string]CommandStruct {
@@ -15,7 +13,14 @@ func AvailableCommands() map[string]CommandStruct {
 	LastScene = sceneName
 	cmds = map[string]CommandStruct{}
 
-	maps.Copy(cmds, GetCommandsForScenes(sceneName))
-	maps.Copy(cmds, StandartCommands)
+	mapsCopy(cmds, GetCommandsForScenes(sceneName))
+	mapsCopy(cmds, StandartCommands)
 	return cmds
 }
+
+func mapsCopy[M1 ~map[K]V, M2 ~map[K]V, K comparable, V any](dst M1, src M2) {
+	for k, v := range src {
+		dst[k] = v
+	}
+}
+

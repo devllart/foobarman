@@ -10,8 +10,6 @@ import (
 	"fmt"
 	"sort"
 	"strconv"
-
-	"golang.org/x/exp/slices"
 )
 
 func correctIndexDrinkName(drinkName string) int {
@@ -63,12 +61,25 @@ func mix() {
 
 	for name, coctail := range drinks.AviableCoctail {
 		sort.Sort(sort.StringSlice(recipes))
-		if slices.Equal(coctail.Ingredients, recipes) {
+		if slicesEqual(coctail.Ingredients, recipes) {
 			alert.CoctailIsReady(name)
 			return
 		}
 	}
 	alert.DontTheRecipies()
 	state.Mix = false
+}
+
+func slicesEqual(firstSlice, secondSlice []string) bool {
+	if len(firstSlice) != len(secondSlice) {
+		return false
+	}
+	for i, val := range firstSlice {
+		if secondSlice[i] != val {
+			return false
+		}
+	}
+	return true 
+
 
 }
