@@ -10,11 +10,13 @@
 Welcome, this repo with cli-game that show what its like to be a bartender <br>
 and maybe even teach you somthing else.
 
-All control on the command line - hints are present ( supported languages are English and Russian — so far only commands( )
+All control on the command line - hints are present.
 
-Look, if you want playing this game you just should run execute file called like "foobarman" <br>
+Look, if you want playing this game, <br>
+then run execute file called like "foobarman" (linux) or "foobarman.exe" (windows) <br>
+
 First thing you need to do its select name for your bartender. <br>
-Second thing its shoping in the store... Choose the right ingredients, you only have three hundred bucks. <br>
+Second thing its shoping in the store, choose the right ingredients, you only have three hundred bucks. <br>
 And now the real game begins... 
 
 
@@ -49,10 +51,10 @@ just leave the fields empty and press confirm. <br>
 
 ## Copyright
 
-| /***************************************************** ******
-| * Copyright (C) 2023 Ruslan <devllartone@gmail.com>
-| *
-| * Cli-Game "Foobarman" is free to play.
+| /***************************************************** ****** <br>
+| * Copyright (C) 2023 Ruslan <devllartone@gmail.com> <br>
+| * <br>
+| * Cli-Game "Foobarman" is free to play. <br>
 | ******************************************************* *****/
 
 ## PS 
