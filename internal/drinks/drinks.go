@@ -22,13 +22,15 @@ func init() {
 	}
 }
 
-func getTaste(drink DrinkInfo) string {
-	if taste, exist := Tastes[drink.Name]; exist == true {
-		return taste
-	}
-	if taste, exist := Tastes[drink.Type]; exist == true {
+func getTaste(drink DrinkInfo) *string {
+
+	if taste := NewTastes.GetValue(drink.Name); taste != nil {
 		return taste
 	}
 
-	return texts.Unknown
+	if taste := NewTastes.GetValue(drink.Type); taste != nil {
+		return taste
+	}
+
+	return NewTastes.GetValue(texts.Unknown)
 }

@@ -15,7 +15,7 @@ type DrinkInfo struct {
 	AviableVolume []float64
 	Prices        []float64
 	Description   string
-	Taste         string
+	Taste         *string
 }
 
 type Coctail struct {

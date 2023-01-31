@@ -42,5 +42,5 @@ func (drink *DrinkInfo) PrintPrices() {
 }
 
 func (drink *DrinkInfo) PrintInStore(index int) {
-	fmtc.Printf(texts.StoreDrinkInfo, index, drink.Name, drink.Alc, drink.Type, drink.Taste)
+	fmtc.Printf(texts.StoreDrinkInfo, index, drink.Name, drink.Alc, drink.Type, *drink.Taste)
 }
