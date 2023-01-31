@@ -19,6 +19,7 @@ func main() {
 
 	// Run game cycle
 	for state.Run == true {
+		state.HandlerStatus()    // Turning status of barman
 		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
 		state.Info = ""          // Clear hints and warning message
 
