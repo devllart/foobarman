@@ -5,6 +5,90 @@ import (
 )
 
 var AviableDrinks = map[string]DrinkInfo{
+	"Liqueur Fruko Schulz Triple Sec": {
+		Type:          "Трипл сек fruko schulz",
+		Alc:           40,
+		AviableVolume: []float64{0.7},
+		Prices:        []float64{21.43},
+		Description:   texts.DescSimplyLemonade,
+	},
+	"Simply Lemonade": {
+		Type:          "Лимонад",
+		Alc:           0,
+		AviableVolume: []float64{0.473, 1.744},
+		Prices:        []float64{2.98, 4.99},
+		Description:   texts.DescSimplyLemonade,
+	},
+	"Tropicana Orange Juice": {
+		Type:          "Апельсиновый сок",
+		Alc:           0,
+		AviableVolume: []float64{0.946},
+		Prices:        []float64{3.99},
+		Description:   texts.DescTropicanaOrangeJuice,
+	},
+	"Dole Pineapple Juice": {
+		Type:          "Ананасовый сок",
+		Alc:           0,
+		AviableVolume: []float64{1.360},
+		Prices:        []float64{4.99},
+		Description:   texts.DescDolePineappleJuice,
+	},
+	"Ocean Spray Cranberry Juice Cocktail": {
+		Type:          "Клюквенный сок",
+		Alc:           0,
+		AviableVolume: []float64{0.946},
+		Prices:        []float64{3.99},
+		Description:   texts.DescOceanSprayCranberryJuiceCocktail,
+	},
+	"Realime Lime Juice": {
+		Type:          "Лаймовый сок",
+		Alc:           0,
+		AviableVolume: []float64{0.133, 0.236},
+		Prices:        []float64{1.59, 2.99},
+		Description:   texts.DescRealimeLimeJuice,
+	},
+	"Torani French Vanilla": {
+		Type:          "Ванильный сироп",
+		Alc:           0,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{11.99},
+		Description:   texts.DescToraniFrenchVanilla,
+	},
+	"Torani Peppermint Syrup": {
+		Type:          "Мятный сироп",
+		Alc:           0,
+		AviableVolume: []float64{0.375, 0.750},
+		Prices:        []float64{6.99, 9.99},
+		Description:   texts.DescToraniPeppermintSyrup,
+	},
+	"Torani Amer": {
+		Type:          "Креплённое вино",
+		Alc:           39,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{11.99},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Torani Orgeat Syrup": {
+		Type:          "Сахарный сироп",
+		Alc:           0,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{11.99},
+		Description:   texts.DescSugarSyrup,
+	},
+	"Torani Sugar Free Coconut Syrup": {
+		Type:          "Кокосовый сироп",
+		Alc:           0,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{11.99},
+		Description:   texts.DescCoconutSyrup,
+	},
+	"Monin Coconut Syrup": {
+		Type:          "Кокосовый сироп",
+		Alc:           0,
+		AviableVolume: []float64{0.750, 1},
+		Prices:        []float64{10.57, 12.31},
+		Description:   texts.DescMoninCoconutSyrup,
+	},
 	"Обуховская": {
 		Type:          "Обуховская",
 		Alc:           0,
@@ -27,20 +111,20 @@ var AviableDrinks = map[string]DrinkInfo{
 		Description:   texts.DescOrangeLiqueurTrpleSec,
 	},
 	"Jameson Orange Irish Whiskey": {
-		Type:          "Ирладндский виски",
+		Type:          "Ирландский виски",
 		Alc:           30,
 		AviableVolume: []float64{0.750, 1.500},
 		Prices:        []float64{31.99, 54.99},
 		Description:   texts.DescJamesonOrangeIrishWhiskey,
 	},
-	"Пиво Белый Медведь": {
+	"Белый Медведь": {
 		Type:          "Пиво",
 		Alc:           6.2,
 		AviableVolume: []float64{1, 1.500},
 		Prices:        []float64{1.30, 2},
 		Description:   texts.DescBeer,
 	},
-	"Пиво Gold": {
+	"Gold": {
 		Type:          "Пиво",
 		Alc:           6.5,
 		AviableVolume: []float64{1, 1.500},
@@ -54,19 +138,40 @@ var AviableDrinks = map[string]DrinkInfo{
 		Prices:        []float64{1.30, 2},
 		Description:   texts.DescBeer,
 	},
-	"Пиво Bad": {
+	"Bud Light": {
+		Type:          "Пиво",
+		Alc:           4.7,
+		AviableVolume: []float64{0.500},
+		Prices:        []float64{1.70},
+		Description:   texts.DescBeerBudLight,
+	},
+	"Corona Extra Lager Mexican Beer": {
+		Type:          "Пиво",
+		Alc:           4.6,
+		AviableVolume: []float64{0.500},
+		Prices:        []float64{1.80},
+		Description:   texts.DescBeerCoronaExtraLagerMexican,
+	},
+	"Bud": {
 		Type:          "Пиво",
 		Alc:           5.9,
-		AviableVolume: []float64{0.500, 1, 1.500},
-		Prices:        []float64{1.10, 1.80, 2.30},
+		AviableVolume: []float64{0.500},
+		Prices:        []float64{1.10},
 		Description:   texts.DescBeer,
 	},
-	"Пиво Клинское": {
+	"Клинское": {
 		Type:          "Пиво",
 		Alc:           5.7,
 		AviableVolume: []float64{0.500, 1, 1.500},
 		Prices:        []float64{0.90, 1.60, 2},
 		Description:   texts.DescBeer,
+	},
+	"Sprite": {
+		Type:          "Спрайт",
+		Alc:           0,
+		AviableVolume: []float64{0.500, 1, 1.500, 2},
+		Prices:        []float64{1, 2, 3, 4},
+		Description:   texts.DescSprite,
 	},
 	"Coca-cola": {
 		Type:          "Кола",
@@ -113,8 +218,8 @@ var AviableDrinks = map[string]DrinkInfo{
 	"Листья лайма": {
 		Type:          "Листья лайма",
 		Alc:           0,
-		AviableVolume: []float64{100, 500},
-		Prices:        []float64{2, 6},
+		AviableVolume: []float64{1, 2, 5},
+		Prices:        []float64{.2, .3, .5},
 		Description:   texts.DescLaim,
 	},
 	"BACARDI Spiced Rum": {
