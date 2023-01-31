@@ -18,7 +18,7 @@ And now the real game begins...
 
 ### Screenshots
 <p align="center">
-  <img src="./assets/start_game.jpg" alt="Foobarman cli-game (start game)"/>
+  <img src="./assets/start_game.png" alt="Foobarman cli-game (start game)"/>
 </p>
 <p align="center">
   <img src="./assets/store.png" alt="Foobarman cli-game (store)"/>
