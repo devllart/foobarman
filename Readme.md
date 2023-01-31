@@ -1,4 +1,4 @@
-# Simulator Barman (cli-game)
+# Simulator barman "Foobarman" (cli-game)
 
 <p align="center">
   <img src="./assets/logogame.jpg" alt="Foobarman cli-game"/>
