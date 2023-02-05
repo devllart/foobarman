@@ -1,6 +1,6 @@
 build:
-	go build -o ./bin/foobarman ./cmd/app
-	go build -o ./bin/foobarman.exe ./cmd/app
+	GOOS=linux GOARCH=amd64 go build -o ./bin/foobarman ./cmd/app
+	GOOS=windows GOARCH=amd64 go build -o ./bin/foobarman.exe ./cmd/app
 
 run:
 	go run ./cmd/app

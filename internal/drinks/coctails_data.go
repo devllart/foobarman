@@ -67,14 +67,14 @@ var AviableCoctail = map[string]Coctail{
 	},
 
 	"Негрони": {
-		Ingredients: []string{"Лондонский сухой джин", "Красный вермут", "Красный биттер", "Апельсиновая цедра", "Лед в кубиках"},
+		Ingredients: []string{"Лондонский сухой джин", "Красный вермут", "Красный биттер", "Апельсиновая цедра", "Лёд в кубиках"},
 		Grammar:     []float64{0.030, 0.030, 0.030, 1, 0.120},
 		Description: texts.DescCoctailNegroni,
 		Instruction: texts.InstCoctailNegroni,
 	},
 
 	"Драй Мартини": {
-		Ingredients: []string{"Лондонский сухой джин", "Сухой вермут", "Оливки", "Лед в кубиках"},
+		Ingredients: []string{"Лондонский сухой джин", "Сухой вермут", "Оливки", "Лёд в кубиках"},
 		Grammar:     []float64{0.075, 0.015, 3, 0.300},
 		Description: texts.DescCoctailDryMartini,
 		Instruction: texts.InstCoctailDryMartini,

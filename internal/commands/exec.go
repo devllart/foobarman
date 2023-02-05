@@ -17,9 +17,13 @@ func Exec() {
 		return
 	} else if CommandIs("exit") { // command exit -> close app, exit from app, .... you undestened
 		state.Run = false
-	} else if CommandIs("restart") { // command exit -> close app, exit from app, .... you undestened
+	} else if CommandIs("start") {
+		state.BarOpen = true
+	} else if CommandIs("skip") {
+		state.NotSaler = true
+	} else if CommandIs("restart") {
 		Restart()
-	} else if CommandIs("restartrand") { // command exit -> close app, exit from app, .... you undestened
+	} else if CommandIs("restartrand") {
 		RestartAndRandBuy()
 	} else if CommandIs("hideall") { // Standart commands start here
 		config.HideAll()

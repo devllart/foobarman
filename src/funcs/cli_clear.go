@@ -20,13 +20,15 @@ func init() {
 		cmd.Stdout = os.Stdout
 		cmd.Run()
 	}
+
+	clear["android"] = clear["linux"]
 }
 
 func CliClear() {
-	value, ok := clear[runtime.GOOS] //runtime.GOOS -> linux, windows, darwin etc.
-	if ok {                          //if we defined a clear func for that platform:
-		value() //we execute it
-	} else { //unsupported platform
+	value, ok := clear[runtime.GOOS] // Runtime.GOOS -> linux, windows, darwin etc.
+	if ok {                          // If we defined a clear func for that platform:
+		value()                      // We execute it
+	} else {                         // Unsupported platform
 		panic("Your platform is unsupported! I can't clear terminal screen :(")
 	}
 }

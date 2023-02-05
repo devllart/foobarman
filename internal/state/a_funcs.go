@@ -45,11 +45,16 @@ func SetCommand(text string) {
 	if len(Args) == 0 {
 		Args = make([]string, 3)
 	}
+
 	Command = Command[:len(Command)-1]
+
+
+	if len(Command) > 0 && Command[len(Command)-1] == 13 {
+		Command = Command[:len(Command)-1]
+	}
 }
 
 func HandlerStatus() {
-	fmtc.Printf("Ok")
 	if Money < 10 {
 		SetStatusBad()
 	} else {

@@ -31,6 +31,14 @@ var AllCommands = map[string]CommandStruct{
 		Description: "Выйти из игры",
 	},
 	// Main commands
+	"start": {
+		Aliases:     []string{"go", "start", "open", "open bar", "старт", "поехали", "открыться", "открыть бар"},
+		Description: "Начать игру (открыть бар и начать принимать поситителей)",
+	},
+	"skip": {
+		Aliases:     []string{"skip", "пропустить"},
+		Description: "Пропустить клиента",
+	},
 	"ok": {
 		Aliases:     []string{"ok", "ок", "всё", "закончить"},
 		Description: "Закончить покупку продуктов",
@@ -68,5 +76,5 @@ var AllCommands = map[string]CommandStruct{
 // Context commands
 var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
 var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
-var BarCommands = getCommands("mix", "store", "recipes")
+var BarCommands = getCommands("start", "mix", "skip", "store", "recipes")
 var RecipesCommands = getCommands("instruction", "bar", "store")

@@ -9,6 +9,29 @@ import (
 	"strings"
 )
 
+
+func (coctail *Coctail) Show() {
+	fmtc.Printf("%R%s%C — ингредиенты: ", coctail.Name)
+
+	for i, ingredient := range coctail.Ingredients {
+		if i > 0 {
+			fmtc.Printf(", ")
+		}
+		if i < len(coctail.Grammar) {
+			typeVolume := ".л"
+			if DrinksTypesVolume[ingredient] != "" {
+				typeVolume = DrinksTypesVolume[ingredient]
+			}
+			fmtc.Printf("%B%s%C (%.3f%s)", ingredient, coctail.Grammar[i], typeVolume)
+		} else {
+			fmtc.Printf("%B%s%C", ingredient)
+		}
+
+	}
+	fmtc.Printf(" (цена: %Y%.2f$%C)", coctail.Price)
+	fmt.Println()
+}
+
 func (coctail *Coctail) PrettyDescription() {
 	if config.ShowDescription {
 		if coctail.Description == "" {
@@ -41,23 +64,18 @@ func (coctail *Coctail) PrettyInstruction() {
 	}
 }
 
-func (coctail *Coctail) Show() {
-	fmtc.Printf("%R%s%C — ингредиенты: ", coctail.Name)
-
+func (coctail *Coctail) GetPrice() float64 {
+	var sumPrice float64 = 0.5
 	for i, ingredient := range coctail.Ingredients {
-		if i > 0 {
-			fmtc.Printf(", ")
-		}
-		if i < len(coctail.Grammar) {
-			typeVolume := ".л"
-			if DrinksTypesVolume[ingredient] != "" {
-				typeVolume = DrinksTypesVolume[ingredient]
+		if price, exist := DrinksStandartTypesPrice[ingredient]; exist {
+			var grammar float64 = 0.1
+			if i < len(coctail.Grammar) {
+				grammar = coctail.Grammar[i]
 			}
 
-			fmtc.Printf("%B%s%C (%.3f%s)", ingredient, coctail.Grammar[i], typeVolume)
-		} else {
-			fmtc.Printf("%B%s%C", ingredient)
+			sumPrice += price * grammar * (1.1 - GetStandartFlow(ingredient))
 		}
 	}
-	fmt.Println()
+
+	return sumPrice * float64(len(coctail.Ingredients)) * 0.3
 }

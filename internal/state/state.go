@@ -32,6 +32,14 @@ var Status = "Norm"        // Status barman
 var Money float64 = 300.33 // Player money
 var Bar = []drinks.Drink{} // State of bar
 
+// ** State of client
+
+var BarOpen = false
+var NotSaler = true
+var CoctailReady = false
+var Order drinks.Coctail
+var YourCoctail drinks.Coctail
+
 // ** For work with commands
 var Command = ""      // Current command
 var Args = []string{} // Current args of command

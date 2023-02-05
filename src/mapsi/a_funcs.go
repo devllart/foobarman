@@ -1,6 +1,6 @@
 package mapsi
 
-func New[T string | int | float32 | float64](maps map[string]T) Mapsi[T] {
+func New[T any](maps map[string]T) Mapsi[T] {
 	keys := []string{}
 	values := []T{}
 
@@ -36,3 +36,12 @@ func (mapsi *Mapsi[T]) GetValue(key string) *T {
 	}
 	return nil
 }
+
+func (mapsi *Mapsi[T]) GetValueOfIndex(index int) *T {
+	if index < len(mapsi.Values) { 
+		return &mapsi.Values[index]
+	}
+	
+	return nil
+}
+

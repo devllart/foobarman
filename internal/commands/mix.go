@@ -61,7 +61,11 @@ func mix() {
 
 	for name, coctail := range drinks.AviableCoctail {
 		sort.Sort(sort.StringSlice(recipes))
-		if slicesEqual(coctail.Ingredients, recipes) {
+		ingredients := coctail.Ingredients
+		sort.Sort(sort.StringSlice(ingredients))
+		if slicesEqual(ingredients, recipes) {
+			state.YourCoctail = coctail
+			state.CoctailReady = true
 			alert.CoctailIsReady(name)
 			return
 		}

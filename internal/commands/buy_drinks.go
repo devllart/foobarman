@@ -28,6 +28,10 @@ func buy() {
 }
 
 func buyRandom() {
+	for _, drink := range drinks.AviableDrinks {
+		buyDrink(drink.Name, 0, 1)
+	}
+
 	for state.Money > 10 {
 		state.TempBool = false
 		for !state.TempBool {

@@ -3,6 +3,7 @@ package main
 import (
 	"devllart/foobarman/internal/commands"
 	"devllart/foobarman/internal/scenes"
+	"devllart/foobarman/internal/sale"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
@@ -22,6 +23,7 @@ func main() {
 		state.HandlerStatus()    // Turning status of barman
 		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
 		state.Info = ""          // Clear hints and warning message
+		sale.Sale()
 
 		fmtc.Printf("\n%Y\\>%B ")         // User will enter command after symbol > |  — TerminalStyle ;)
 		state.SetCommand(fmtc.Scan('\n')) // Gets command and args from STDIN
