@@ -9,11 +9,11 @@ import (
 var DrinksStandartTypesPrice = map[string]float64{}
 
 var MapsiAvailableCoctail mapsi.Mapsi[Coctail]
-var MapsiAvailableDrinks mapsi.Mapsi[DrinkInfo]
+var MapsiAvailableDrinks mapsi.Mapsi[ProductInfo]
 
 func init() {
-	for name, drink := range AviableDrinks {
-		delete(AviableDrinks, name)
+	for name, drink := range AvailableProducts {
+		delete(AvailableProducts, name)
 		name = strings.Title(name)
 		drink.Name = name
 		drink.Taste = getTaste(drink)
@@ -22,7 +22,7 @@ func init() {
 		} else {
 			DrinksStandartTypesPrice[drink.Type] = drink.Prices[0] * drink.AviableVolume[0]
 		}
-		AviableDrinks[name] = drink
+		AvailableProducts[name] = drink
 	}
 
 	for name, coctail := range AviableCoctail {
@@ -34,10 +34,10 @@ func init() {
 	}
 
 	MapsiAvailableCoctail = mapsi.New(AviableCoctail)
-	MapsiAvailableDrinks = mapsi.New(AviableDrinks)
+	MapsiAvailableDrinks = mapsi.New(AvailableProducts)
 }
 
-func getTaste(drink DrinkInfo) *string {
+func getTaste(drink ProductInfo) *string {
 	if taste := NewTastes.GetValue(drink.Name); taste != nil {
 		return taste
 	}

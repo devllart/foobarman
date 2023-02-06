@@ -1,6 +1,6 @@
 package state
 
-import "devllart/foobarman/internal/drinks"
+import "devllart/foobarman/internal/products"
 
 // Local
 var cmds = map[string]CommandStruct{}

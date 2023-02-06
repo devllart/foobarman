@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/funcs"
 )
@@ -10,7 +10,7 @@ import (
 func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 	drinkName := correctDrinkName(drinkNameOrIndex)
 
-	drink, exist := drinks.AviableDrinks[drinkName]
+	drink, exist := drinks.AvailableProducts[drinkName]
 	if exist == false {
 		alert.PanicNotAvailableDrink(drinkName)
 	}

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"fmt"
@@ -26,17 +26,17 @@ func buy() {
 }
 
 func buyRandom() {
-	for _, drink := range drinks.AviableDrinks {
+	for _, drink := range drinks.AvailableProducts {
 		buyDrink(drink.Name, 0, 1)
 	}
 
 	for state.Money > 10 {
 		state.TempBool = false
 		for !state.TempBool {
-			index := fmt.Sprintf("%d", rand.Intn(len(drinks.AviableDrinks))+1)
+			index := fmt.Sprintf("%d", rand.Intn(len(drinks.AvailableProducts))+1)
 
 			drinkName := correctDrinkName(index)
-			drink := drinks.AviableDrinks[drinkName]
+			drink := drinks.AvailableProducts[drinkName]
 			aviableVolume := drink.AviableVolume
 			indexVolume := rand.Intn(len(aviableVolume))
 			price := drink.Prices[indexVolume]

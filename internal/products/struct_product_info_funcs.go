@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (drink *DrinkInfo) PrettyDescription() {
+func (drink *ProductInfo) PrettyDescription() {
 	if config.ShowDescription {
 		if drink.Description == "" {
 			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(15), drink.Name)
@@ -25,7 +25,7 @@ func (drink *DrinkInfo) PrettyDescription() {
 	}
 }
 
-func (drink *DrinkInfo) TypeVolume() string {
+func (drink *ProductInfo) TypeVolume() string {
 	if typeVolume, exist := DrinksTypesVolume[drink.Type]; exist == true {
 		return typeVolume
 	}
@@ -33,14 +33,14 @@ func (drink *DrinkInfo) TypeVolume() string {
 	return ".л"
 }
 
-func (drink *DrinkInfo) PrintPrices() {
+func (drink *ProductInfo) PrintPrices() {
 	for i := range drink.Prices {
 		price := drink.Prices[i]
-		fmtc.Printf(texts.StoreDrinkInfoPrice, price, drink.AviableVolume[i], drink.TypeVolume())
+		fmtc.Printf(texts.StoreProductInfoPrice, price, drink.AviableVolume[i], drink.TypeVolume())
 	}
 	fmtc.Printf(" |\n\n")
 }
 
-func (drink *DrinkInfo) PrintInStore(index int) {
-	fmtc.Printf(texts.StoreDrinkInfo, index, drink.Name, drink.Alc, drink.Type, *drink.Taste)
+func (drink *ProductInfo) PrintInStore(index int) {
+	fmtc.Printf(texts.StoreProductInfo, index, drink.Name, drink.Alc, drink.Type, *drink.Taste)
 }

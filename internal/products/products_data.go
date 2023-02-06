@@ -4,7 +4,7 @@ import (
 	"devllart/foobarman/internal/texts"
 )
 
-var AviableDrinks = map[string]DrinkInfo{
+var AvailableProducts = map[string]ProductInfo{
 	"Bell's Original Blended Scotch Whisky": {
 		Type:          "Шотландский виски",
 		Alc:           40,

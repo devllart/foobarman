@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 )
 

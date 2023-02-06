@@ -5,10 +5,10 @@ type Drink struct {
 	Volume     float64
 	Count      int
 	LastVolume float64
-	*DrinkInfo
+	*ProductInfo
 }
 
-type DrinkInfo struct {
+type ProductInfo struct {
 	Name          string
 	Type          string
 	Alc           float64

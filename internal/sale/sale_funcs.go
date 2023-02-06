@@ -1,7 +1,7 @@
 package sale
 
 import (
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"

@@ -7,7 +7,7 @@ import (
 )
 
 func New(name string, volume float64, count int) Drink {
-	info, exitst := AviableDrinks[name]
+	info, exitst := AvailableProducts[name]
 	if exitst == false {
 		fmtc.Perrorf(texts.ErrorNotExistDrink, name)
 	}

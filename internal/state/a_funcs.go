@@ -1,7 +1,7 @@
 package state
 
 import (
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/src/fmtc"
 	"fmt"
 	"strconv"

@@ -1,7 +1,7 @@
 package scenes
 
 import (
-	"devllart/foobarman/internal/drinks"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
