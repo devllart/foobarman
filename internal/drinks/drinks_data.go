@@ -4,48 +4,110 @@ import (
 	"devllart/foobarman/internal/texts"
 )
 
-var AviableDrinks = map[string]DrinkInfo {
+var AviableDrinks = map[string]DrinkInfo{
+	"Dried Orange Peel": {
+		Type:          "Апельсиновая цедра",
+		Alc:           0,
+		AviableVolume: []float64{0.100},
+		Prices:        []float64{2.60},
+		Description:   texts.DescOrangePeel,
+	},
+	"Fruko Schulz Peach Liqueur": {
+		Type:          "Персиковый ликер Fruko Schulz",
+		Alc:           20,
+		AviableVolume: []float64{0.700},
+		Prices:        []float64{21.51},
+		Description:   texts.DescFrukoSchulzPeachLiqueur,
+	},
+	"Fruko Schulz Blue Curacao Liqueur": {
+		Type:          "Ликер блю кюрасао Fruko Schulz",
+		Alc:           24,
+		AviableVolume: []float64{0.700},
+		Prices:        []float64{19.71},
+		Description:   texts.DescFrukoSchulzBlueCuracaoLiqueur,
+	},
+	"DeKuyper Blue Curacao Liqueur": {
+		Type:          "Ликер блю кюрасао",
+		Alc:           24,
+		AviableVolume: []float64{0.750, 1},
+		Prices:        []float64{12.09, 13.99},
+		Description:   texts.DescDeKuyperBlueCuracaoLiqueur,
+	},
+	"Водка Царская": {
+		Type:          "Водка",
+		Alc:           40,
+		AviableVolume: []float64{0.500},
+		Prices:        []float64{5.59},
+		Description:   texts.DescVodka,
+	},
+	"Iberica Pineapple Choice Slices": {
+		Type:          "Ананас",
+		Alc:           0,
+		AviableVolume: []float64{0.432},
+		Prices:        []float64{1.39},
+		Description:   texts.DescPineapple,
+	},
+	"Monin Passion Fruit Syrup": {
+		Type:          "Сироп маракуйи",
+		Alc:           0,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{10.99},
+		Description:   texts.DescMoninPassionFruitSyrup,
+	},
+	"Opies Red Cocktail Maraschino Cherries": {
+		Type:          "Коктельная вишня крассная",
+		Alc:           0,
+		AviableVolume: []float64{0.225},
+		Prices:        []float64{6.48},
+		Description:   texts.DescOpiesRedCocktailMaraschinoCherries,
+	},
+	"Tropicana Ruby Red Grapefruit Juice Beverage": {
+		Type:          "Грейпфрутовый сок",
+		Alc:           0,
+		AviableVolume: []float64{0.450, 0.946},
+		Prices:        []float64{2.19, 3.99},
+		Description:   texts.DescTropicanaRubyRedGrapefruitJuiceBeverage,
+	},
+	"Грейпфрут": {
+		Type:          "Грейпфрут",
+		Alc:           0,
+		AviableVolume: []float64{1},
+		Prices:        []float64{2.05},
+		Description:   texts.DescGrapefruit,
+	},
+	"Red Bitter Caffo": {
+		Type:          "Красный биттер",
+		Alc:           25,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{28.99},
+		Description:   texts.DescRedBitterCaffo,
+	},
 	"Don Julio Reposado": {
 		Type:          "Текила",
 		Alc:           40,
 		AviableVolume: []float64{0.750, 1.750},
 		Prices:        []float64{59.99, 114.99},
-		Description:   `
-Don Julio Reposado Tequila — это идеальная текила, выдержанная в бочках. 
-С ароматами спелых косточковых фруктов, ванили и корицы каждый глоток приводит к шелковистому, теплому послевкусию. 
-Наша текила янтарного цвета, выдержанная не менее 6 месяцев в бочках из американского белого дуба, изготовлена из 100% голубой агавы Вебера и идеально подходит для любого торжества. 
-Дон Хулио был назван одной из самых популярных текил на церемонии вручения наград Drinks International 2020 года. 
-Просто смешайте с соком грейпфрута, свежевыжатым соком лайма и нектаром агавы и налейте на лед, чтобы получить освежающий вкус Don Julio Paloma. 
-Включает в себя одну бутылку текилы Reposado Tequila на 80 градусов объемом 375 мл. Пожалуйста, пейте ответственно. 
-Аромат: манящий аромат с нотками спелых лимонных цитрусов и слоев специй с оттенками спелых косточковых фруктов. 
-Вкус: невероятно мягкие и элегантные оттенки темного шоколада, ванили и легкой корицы. Послевкусие: шелковистое,`,
+		Description:   texts.DescDonJulioResposadoTequila,
 	},
 	"Roca Patrón Silver": {
 		Type:          "Серебренная текила",
 		Alc:           45,
 		AviableVolume: []float64{0.375, 0.750},
 		Prices:        []float64{36.99, 69.99},
-		Description:   `
-Roca Patrón Silver изготавливается вручную из лучшей 100% голубой агавы Weber на винокурне Hacienda Patrón. 
-После выпекания в течение 79 часов в небольших кирпичных печах агава прессуется двухтонным колесом тахоны из вулканического камня,
-затем ферментируется и перегоняется на собственных волокнах. 
-Roca Patrón Silver специально доведен до крепости 90 для создания свежей, крепкой текилы с нотками сладкой агавы. 
-Текила Patrón всегда была без добавок из-за нашей непоколебимой приверженности мастерству, аутентичности и честности.
-Приготовленная агава, землистый, растительный, сушеные травы, сложный`,
+		Description:   texts.DescRocaPatronSilver,
 	},
 	"Torada Silver": {
 		Type:          "Серебренная текила",
 		Alc:           40,
 		AviableVolume: []float64{1},
 		Prices:        []float64{11.99},
-		Description:   `
-Производится из сока растения агавы, смешанного с предварительно ферментированным соком агавы.`,
+		Description:   texts.DescSilverTequila,
 	},
-	"Соль": {
+	"Tata Salt | Vacuum Evaporated Iodised Salt ": {
 		Type:          "Соль",
-		Alc:           15,
+		Alc:           0,
 		AviableVolume: []float64{1},
-		Prices:        []float64{0.29},
+		Prices:        []float64{0.264},
 		Description:   texts.DescSolt,
 	},
 	"Martini & Rossi Extra Dry Vermouth": {
@@ -53,35 +115,24 @@ Roca Patrón Silver специально доведен до крепости 90
 		Alc:           15,
 		AviableVolume: []float64{0.750},
 		Prices:        []float64{10.99},
-		Description:   `
-Вермут Martini & Rossi Extra Dry дебютировал в первый день Нового года в 1900 году после десяти лет совершенствования. 
-Этот исключительный вермут стал культовым напитком Martini & Rossi, который доминировал в столетии, 
-коктейлем Dry Martini & Rossi. Martini & Rossi и Tonic всегда приветствуются на вечеринках, приемах и общественных мероприятиях. 
-Martini & Rossi® Extra Dry Vermouth передает суть сухого вермута через корень флорентийского ириса. 
-Вытащенный из земли после трех долгих лет роста, затем высушенный на солнце и отжатый, 
-корень высвобождает свои уникальные терпкие ароматические масла с ароматом фиалки, придающие узнаваемый вкус вермуту Martini & Rossi® Extra Dry. 
-Обладая острым цитрусовым ароматом и оттенком малины, это классика в своем роде, которая придает игривый вкус коктейлю с мартини.`,
+		Description:   texts.DescMartiniAndRossiExtraDry,
 	},
 	"Barsmith Grenadine": {
 		Type:          "Гренандин",
 		Alc:           0,
 		AviableVolume: []float64{0.354},
 		Prices:        []float64{4.99},
-		Description:   `
-Сладкий и сложный вкус Barsmith Grenadine идеально дополняет любимые коктейли. 
-Используйте с любимым спиртным или смешайте со льдом и газированной водой для идеального напитка Ширли Темпл.`,
+		Description:   texts.DescBarsmithGrenadine,
 	},
 	"Rose's Grenadine": {
 		Type:          "Гренандин",
 		Alc:           0,
 		AviableVolume: []float64{0.357, 0.740},
 		Prices:        []float64{4.99, 6.99},
-		Description:   `
-Rose's делает лучший сироп гренадин. В нем есть то, что большинство других гренадин давно потеряло — богатый, неповторимый вкус граната. 
-Гренадин из розы, используемый во многих рецептах классических напитков, не имеет себе равных.`,
+		Description:   texts.DescRosesGrenadine,
 	},
 	"Liqueur Fruko Schulz Triple Sec": {
-		Type:          "Трипл сек fruko schulz",
+		Type:          "Трипл сек Fruko Schulz",
 		Alc:           40,
 		AviableVolume: []float64{0.700},
 		Prices:        []float64{21.43},
@@ -283,14 +334,14 @@ Rose's делает лучший сироп гренадин. В нем есть
 		Prices:        []float64{21.99, 35.99},
 		Description:   texts.DescLondonDryGin,
 	},
-	"Оливки": {
+	"Bonduelle Olives": {
 		Type:          "Оливки",
 		Alc:           0,
-		AviableVolume: []float64{1, 50, 100},
-		Prices:        []float64{0.01, 0.40, 0.70},
+		AviableVolume: []float64{0.300},
+		Prices:        []float64{1.49},
 		Description:   texts.DescOlivki,
 	},
-	"Листья лайма": {
+	"Thai Chef FLORIDA NATURALS : Organic Kaffir Lime Leaves": {
 		Type:          "Листья лайма",
 		Alc:           0,
 		AviableVolume: []float64{1, 2, 5},
@@ -360,14 +411,13 @@ Rose's делает лучший сироп гренадин. В нем есть
 		Prices:        []float64{4.99},
 		Description:   texts.DescSugarSyrup,
 	},
-	"Мята": {
+	"Bioniq Mint": {
 		Type:          "Мята",
 		Alc:           0,
-		AviableVolume: []float64{1, 2, 5, 10},
-		Prices:        []float64{0.50, 0.80, 1.50, 2},
+		AviableVolume: []float64{0.035},
+		Prices:        []float64{1.09},
 		Description:   texts.DescMint,
 	},
-
 	"Дроблённый Лёд": {
 		Type:          "Дроблённый лёд",
 		Alc:           0,

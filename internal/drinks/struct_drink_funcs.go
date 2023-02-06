@@ -34,8 +34,8 @@ func (drink *Drink) LeftVolumeText() string {
 	return texts.LeftVolumeInLastBottle
 }
 
-func (drink *Drink) SubVolume() error {
-	newVol := drink.LastVolume - drink.StandartFlow()
+func (drink *Drink) SubVolume(vol float64) error {
+	newVol := drink.LastVolume - vol
 	newCount := drink.Count
 
 	for true {

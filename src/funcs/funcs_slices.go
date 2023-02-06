@@ -36,3 +36,9 @@ func IndexOfOrNull[T string | float32 | float64 | int](val T, sliceMap []T) int 
 	}
 	return index
 }
+
+func RemoveElementSliceOfIndex[T any](s []T, index int) []T {
+	ret := make([]T, 0)
+	ret = append(ret, s[:index]...)
+	return append(ret, s[index+1:]...)
+}

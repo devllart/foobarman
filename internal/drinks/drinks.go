@@ -1,13 +1,15 @@
 package drinks
 
 import (
-	"devllart/foobarman/src/mapsi"
 	"devllart/foobarman/internal/texts"
+	"devllart/foobarman/src/mapsi"
 	"strings"
 )
 
 var DrinksStandartTypesPrice = map[string]float64{}
-var MapsiAviableCoctail mapsi.Mapsi[Coctail]
+
+var MapsiAvailableCoctail mapsi.Mapsi[Coctail]
+var MapsiAvailableDrinks mapsi.Mapsi[DrinkInfo]
 
 func init() {
 	for name, drink := range AviableDrinks {
@@ -16,9 +18,9 @@ func init() {
 		drink.Name = name
 		drink.Taste = getTaste(drink)
 		if _, exist := DrinksStandartTypesPrice[drink.Type]; exist {
-			DrinksStandartTypesPrice[drink.Type] += drink.Prices[0] * drink.AviableVolume[0] * 0.5	
+			DrinksStandartTypesPrice[drink.Type] += drink.Prices[0] * drink.AviableVolume[0] * 0.5
 		} else {
-			DrinksStandartTypesPrice[drink.Type] = drink.Prices[0] * drink.AviableVolume[0]			
+			DrinksStandartTypesPrice[drink.Type] = drink.Prices[0] * drink.AviableVolume[0]
 		}
 		AviableDrinks[name] = drink
 	}
@@ -27,11 +29,12 @@ func init() {
 		delete(AviableCoctail, name)
 		name = strings.Title(name)
 		coctail.Name = name
-		coctail.Price = coctail.GetPrice() 
+		coctail.Price = coctail.GetPrice()
 		AviableCoctail[name] = coctail
 	}
 
-	MapsiAviableCoctail = mapsi.New(AviableCoctail)
+	MapsiAvailableCoctail = mapsi.New(AviableCoctail)
+	MapsiAvailableDrinks = mapsi.New(AviableDrinks)
 }
 
 func getTaste(drink DrinkInfo) *string {

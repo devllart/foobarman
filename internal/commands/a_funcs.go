@@ -12,7 +12,7 @@ import (
  */
 
 func CommandIs(key string) bool {
-	command := strings.ToLower(state.Command) // All commands must be in lowercase
-	key = strings.ToLower(key)                // Of course the key too
+	command := strings.ToLower(state.Command)                              // All commands must be in lowercase
+	key = strings.ToLower(key)                                             // Of course the key too
 	return funcs.Contains(state.AvailableCommands()[key].Aliases, command) // true if command match to aleasses command
 }

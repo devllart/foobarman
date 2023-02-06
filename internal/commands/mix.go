@@ -45,30 +45,36 @@ func mix() {
 		state.Command = ""
 		fmt.Print(" | ")
 		fmt.Scanln(&state.Command)
+		if state.Command == "mix" {
+			break
+		}
 		index := correctIndexDrinkName(state.Command)
 		if index != -1 {
 			drink := state.Bar[index]
 			recipes = append(recipes, drink.Type)
-			if err := (&state.Bar[index]).SubVolume(); err != nil {
-				fmtc.Printf("%s\n", err)
-			} else {
-				fmtc.Printf("%Y+ %B%s%C\n", drink.Name)
-			}
+			// if err := (&state.Bar[index]).SubVolume(); err != nil {
+			// 	fmtc.Printf("%s\n", err)
+			// } else {
+			fmtc.Printf("%Y+ %B%s%C\n", drink.Name)
+			// }
 		} else {
 			fmtc.Printf("%RУ вас нет такого напитка%C\n")
 		}
 	}
 
-	for name, coctail := range drinks.AviableCoctail {
+	for name, coctail := range drinks.MapsiAvailableCoctail.Data() {
 		sort.Sort(sort.StringSlice(recipes))
 		ingredients := coctail.Ingredients
 		sort.Sort(sort.StringSlice(ingredients))
 		if slicesEqual(ingredients, recipes) {
-			state.YourCoctail = coctail
+			state.YourCoctail = *coctail
 			state.CoctailReady = true
 			alert.CoctailIsReady(name)
 			return
 		}
+		// fmt.Println(recipes)
+		// fmt.Println(ingredients)
+		// panic("aaa")
 	}
 	alert.DontTheRecipies()
 	state.Mix = false
@@ -83,7 +89,6 @@ func slicesEqual(firstSlice, secondSlice []string) bool {
 			return false
 		}
 	}
-	return true 
-
+	return true
 
 }

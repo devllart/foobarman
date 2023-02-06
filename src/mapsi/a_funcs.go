@@ -25,7 +25,8 @@ func (mapsi *Mapsi[T]) SetValue(key string, value T) {
 		}
 	}
 
-	panic("Mapsi: KeyNotFound")
+	mapsi.Keys = append(mapsi.Keys, key)
+	mapsi.Values = append(mapsi.Values, value)
 }
 
 func (mapsi *Mapsi[T]) GetValue(key string) *T {
@@ -37,11 +38,39 @@ func (mapsi *Mapsi[T]) GetValue(key string) *T {
 	return nil
 }
 
-func (mapsi *Mapsi[T]) GetValueOfIndex(index int) *T {
-	if index < len(mapsi.Values) { 
-		return &mapsi.Values[index]
+func (mapsi Mapsi[T]) Get(key string) *T {
+	for i, keyMapsi := range mapsi.Keys {
+		if key == keyMapsi {
+			return &mapsi.Values[i]
+		}
 	}
-	
 	return nil
 }
 
+func (mapsi *Mapsi[T]) GetValueOfIndex(index int) *T {
+	if index < len(mapsi.Values) {
+		return &mapsi.Values[index]
+	}
+
+	return nil
+}
+
+func (mapsi *Mapsi[T]) Data() map[string]*T {
+	data := map[string]*T{}
+
+	for _, key := range mapsi.Keys {
+		data[key] = mapsi.GetValue(key)
+	}
+
+	return data
+}
+
+func (mapsi *Mapsi[T]) Len() int {
+	return len(mapsi.Keys)
+}
+
+func (mapsi *Mapsi[T]) Concat(secondMapsi Mapsi[T]) {
+	for i, key := range secondMapsi.Keys {
+		mapsi.SetValue(key, secondMapsi.Values[i])
+	}
+}

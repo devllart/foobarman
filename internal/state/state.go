@@ -39,6 +39,7 @@ var NotSaler = true
 var CoctailReady = false
 var Order drinks.Coctail
 var YourCoctail drinks.Coctail
+var CurrentHistory = []string{}
 
 // ** For work with commands
 var Command = ""      // Current command

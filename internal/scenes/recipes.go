@@ -18,7 +18,7 @@ func Recipes() {
 
 	i := 1 // index for cycle
 	// Print all recipes to console
-	for _, coctail := range drinks.AviableCoctail {
+	for _, coctail := range drinks.MapsiAvailableCoctail.Values {
 		state.DrinksIds = append(state.DrinksIds, coctail.Name) // Added coctail to slice DrinksIds for available by index
 		fmt.Printf("%d. ", i)                                   // Print index
 		coctail.Show()                                          // Print info of coctail

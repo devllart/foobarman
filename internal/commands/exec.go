@@ -3,6 +3,7 @@ package commands
 import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/dontpanic"
+	"devllart/foobarman/internal/drinks"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
@@ -15,6 +16,17 @@ func Exec() {
 
 	if state.Command == "" { // Empty command -> None action
 		return
+	} else if state.Command == "sexinbigcity" { // Cheat code
+		for _, ingredient := range drinks.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
+			for _, drink := range drinks.MapsiAvailableDrinks.Values {
+				if drink.Type == ingredient {
+					// buyTransaction(drink.Name)
+					buyDrink(drink.Name, 0, 1)
+				}
+			}
+
+		}
+		state.Bar = append(state.Bar)
 	} else if CommandIs("exit") { // command exit -> close app, exit from app, .... you undestened
 		state.Run = false
 	} else if CommandIs("start") {
