@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/config"
-	"devllart/foobarman/internal/dontpanic"
+	"devllart/foobarman/src/dontpanic"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
