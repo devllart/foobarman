@@ -26,17 +26,17 @@ func buy() {
 }
 
 func buyRandom() {
-	for _, drink := range drinks.AvailableProducts {
+	for _, drink := range products.AvailableProducts {
 		buyProduct(drink.Name, 0, 1)
 	}
 
 	for state.Money > 10 {
 		state.TempBool = false
 		for !state.TempBool {
-			index := fmt.Sprintf("%d", rand.Intn(len(drinks.AvailableProducts))+1)
+			index := fmt.Sprintf("%d", rand.Intn(len(products.AvailableProducts))+1)
 
 			drinkName := correctProductName(index)
-			drink := drinks.AvailableProducts[drinkName]
+			drink := products.AvailableProducts[drinkName]
 			aviableVolume := drink.AviableVolume
 			indexVolume := rand.Intn(len(aviableVolume))
 			price := drink.Prices[indexVolume]

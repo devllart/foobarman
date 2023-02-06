@@ -13,7 +13,7 @@ import (
  * + alerting user if his index out of range drink's menu.
  */
 
-func ProductExistYet(drinkName string, volume float64) (*drinks.Product, int) {
+func ProductExistYet(drinkName string, volume float64) (*products.Product, int) {
 	// Cycle cycle through the bar's drinks list
 	for i := range state.Bar {
 		drink := state.Bar[i]

@@ -12,8 +12,8 @@ func NewClient() {
 	state.CurrentHistory = []string{}
 	state.NotSaler = false
 
-	index := rand.Intn(drinks.MapsiAvailableCoctail.Len())
-	coctail := *drinks.MapsiAvailableCoctail.GetValueOfIndex(index)
+	index := rand.Intn(products.MapsiAvailableCoctail.Len())
+	coctail := *products.MapsiAvailableCoctail.GetValueOfIndex(index)
 	state.Order = coctail
 	if scripts, exist := Scripts[coctail.Name]; exist && len(scripts) > 0 && rand.Intn(len(scripts)) == 0 {
 		index := rand.Intn(len(scripts))

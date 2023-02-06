@@ -1,4 +1,4 @@
-package drinks
+package products
 
 type Product struct {
 	Name       string

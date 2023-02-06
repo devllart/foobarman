@@ -1,4 +1,4 @@
-package drinks
+package products
 
 /**
  * My Static-C

@@ -6,8 +6,8 @@ import (
 )
 
 func SexInBigCity() {
-	for _, ingredient := range drinks.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
-		for _, drink := range drinks.MapsiAvailableProducts.Values {
+	for _, ingredient := range products.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
+		for _, drink := range products.MapsiAvailableProducts.Values {
 			if drink.Type == ingredient {
 				money := state.Money
 				state.Money = 999999

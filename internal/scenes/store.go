@@ -15,8 +15,8 @@ import (
 func Store() {
 	fmtc.Printf(texts.StoreHello, state.Name) // Print greetings
 	// Cycle by available drinks
-	for i, name := range drinks.MapsiAvailableProducts.Keys {
-		drink := drinks.MapsiAvailableProducts.Values[i]
+	for i, name := range products.MapsiAvailableProducts.Keys {
+		drink := products.MapsiAvailableProducts.Values[i]
 		state.ProductsIds = append(state.ProductsIds, name) // Added drink to slice ProductsIds for available by index
 		index := len(state.ProductsIds)
 		drink.PrintInStore(index)

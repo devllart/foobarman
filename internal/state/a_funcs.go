@@ -27,7 +27,7 @@ func ClearTemp() {
 
 func Restart() {
 	ClearTemp()
-	Bar = []drinks.Product{}
+	Bar = []products.Product{}
 	Money = 300.33
 }
 
@@ -67,12 +67,12 @@ func HandlerStatus() {
 
 func SetStatusBad() {
 	Status = "Bad"
-	drinks.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/ — но твоя девушка суше ;) ")
+	products.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/ — но твоя девушка суше ;) ")
 }
 
 func SetStatusNorm() {
 	Status = "Norm"
-	drinks.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/")
+	products.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/")
 }
 
 func SubtractFromSalary(money float64) string {

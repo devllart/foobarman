@@ -1,4 +1,4 @@
-package drinks
+package products
 
 import (
 	"devllart/foobarman/internal/config"

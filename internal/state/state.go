@@ -31,15 +31,15 @@ var Name = ""              // Barman name
 var RawName = ""           // Barman name in raw format
 var Status = "Norm"        // Status barman
 var Money float64 = 300.33 // Player money
-var Bar = []drinks.Product{} // State of bar
+var Bar = []products.Product{} // State of bar
 
 // ** State of client
 
 var BarOpen = false
 var NotSaler = true
 var CoctailReady = false
-var Order drinks.Coctail
-var YourCoctail drinks.Coctail
+var Order products.Coctail
+var YourCoctail products.Coctail
 var CurrentHistory = []string{}
 
 // ** For work with commands

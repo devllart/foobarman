@@ -10,7 +10,7 @@ import (
 func buyProduct(drinkNameOrIndex string, volume float64, count int) {
 	drinkName := correctProductName(drinkNameOrIndex)
 
-	drink, exist := drinks.AvailableProducts[drinkName]
+	drink, exist := products.AvailableProducts[drinkName]
 	if exist == false {
 		alert.PanicNotAvailableProduct(drinkName)
 	}

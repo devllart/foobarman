@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
-	drinks "devllart/foobarman/internal/products"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 )
 
@@ -23,7 +23,7 @@ func buyTransaction(drinkName string, count int, volume, price float64, rand boo
 
 	state.Money -= sumPrice
 
-	newProduct := drinks.New(drinkName, volume, count)
+	newProduct := products.New(drinkName, volume, count)
 
 	// Buy the not first drink (exitst in the bar yet)
 	if drink, i := ProductExistYet(newProduct.Name, newProduct.Volume); drink != nil {
