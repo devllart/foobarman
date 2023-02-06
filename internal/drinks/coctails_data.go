@@ -3,6 +3,13 @@ package drinks
 import "devllart/foobarman/internal/texts"
 
 var AviableCoctail = map[string]Coctail{
+	"Текила санрайз": {
+		NecessaryTings: []string{"Хайбол", "Коктельная ложка", "Джиггер", "Трубочки"},
+		Ingredients:    []string{"Серебренная текила", "Гренандин", "Апельсиновый сок", "Апельсин", "Лёд в кубиках"},
+		Grammar:        []float64{0.050, 0.010, 0.150, 0.030, 0.180},
+		Description:    texts.DescCoctailSexOnTheBeach,
+		Instruction:    texts.InstCoctailSexOnTheBeach,
+	},
 	"Космополитен": {
 		NecessaryTings: []string{"Коктельный бокал", "Шейкер", "Стрейнер", "Джиггер", "Горелка", "Нож для цедры", "Пресс для цитрусовых"},
 		Ingredients:    []string{"Цитрусовая водка", "Трипл сек Fruko Schulz", "Клюквенный сок", "Лаймовый сок", "Апельсиновый сок", "Лёд в кубиках"},

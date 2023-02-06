@@ -42,3 +42,16 @@ func RemoveElementSliceOfIndex[T any](s []T, index int) []T {
 	ret = append(ret, s[:index]...)
 	return append(ret, s[index+1:]...)
 }
+
+func SlicesEqual(firstSlice, secondSlice []string) bool {
+	if len(firstSlice) != len(secondSlice) {
+		return false
+	}
+	for i, val := range firstSlice {
+		if secondSlice[i] != val {
+			return false
+		}
+	}
+	return true
+
+}

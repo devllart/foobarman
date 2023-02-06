@@ -15,7 +15,7 @@ func NewClient() {
 	index := rand.Intn(drinks.MapsiAvailableCoctail.Len())
 	coctail := *drinks.MapsiAvailableCoctail.GetValueOfIndex(index)
 	state.Order = coctail
-	if scripts, exist := Scripts[coctail.Name]; exist && len(scripts) > 0 && rand.Intn(3) == 1 {
+	if scripts, exist := Scripts[coctail.Name]; exist && len(scripts) > 0 && rand.Intn(len(scripts)) == 0 {
 		index := rand.Intn(len(scripts))
 		Scripts[coctail.Name] = funcs.RemoveElementSliceOfIndex(scripts, index)
 		history := scripts[index]
@@ -45,6 +45,7 @@ func CoctailReady() {
 			fmtc.Printf(state.CurrentHistory[1])
 		} else {
 			fmtc.Printf("%RКлиент заказал не это, он ушёл накричав на вас%C\n")
+			state.SubtractFromSalary(state.Money / 97)
 		}
 	}
 }

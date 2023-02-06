@@ -28,6 +28,7 @@ var Info = ""
 var Scene func()           // Context of scenes
 var LastScene string       // Last scene
 var Name = ""              // Barman name
+var RawName = ""           // Barman name in raw format
 var Status = "Norm"        // Status barman
 var Money float64 = 300.33 // Player money
 var Bar = []drinks.Drink{} // State of bar

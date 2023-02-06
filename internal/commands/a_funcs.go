@@ -16,3 +16,14 @@ func CommandIs(key string) bool {
 	key = strings.ToLower(key)                                             // Of course the key too
 	return funcs.Contains(state.AvailableCommands()[key].Aliases, command) // true if command match to aleasses command
 }
+
+func SkipClient() {
+	state.NotSaler = true
+	state.AddInfof("%YТы упустил клиента%C\n")
+	state.SubtractFromSalary(state.Money / 99)
+
+	if len(state.CurrentHistory) > 0 {
+		state.AddInfof("\n%YИ ещё похоже ты упустил интересную историю%C\n")
+	}
+
+}

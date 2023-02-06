@@ -3,12 +3,15 @@ package commands
 import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/dontpanic"
-	"devllart/foobarman/internal/drinks"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"strings"
 )
+
+/**
+ * Execute command
+ */
 
 func Exec() {
 	defer dontpanic.RecoverAll()
@@ -16,23 +19,16 @@ func Exec() {
 
 	if state.Command == "" { // Empty command -> None action
 		return
-	} else if state.Command == "sexinbigcity" { // Cheat code
-		for _, ingredient := range drinks.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
-			for _, drink := range drinks.MapsiAvailableDrinks.Values {
-				if drink.Type == ingredient {
-					// buyTransaction(drink.Name)
-					buyDrink(drink.Name, 0, 1)
-				}
-			}
-
-		}
-		state.Bar = append(state.Bar)
+	} else if answer, exist := answers[state.Command]; exist { // Cheat codes
+		state.AddInfof("%Y" + answer + "%C\n")
+	} else if commandFunc, exist := hideCommands[state.Command]; exist { // Cheat codes
+		commandFunc()
 	} else if CommandIs("exit") { // command exit -> close app, exit from app, .... you undestened
 		state.Run = false
 	} else if CommandIs("start") {
 		state.BarOpen = true
 	} else if CommandIs("skip") {
-		state.NotSaler = true
+		SkipClient()
 	} else if CommandIs("restart") {
 		Restart()
 	} else if CommandIs("restartrand") {
@@ -57,6 +53,8 @@ func Exec() {
 		buy()
 	} else if scenes.CurrentIs(scenes.Bar) && CommandIs("mix") {
 		mix()
+	} else if state.Command == strings.ToLower(state.RawName) {
+		state.AddInfof(" %G:)%C Что ?\n")
 	} else { // otherwise say user "not command"
 		state.AddInfof(texts.UnknownCommand, "%B"+state.Command+"%C")
 	}

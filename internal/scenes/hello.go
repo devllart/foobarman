@@ -14,14 +14,14 @@ import (
  */
 
 func Hello() { // Hello
-	for state.Name == "" {
-		funcs.CliClear()              // Clear console
-		fmtc.Printf(texts.WhatIsName) // Ask Name
-		state.Name = fmtc.Scan('\n')  // Read line and write value in state.Name
+	for state.RawName == "" {
+		funcs.CliClear()                // Clear console
+		fmtc.Printf(texts.WhatIsName)   // Ask Name
+		state.RawName = fmtc.Scan('\n') // Read line and write value in state.Name
 	}
 
-	state.Name = fmtc.Sprintf("%B%s%C", state.Name) // Set color of Name
-	fmtc.Printf(texts.NameIsOk, state.Name)         // Say Name is valid
-	fmt.Scanln(&state.TempStr)                      // Wait Input
-	state.Scene = Store                             // Change context scene
+	state.Name = fmtc.Sprintf("%B%s%C", state.RawName) // Set color of Name
+	fmtc.Printf(texts.NameIsOk, state.Name)            // Say Name is valid
+	fmt.Scanln(&state.TempStr)                         // Wait Input
+	state.Scene = Store                                // Change context scene
 }

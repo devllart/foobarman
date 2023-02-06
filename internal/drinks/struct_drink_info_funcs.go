@@ -12,14 +12,14 @@ import (
 func (drink *DrinkInfo) PrettyDescription() {
 	if config.ShowDescription {
 		if drink.Description == "" {
-			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(4), drink.Name)
+			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(15), drink.Name)
 			return
 		}
 
 		lines := strings.Split(drink.Description, "\n")
 
 		for _, line := range lines {
-			fmtc.Printf("%s%s\n", funcs.Indent(4), line)
+			fmtc.Printf("%s%s\n", funcs.Indent(15), line)
 		}
 		fmt.Println()
 	}

@@ -7,7 +7,7 @@ import (
 )
 
 func Indent(count int) string {
-	return strings.Repeat(" ", 15)
+	return strings.Repeat(" ", count)
 }
 
 func FuncName(fn interface{}) string {

@@ -5,6 +5,34 @@ import (
 )
 
 var AviableDrinks = map[string]DrinkInfo{
+	"Bell's Original Blended Scotch Whisky": {
+		Type:          "Шотландский виски",
+		Alc:           40,
+		AviableVolume: []float64{0.750},
+		Prices:        []float64{16.81},
+		Description:   texts.DescShotchWhiskey,
+	},
+	"DeLeon Blanco Tequila": {
+		Type:          "Серебренная текила",
+		Alc:           40,
+		AviableVolume: []float64{0.750, 1.750},
+		Prices:        []float64{43.89, 62.99},
+		Description:   texts.DescSilverTequila,
+	},
+	"Апельсины Валенсия": {
+		Type:          "Апельсин",
+		Alc:           0,
+		AviableVolume: []float64{1},
+		Prices:        []float64{4},
+		Description:   texts.DescValenciaOrange,
+	},
+	"Washingtoh Navel": {
+		Type:          "Апельсин",
+		Alc:           0,
+		AviableVolume: []float64{1},
+		Prices:        []float64{3},
+		Description:   texts.DescWashingtonNavelOrange,
+	},
 	"Dried Orange Peel": {
 		Type:          "Апельсиновая цедра",
 		Alc:           0,

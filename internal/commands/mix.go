@@ -7,6 +7,7 @@ import (
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
+	"devllart/foobarman/src/funcs"
 	"fmt"
 	"sort"
 	"strconv"
@@ -66,7 +67,7 @@ func mix() {
 		sort.Sort(sort.StringSlice(recipes))
 		ingredients := coctail.Ingredients
 		sort.Sort(sort.StringSlice(ingredients))
-		if slicesEqual(ingredients, recipes) {
+		if funcs.SlicesEqual(ingredients, recipes) {
 			state.YourCoctail = *coctail
 			state.CoctailReady = true
 			alert.CoctailIsReady(name)
@@ -78,17 +79,4 @@ func mix() {
 	}
 	alert.DontTheRecipies()
 	state.Mix = false
-}
-
-func slicesEqual(firstSlice, secondSlice []string) bool {
-	if len(firstSlice) != len(secondSlice) {
-		return false
-	}
-	for i, val := range firstSlice {
-		if secondSlice[i] != val {
-			return false
-		}
-	}
-	return true
-
 }
