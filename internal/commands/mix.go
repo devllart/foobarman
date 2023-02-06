@@ -2,57 +2,39 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
-	"devllart/foobarman/internal/config"
-	"devllart/foobarman/internal/products"
+	products "devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
 	"fmt"
 	"sort"
-	"strconv"
 )
-
-func correctIndexProductName(drinkName string) int {
-	if index, err := strconv.Atoi(drinkName); err == nil {
-		if index > len(state.ProductsIds) {
-			return -1
-		}
-		return index - 1
-	}
-
-	for i := range state.ProductsIds {
-		if drinkName == state.ProductsIds[i] {
-			return i
-		}
-	}
-
-	return -1
-}
 
 func mix() {
 	state.Command = ""
 	recipes := []string{}
+	barIndexes := []int{}
 	fmtc.Printf(texts.SelectIngredients)
+
 	state.Mix = true
 	for !CommandIs("mix") {
-		if CommandIs("exit") {
-			state.Run = false
-			return
-		} else if CommandIs("desc") {
-			config.ShowDescription = !config.ShowDescription
-		}
-
 		state.Command = ""
 		fmt.Print(" | ")
 		fmt.Scanln(&state.Command)
+
 		if state.Command == "mix" {
 			break
+		} else if CommandIs("exit") {
+			state.Run = false
+			return
 		}
+
 		index := correctIndexProductName(state.Command)
 		if index != -1 {
 			drink := state.Bar[index]
 			recipes = append(recipes, drink.Type)
+			barIndexes = append(barIndexes, index)
 			// if err := (&state.Bar[index]).SubVolume(); err != nil {
 			// 	fmtc.Printf("%s\n", err)
 			// } else {
@@ -63,19 +45,29 @@ func mix() {
 		}
 	}
 
-	for name, coctail := range drinks.MapsiAvailableCoctail.Data() {
+	for name, coctail := range products.MapsiAvailableCoctail.Data() {
 		sort.Sort(sort.StringSlice(recipes))
 		ingredients := coctail.Ingredients
 		sort.Sort(sort.StringSlice(ingredients))
 		if funcs.SlicesEqual(ingredients, recipes) {
+			for i, vol := range coctail.Grammar {
+				if err := state.Bar[barIndexes[i]].SubVolume(vol); err != nil {
+					state.AddInfof(err.Error())
+					return
+				}
+			}
 			state.YourCoctail = *coctail
 			state.CoctailReady = true
 			alert.CoctailIsReady(name)
 			return
 		}
-		// fmt.Println(recipes)
-		// fmt.Println(ingredients)
-		// panic("aaa")
+	}
+
+	for _, index := range barIndexes {
+		if err := state.Bar[index].SubVolume(0.1); err != nil {
+			state.AddInfof(err.Error())
+			return
+		}
 	}
 	alert.DontTheRecipies()
 	state.Mix = false

@@ -22,9 +22,9 @@ func PanicNotAvailableIndexProduct(drinkIndex int) {
 }
 
 // Aaaa not enoght money! What is do it?
-func NotEnoughtFundsToBuy(sumPrice float64) {
+func NotEnoughtFundsToBuy(drinkName string, sumPrice float64) {
 	// If user select buy random, then no alert about not enought money
-	state.AddInfof(texts.NotEnoughFundsToBuy, sumPrice)
+	state.AddInfof(texts.NotEnoughFundsToBuy, drinkName, sumPrice)
 	panic(texts.IncorrectInput)
 }
 

@@ -2,7 +2,7 @@ package drinks
 
 import "devllart/foobarman/internal/texts"
 
-var AviableCoctail = map[string]Coctail{
+var AviableCoctailOld = map[string]Coctail{
 	"Текила санрайз": {
 		NecessaryTings: []string{"Хайбол", "Коктельная ложка", "Джиггер", "Трубочки"},
 		Ingredients:    []string{"Серебренная текила", "Гренандин", "Апельсиновый сок", "Апельсин", "Лёд в кубиках"},
@@ -112,3 +112,5 @@ var AviableCoctail = map[string]Coctail{
 		Instruction: texts.InstCoctailDryMartini,
 	},
 }
+
+var AviableCoctail = map[string]Coctail{}

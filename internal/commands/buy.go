@@ -44,9 +44,10 @@ func buyRandom() {
 			count := rand.Intn(int(state.Money/(20*price)+1)) + 1
 			sumPrice := price * float64(count)
 
+			existYet, _ := ProductExistYet(drinkName, volume)
 			if state.Money/sumPrice < 5 ||
 				(state.Money > 1 && state.Money-sumPrice < 0) ||
-				(state.Money/sumPrice < 10 && ProductExistYet(drinkName, volume) != nil) {
+				(state.Money/sumPrice < 10 && existYet != nil) {
 				continue
 			}
 			go buyTransaction(drinkName, count, volume, price, state.RandomBuy)

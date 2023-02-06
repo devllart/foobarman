@@ -5,12 +5,18 @@ import (
 	"devllart/foobarman/internal/state"
 )
 
+/**
+ * Restart game
+ */
+
+// Usualy restart
 func Restart() {
 	state.Restart()
 	state.Scene = scenes.Store
 	scenes.Show(scenes.Store)
 }
 
+// Restart and rand buy
 func RestartAndRandBuy() {
 	Restart()
 	state.TempBool = false

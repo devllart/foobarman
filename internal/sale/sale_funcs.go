@@ -44,8 +44,9 @@ func CoctailReady() {
 		if len(state.CurrentHistory) == 2 {
 			fmtc.Printf(state.CurrentHistory[1])
 		} else {
-			fmtc.Printf("%RКлиент заказал не это, он ушёл накричав на вас%C\n")
-			state.SubtractFromSalary(state.Money / 97)
+			fmtc.Printf("%RНо клиент заказал не это, он ушёл накричав на вас%C\n")
+			text := state.SubtractFromSalary(state.Money / 97)
+			fmtc.Printf(text)
 		}
 	}
 }

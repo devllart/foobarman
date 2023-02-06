@@ -19,11 +19,14 @@ type ProductInfo struct {
 }
 
 type Coctail struct {
-	NecessaryTings []string
-	Ingredients    []string
-	Grammar        []float64
-	Description    string
-	Instruction    string
-	Price          float64
-	Name           string
+	NecessaryTings        []string
+	NecessaryTingsAmounts []string
+	NecessaryTingsUnits   []string
+	Ingredients           []string
+	Grammar               []float64
+	Description           string
+	Instruction           string
+	Price                 float64
+	Name                  string
+	Units                 []string
 }

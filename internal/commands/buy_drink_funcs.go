@@ -13,17 +13,17 @@ import (
  * + alerting user if his index out of range drink's menu.
  */
 
-func ProductExistYet(drinkName string, volume float64) *drinks.Product {
+func ProductExistYet(drinkName string, volume float64) (*drinks.Product, int) {
 	// Cycle cycle through the bar's drinks list
 	for i := range state.Bar {
 		drink := state.Bar[i]
 
 		// If the drink has in the bar yet, then added to exist drink
 		if drink.Name == drinkName && drink.Volume == volume {
-			return &drink
+			return &drink, i
 		}
 	}
-	return nil
+	return nil, -1
 }
 
 func correctProductName(drinkNameOrIndex string) string {

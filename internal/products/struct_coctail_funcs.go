@@ -17,11 +17,7 @@ func (coctail *Coctail) Show() {
 			fmtc.Printf(", ")
 		}
 		if i < len(coctail.Grammar) {
-			typeVolume := ".л"
-			if ProductsTypesVolume[ingredient] != "" {
-				typeVolume = ProductsTypesVolume[ingredient]
-			}
-			fmtc.Printf("\n%s - %B%s%C (%.3f%s)", funcs.Indent(10), ingredient, coctail.Grammar[i], typeVolume)
+			fmtc.Printf("\n%s - %B%s%C (%.3f%s)", funcs.Indent(10), ingredient, coctail.Grammar[i], coctail.Units[i])
 		} else {
 			fmtc.Printf("\n%s - %B%s%C", funcs.Indent(10), ingredient)
 		}
@@ -68,7 +64,7 @@ func (coctail *Coctail) GetPrice() float64 {
 		if price, exist := ProductsStandartTypesPrice[ingredient]; exist {
 			var grammar float64 = 0.1
 			if i < len(coctail.Grammar) {
-				grammar = coctail.Grammar[i]
+				grammar = coctail.Grammar[i] * 0.001
 			}
 
 			sumPrice += price * grammar * (1.1 - GetStandartFlow(ingredient))

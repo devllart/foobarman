@@ -20,10 +20,10 @@ func CommandIs(key string) bool {
 func SkipClient() {
 	state.NotSaler = true
 	state.AddInfof("%YТы упустил клиента%C\n")
-	state.SubtractFromSalary(state.Money / 99)
+	text := state.SubtractFromSalary(state.Money / 99)
+	state.AddInfof(text)
 
 	if len(state.CurrentHistory) > 0 {
 		state.AddInfof("\n%YИ ещё похоже ты упустил интересную историю%C\n")
 	}
-
 }

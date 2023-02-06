@@ -47,10 +47,14 @@ func (drink *Product) SubVolume(vol float64) error {
 			newCount -= 1
 			newVol += drink.Volume
 			if newCount < 1 {
-				return fmtc.Errorf(texts.ErrorNotEnoughtVolume)
+				return fmtc.Errorf(texts.ErrorNotEnoughtVolume, drink.Name)
 			}
 		}
 	}
 
 	return nil
+}
+
+func (product *Product) AddCount(count int) {
+	product.Count += count
 }

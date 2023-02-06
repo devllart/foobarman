@@ -75,11 +75,19 @@ func SetStatusNorm() {
 	drinks.NewTastes.SetValue("Лондонский сухой джин", "Очень сухой :/")
 }
 
-func SubtractFromSalary(money float64) {
+func SubtractFromSalary(money float64) string {
 	if money < 0.01 {
-		AddInfof("%YТебе хотели дать штраф, но похоже ты почти %Rбанкрот%Y так что тебя пожелели%C\n")
+		return fmtc.Sprintf("%YТебе хотели дать штраф, но похоже ты почти %Rбанкрот%Y так что тебя пожелели%C\n")
 	} else {
 		Money -= money
-		AddInfof("%YЗа это проступок будешь платить из своего кармана: %R-%.2f$%C\n", money)
+		return fmtc.Sprintf("%YЗа это проступок будешь платить из своего кармана: %R-%.2f$%C\n", money)
 	}
+}
+
+func ExitGame() {
+	Run = false
+}
+
+func ToOpenBar() {
+	BarOpen = true
 }
