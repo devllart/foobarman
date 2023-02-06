@@ -26,7 +26,7 @@ func (drink *ProductInfo) PrettyDescription() {
 }
 
 func (drink *ProductInfo) TypeVolume() string {
-	if typeVolume, exist := DrinksTypesVolume[drink.Type]; exist == true {
+	if typeVolume, exist := ProductsTypesVolume[drink.Type]; exist == true {
 		return typeVolume
 	}
 

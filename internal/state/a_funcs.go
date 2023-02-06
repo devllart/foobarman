@@ -22,12 +22,12 @@ func ClearTemp() {
 	Alerts = []string{}
 	TempBool = false
 
-	DrinksIds = []string{}
+	ProductsIds = []string{}
 }
 
 func Restart() {
 	ClearTemp()
-	Bar = []drinks.Drink{}
+	Bar = []drinks.Product{}
 	Money = 300.33
 }
 

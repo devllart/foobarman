@@ -6,16 +6,16 @@ import (
 	"devllart/foobarman/src/funcs"
 )
 
-func New(name string, volume float64, count int) Drink {
+func New(name string, volume float64, count int) Product {
 	info, exitst := AvailableProducts[name]
 	if exitst == false {
-		fmtc.Perrorf(texts.ErrorNotExistDrink, name)
+		fmtc.Perrorf(texts.ErrorNotExistProduct, name)
 	}
 	if funcs.Contains(info.AviableVolume, volume) == false {
-		fmtc.Perrorf(texts.ErrorNotVolumeOfDrink, name, volume)
+		fmtc.Perrorf(texts.ErrorNotVolumeOfProduct, name, volume)
 	}
 
-	return Drink{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), &info}
+	return Product{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), &info}
 }
 
 func GetLastVolume(typeVolume string, count int, volume float64) float64 {

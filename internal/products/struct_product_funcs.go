@@ -5,20 +5,20 @@ import (
 	"devllart/foobarman/src/fmtc"
 )
 
-func (drink *Drink) Show() {
-	fmtc.Printf(texts.ShowDrinkInBar, drink.Name, drink.Alc, drink.Volume, drink.TypeVolume(), drink.Count, drink.LeftVolumeText(), drink.GetLastVolume(), drink.TypeVolume())
+func (drink *Product) Show() {
+	fmtc.Printf(texts.ShowProductInBar, drink.Name, drink.Alc, drink.Volume, drink.TypeVolume(), drink.Count, drink.LeftVolumeText(), drink.GetLastVolume(), drink.TypeVolume())
 	drink.PrettyDescription()
 }
 
-func (drink *Drink) StandartFlow() float64 {
-	if flow, exist := DrinksStandartFlow[drink.Type]; exist == true {
+func (drink *Product) StandartFlow() float64 {
+	if flow, exist := ProductsStandartFlow[drink.Type]; exist == true {
 		return flow
 	}
 
 	return drink.AviableVolume[0] / 25
 }
 
-func (drink *Drink) GetLastVolume() float64 {
+func (drink *Product) GetLastVolume() float64 {
 	if drink.TypeVolume() != ".л" {
 		return drink.Volume*float64(drink.Count-1) + drink.LastVolume
 	}
@@ -26,7 +26,7 @@ func (drink *Drink) GetLastVolume() float64 {
 	return drink.LastVolume
 }
 
-func (drink *Drink) LeftVolumeText() string {
+func (drink *Product) LeftVolumeText() string {
 	if drink.TypeVolume() != ".л" {
 		return texts.TotalLeftVolume
 	}
@@ -34,7 +34,7 @@ func (drink *Drink) LeftVolumeText() string {
 	return texts.LeftVolumeInLastBottle
 }
 
-func (drink *Drink) SubVolume(vol float64) error {
+func (drink *Product) SubVolume(vol float64) error {
 	newVol := drink.LastVolume - vol
 	newCount := drink.Count
 

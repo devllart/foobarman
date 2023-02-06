@@ -10,14 +10,14 @@ import (
  */
 
 // Aaaa this drink is not available! What is do it?
-func PanicNotAvailableDrink(drinkName string) {
-	state.AddInfof(texts.NotAvailableDrink, drinkName)
+func PanicNotAvailableProduct(drinkName string) {
+	state.AddInfof(texts.NotAvailableProduct, drinkName)
 	panic(texts.IncorrectInput)
 }
 
 // Aaaa no such index! What is do it?
-func PanicNotAvailableIndexDrink(drinkIndex int) {
-	state.AddInfof(texts.NotAvailableIndexDrink, drinkIndex)
+func PanicNotAvailableIndexProduct(drinkIndex int) {
+	state.AddInfof(texts.NotAvailableIndexProduct, drinkIndex)
 	panic(texts.IncorrectInput)
 }
 
@@ -29,8 +29,8 @@ func NotEnoughtFundsToBuy(sumPrice float64) {
 }
 
 // Aaaa such volume of drink not exitst! What is do it?
-func PanicNotVolumeOfDrink(drinkName string, volume float64) {
-	state.AddInfof(texts.NotVolumeOfDrink, drinkName, volume)
+func PanicNotVolumeOfProduct(drinkName string, volume float64) {
+	state.AddInfof(texts.NotVolumeOfProduct, drinkName, volume)
 	panic(texts.IncorrectInput)
 }
 

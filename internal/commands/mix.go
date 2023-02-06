@@ -13,16 +13,16 @@ import (
 	"strconv"
 )
 
-func correctIndexDrinkName(drinkName string) int {
+func correctIndexProductName(drinkName string) int {
 	if index, err := strconv.Atoi(drinkName); err == nil {
-		if index > len(state.DrinksIds) {
+		if index > len(state.ProductsIds) {
 			return -1
 		}
 		return index - 1
 	}
 
-	for i := range state.DrinksIds {
-		if drinkName == state.DrinksIds[i] {
+	for i := range state.ProductsIds {
+		if drinkName == state.ProductsIds[i] {
 			return i
 		}
 	}
@@ -49,7 +49,7 @@ func mix() {
 		if state.Command == "mix" {
 			break
 		}
-		index := correctIndexDrinkName(state.Command)
+		index := correctIndexProductName(state.Command)
 		if index != -1 {
 			drink := state.Bar[index]
 			recipes = append(recipes, drink.Type)

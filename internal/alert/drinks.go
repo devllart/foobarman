@@ -10,18 +10,18 @@ import (
  */
 
 // Bought drink
-func IncorrectAmountOfDrink() {
-	state.AddInfof(texts.IncorrectAmountOfDrink)
+func IncorrectAmountOfProduct() {
+	state.AddInfof(texts.IncorrectAmountOfProduct)
 }
 
-func IncorrectVolumeOfDrink() {
-	state.AddInfof(texts.IncorrectVolumeOfDrink)
+func IncorrectVolumeOfProduct() {
+	state.AddInfof(texts.IncorrectVolumeOfProduct)
 }
 
-func DrinkBought(drinkName, typeVolume string, volume float64, sumPrice float64, count int) {
-	state.AddInfof(texts.DrinkBought, drinkName, volume, typeVolume, count, sumPrice)
+func ProductBought(drinkName, typeVolume string, volume float64, sumPrice float64, count int) {
+	state.AddInfof(texts.ProductBought, drinkName, volume, typeVolume, count, sumPrice)
 }
 
-func DrinkBoughtYet(drinkName, typeVolume string, volume, sumPrice float64, count, countSum int) {
-	state.AddInfof(texts.DrinkBoughtYet, drinkName, volume, typeVolume, count, countSum, sumPrice)
+func ProductBoughtYet(drinkName, typeVolume string, volume, sumPrice float64, count, countSum int) {
+	state.AddInfof(texts.ProductBoughtYet, drinkName, volume, typeVolume, count, countSum, sumPrice)
 }

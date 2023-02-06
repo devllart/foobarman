@@ -23,16 +23,16 @@ func buyTransaction(drinkName string, count int, volume, price float64, rand boo
 
 	state.Money -= sumPrice
 
-	newDrink := drinks.New(drinkName, volume, count)
+	newProduct := drinks.New(drinkName, volume, count)
 
 	// Buy the not first drink (exitst in the bar yet)
-	if drink := DrinkExistYet(newDrink.Name, newDrink.Volume); drink != nil {
+	if drink := ProductExistYet(newProduct.Name, newProduct.Volume); drink != nil {
 		drink.Count += count
-		alert.DrinkBoughtYet(drinkName, newDrink.TypeVolume(), volume, sumPrice, count, drink.Count)
+		alert.ProductBoughtYet(drinkName, newProduct.TypeVolume(), volume, sumPrice, count, drink.Count)
 		return
 	}
 
 	// Buy the first drink (not in the bar yet)
-	state.Bar = append(state.Bar, newDrink)
-	alert.DrinkBought(drinkName, newDrink.TypeVolume(), volume, sumPrice, count)
+	state.Bar = append(state.Bar, newProduct)
+	alert.ProductBought(drinkName, newProduct.TypeVolume(), volume, sumPrice, count)
 }

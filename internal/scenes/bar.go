@@ -16,7 +16,7 @@ func Bar() {
 
 	// Print all barmans've drink to console
 	for i, drink := range state.Bar {
-		state.DrinksIds = append(state.DrinksIds, drink.Name) // Added drink to slice DrinksIds for available by index
+		state.ProductsIds = append(state.ProductsIds, drink.Name) // Added drink to slice ProductsIds for available by index
 		fmtc.Printf("%d. ", i+1)                              // Print index
 		drink.Show()                                          // Print info of drink
 	}

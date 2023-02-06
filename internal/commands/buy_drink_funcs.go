@@ -13,7 +13,7 @@ import (
  * + alerting user if his index out of range drink's menu.
  */
 
-func DrinkExistYet(drinkName string, volume float64) *drinks.Drink {
+func ProductExistYet(drinkName string, volume float64) *drinks.Product {
 	// Cycle cycle through the bar's drinks list
 	for i := range state.Bar {
 		drink := state.Bar[i]
@@ -26,13 +26,13 @@ func DrinkExistYet(drinkName string, volume float64) *drinks.Drink {
 	return nil
 }
 
-func correctDrinkName(drinkNameOrIndex string) string {
+func correctProductName(drinkNameOrIndex string) string {
 	drinkIndex, err := strconv.Atoi(drinkNameOrIndex)
 	if err == nil {
-		if drinkIndex > len(state.DrinksIds) {
-			alert.PanicNotAvailableIndexDrink(drinkIndex)
+		if drinkIndex > len(state.ProductsIds) {
+			alert.PanicNotAvailableIndexProduct(drinkIndex)
 		}
-		return state.DrinksIds[drinkIndex-1]
+		return state.ProductsIds[drinkIndex-1]
 	}
 
 	return strings.Title(drinkNameOrIndex)
@@ -45,7 +45,7 @@ func correctCount(arg string) int {
 		count, err = strconv.Atoi(arg)
 	}
 	if err != nil || count <= 0 {
-		alert.IncorrectAmountOfDrink()
+		alert.IncorrectAmountOfProduct()
 		return 0
 	}
 
@@ -59,7 +59,7 @@ func correctVolume(arg string) float64 {
 		volume, err = strconv.ParseFloat(arg, 64)
 	}
 	if err != nil || volume < 0 {
-		alert.IncorrectVolumeOfDrink()
+		alert.IncorrectVolumeOfProduct()
 		return 0
 	}
 

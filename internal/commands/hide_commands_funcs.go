@@ -7,12 +7,12 @@ import (
 
 func SexInBigCity() {
 	for _, ingredient := range drinks.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
-		for _, drink := range drinks.MapsiAvailableDrinks.Values {
+		for _, drink := range drinks.MapsiAvailableProducts.Values {
 			if drink.Type == ingredient {
 				money := state.Money
 				state.Money = 999999
 				// buyTransaction(drink.Name)
-				buyDrink(drink.Name, 0, 1)
+				buyProduct(drink.Name, 0, 1)
 				state.Money = money
 			}
 		}

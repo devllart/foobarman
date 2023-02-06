@@ -18,7 +18,7 @@ var TempBool = false // Nothing say
 var TempStr = ""     // Nothing say
 
 // ** For manipulation with views
-var DrinksIds = []string{} // Printer drinks
+var ProductsIds = []string{} // Printer drinks
 
 // ** For alerts user
 var Alerts = []string{}
@@ -31,7 +31,7 @@ var Name = ""              // Barman name
 var RawName = ""           // Barman name in raw format
 var Status = "Norm"        // Status barman
 var Money float64 = 300.33 // Player money
-var Bar = []drinks.Drink{} // State of bar
+var Bar = []drinks.Product{} // State of bar
 
 // ** State of client
 

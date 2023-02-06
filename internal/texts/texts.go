@@ -32,7 +32,7 @@ const AllowCommands = "Доступные команды (регистр не в
 // Hint
 
 const BarmanStatus = "\nБармен %s   денег: %Y%.2f $%C\n\n"
-const ShowDrinkInBar = "%B%s%C %R%.2f %%%C  (%G%.3f%s%C) %Y%dX%C | %s %G%.3f%s%C\n"
+const ShowProductInBar = "%B%s%C %R%.2f %%%C  (%G%.3f%s%C) %Y%dX%C | %s %G%.3f%s%C\n"
 const SelectIngredients = "%YИз каких ингредиентов будет твой коктель?%C\n"
 const ClueStore = `
 %YПодсказка:
@@ -42,25 +42,25 @@ const ClueStore = `
 
 `
 
-// Drinks
+// Products
 
 const TotalLeftVolume = "всего осталось"
 const LeftVolumeInLastBottle = "в последней бутылке осталось"
 
-// ** Drinks buying error
+// ** Products buying error
 
-const NotAvailableDrink = "%R!%C Напитка %B%s%C нет в продаже\n"
-const NotAvailableIndexDrink = "%R!%C Напитка под номером %B%d%C нет в продаже\n"
+const NotAvailableProduct = "%R!%C Напитка %B%s%C нет в продаже\n"
+const NotAvailableIndexProduct = "%R!%C Напитка под номером %B%d%C нет в продаже\n"
 const NotEnoughFundsToBuy = "%R!%C Недостаточно средств для покупки (общая сумма составила %Y%.2f $%C)\n"
-const NotVolumeOfDrink = "%R!%C %B%s%C с объёмом %G%.3f .л%C нет в продаже, возьмите другой объём\n"
+const NotVolumeOfProduct = "%R!%C %B%s%C с объёмом %G%.3f .л%C нет в продаже, возьмите другой объём\n"
 
-const IncorrectAmountOfDrink = "%R!%C Неверно указанно количество напитка\n"
-const IncorrectVolumeOfDrink = "%R!%C Неверно указан объём напитка\n"
+const IncorrectAmountOfProduct = "%R!%C Неверно указанно количество напитка\n"
+const IncorrectVolumeOfProduct = "%R!%C Неверно указан объём напитка\n"
 
-// ** Drinks buy
+// ** Products buy
 
-const DrinkBought = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено (%Y-%.2f $%C)\n"
-const DrinkBoughtYet = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено ещё (общее количество: %G%d%C) (%Y-%.2f $%C)\n"
+const ProductBought = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено (%Y-%.2f $%C)\n"
+const ProductBoughtYet = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено ещё (общее количество: %G%d%C) (%Y-%.2f $%C)\n"
 
 // ** Coctails
 

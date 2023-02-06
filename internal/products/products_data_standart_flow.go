@@ -4,7 +4,7 @@ package drinks
  * My standart flow
  */
 
-var DrinksStandartFlow = map[string]float64{
+var ProductsStandartFlow = map[string]float64{
 	// "Водка":                     0.1,
 	// "Ром":                       0.1,
 	// "Тёмный ром":                0.1,
@@ -24,7 +24,7 @@ var DrinksStandartFlow = map[string]float64{
 }
 
 func GetStandartFlow(drinkType string) float64 {
-	if flow, exist := DrinksStandartFlow[drinkType]; exist == true {
+	if flow, exist := ProductsStandartFlow[drinkType]; exist == true {
 		return flow
 	}
 

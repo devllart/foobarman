@@ -4,7 +4,7 @@ package drinks
  * My Static-C
  */
 
-var DrinksTypesVolume = map[string]string{
+var ProductsTypesVolume = map[string]string{
 	"Лёд":                ".кг",
 	"Лёд в кубиках":      ".кг",
 	"Лед в кубиках":      ".кг",

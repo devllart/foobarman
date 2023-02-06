@@ -1,6 +1,6 @@
 package drinks
 
-type Drink struct {
+type Product struct {
 	Name       string
 	Volume     float64
 	Count      int

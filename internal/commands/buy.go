@@ -20,14 +20,14 @@ func buy() {
 		volume := correctVolume(state.Args[0])
 		count := correctCount(state.Args[1])
 		if count != 0 {
-			buyDrink(state.Command, volume, count)
+			buyProduct(state.Command, volume, count)
 		}
 	}
 }
 
 func buyRandom() {
 	for _, drink := range drinks.AvailableProducts {
-		buyDrink(drink.Name, 0, 1)
+		buyProduct(drink.Name, 0, 1)
 	}
 
 	for state.Money > 10 {
@@ -35,7 +35,7 @@ func buyRandom() {
 		for !state.TempBool {
 			index := fmt.Sprintf("%d", rand.Intn(len(drinks.AvailableProducts))+1)
 
-			drinkName := correctDrinkName(index)
+			drinkName := correctProductName(index)
 			drink := drinks.AvailableProducts[drinkName]
 			aviableVolume := drink.AviableVolume
 			indexVolume := rand.Intn(len(aviableVolume))
@@ -46,7 +46,7 @@ func buyRandom() {
 
 			if state.Money/sumPrice < 5 ||
 				(state.Money > 1 && state.Money-sumPrice < 0) ||
-				(state.Money/sumPrice < 10 && DrinkExistYet(drinkName, volume) != nil) {
+				(state.Money/sumPrice < 10 && ProductExistYet(drinkName, volume) != nil) {
 				continue
 			}
 			go buyTransaction(drinkName, count, volume, price, state.RandomBuy)

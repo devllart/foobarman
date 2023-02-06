@@ -7,12 +7,12 @@ import (
 	"devllart/foobarman/src/funcs"
 )
 
-func buyDrink(drinkNameOrIndex string, volume float64, count int) {
-	drinkName := correctDrinkName(drinkNameOrIndex)
+func buyProduct(drinkNameOrIndex string, volume float64, count int) {
+	drinkName := correctProductName(drinkNameOrIndex)
 
 	drink, exist := drinks.AvailableProducts[drinkName]
 	if exist == false {
-		alert.PanicNotAvailableDrink(drinkName)
+		alert.PanicNotAvailableProduct(drinkName)
 	}
 
 	// If user not inputed volume or input "0" then assign minimal avliable value (firt in slice)
@@ -25,7 +25,7 @@ func buyDrink(drinkNameOrIndex string, volume float64, count int) {
 	// Calculate the total sum
 	// If selected volume not exist, alert user and panic "IncorrectInput"
 	if funcs.Contains(drink.AviableVolume, volume) == false {
-		alert.PanicNotVolumeOfDrink(drinkName, volume)
+		alert.PanicNotVolumeOfProduct(drinkName, volume)
 	}
 
 	// Buy drink transaction in goroutine (Oh yes I'm a pervert)
