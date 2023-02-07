@@ -23,8 +23,8 @@ var ProductsStandartFlow = map[string]float64{
 	// "Коктельная вишня крассная": 1,
 }
 
-func GetStandartFlow(drinkType string) float64 {
-	if flow, exist := ProductsStandartFlow[drinkType]; exist == true {
+func GetStandartFlow(productType string) float64 {
+	if flow, exist := ProductsStandartFlow[productType]; exist == true {
 		return flow
 	}
 

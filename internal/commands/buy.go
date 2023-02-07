@@ -26,8 +26,8 @@ func buy() {
 }
 
 func buyRandom() {
-	for _, drink := range products.AvailableProducts {
-		buyProduct(drink.Name, 0, 1)
+	for _, product := range products.MapsiAvailableProducts.Values {
+		buyProduct(product.Name, 0, 1)
 	}
 
 	for state.Money > 10 {
@@ -35,22 +35,22 @@ func buyRandom() {
 		for !state.TempBool {
 			index := fmt.Sprintf("%d", rand.Intn(len(products.AvailableProducts))+1)
 
-			drinkName := correctProductName(index)
-			drink := products.AvailableProducts[drinkName]
-			aviableVolume := drink.AviableVolume
+			productName := correctProductName(index)
+			product := products.AvailableProducts[productName]
+			aviableVolume := product.AviableVolume
 			indexVolume := rand.Intn(len(aviableVolume))
-			price := drink.Prices[indexVolume]
+			price := product.Prices[indexVolume]
 			volume := aviableVolume[indexVolume]
 			count := rand.Intn(int(state.Money/(20*price)+1)) + 1
 			sumPrice := price * float64(count)
 
-			existYet, _ := ProductExistYet(drinkName, volume)
+			existYet, _ := ProductExistYet(productName, volume)
 			if state.Money/sumPrice < 5 ||
 				(state.Money > 1 && state.Money-sumPrice < 0) ||
 				(state.Money/sumPrice < 10 && existYet != nil) {
 				continue
 			}
-			go buyTransaction(drinkName, count, volume, price, state.RandomBuy)
+			go buyTransaction(productName, count, volume, price, state.RandomBuy)
 		}
 	}
 }

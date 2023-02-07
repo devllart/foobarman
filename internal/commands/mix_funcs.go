@@ -5,8 +5,8 @@ import (
 	"strconv"
 )
 
-func correctIndexProductName(drinkName string) int {
-	if index, err := strconv.Atoi(drinkName); err == nil {
+func correctIndexProductName(productName string) int {
+	if index, err := strconv.Atoi(productName); err == nil {
 		if index > len(state.ProductsIds) {
 			return -1
 		}
@@ -14,7 +14,7 @@ func correctIndexProductName(drinkName string) int {
 	}
 
 	for i := range state.ProductsIds {
-		if drinkName == state.ProductsIds[i] {
+		if productName == state.ProductsIds[i] {
 			return i
 		}
 	}

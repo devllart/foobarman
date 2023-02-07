@@ -3,9 +3,12 @@ cleardata:
 	# rm -f ./internal/products/products_data.go
 	ENVIRONMENT=generate GENERATE=empty go run ./cmd/generate_data
 
+generatedata:
+	ENVIRONMENT=generate go run ./cmd/generate_data
+
 build:
 	make cleardata
-	ENVIRONMENT=generate go run ./cmd/generate_data
+	make generatedata
 	
 	GOOS=linux   GOARCH=386   go build -o ./bin/foobarman-386-linux         ./cmd/app
 	GOOS=linux   GOARCH=amd64 go build -o ./bin/foobarman-amd64-linux       ./cmd/app
@@ -27,7 +30,7 @@ build:
 
 buildonce:
 	make cleardata
-	ENVIRONMENT=generate go run ./cmd/generate_data
+	make generatedata	
 	go build -o ./foobarman ./cmd/app
 
 run:

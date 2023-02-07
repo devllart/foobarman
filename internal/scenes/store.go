@@ -9,20 +9,20 @@ import (
 )
 
 /**
- * Store "Bri Larson" has a variety of drinks especially for you.
+ * Store "Bri Larson" has a variety of products especially for you.
  */
 
 func Store() {
 	fmtc.Printf(texts.StoreHello, state.Name) // Print greetings
-	// Cycle by available drinks
+	// Cycle by available products
 	for i, name := range products.MapsiAvailableProducts.Keys {
-		drink := products.MapsiAvailableProducts.Values[i]
-		state.ProductsIds = append(state.ProductsIds, name) // Added drink to slice ProductsIds for available by index
+		product := products.MapsiAvailableProducts.Values[i]
+		state.ProductsIds = append(state.ProductsIds, name) // Added product to slice ProductsIds for available by index
 		index := len(state.ProductsIds)
-		drink.PrintInStore(index)
-		drink.PrettyDescription()
+		product.PrintInStore(index)
+		product.PrettyDescription()
 
-		drink.PrintPrices()
+		product.PrintPrices()
 	}
-	alert.ClueStore() // Print clue how buying drinks
+	alert.ClueStore() // Print clue how buying products
 }

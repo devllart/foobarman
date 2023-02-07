@@ -31,3 +31,7 @@ func GetLastVolume(typeVolume string, count int, volume float64) float64 {
 
 	return volume
 }
+
+func GetTaste(product ProductInfo) *string {
+	return NewTastes.GetValue(product.Name, product.Type, texts.Unknown)
+}

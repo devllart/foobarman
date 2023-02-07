@@ -27,13 +27,13 @@ func getProducts() map[string]products.ProductInfo {
 func generateProductsData() {
 	var outFile = "internal/products/products_data.go"
 	var goCode = `package products
-
+%s
 var AvailableProducts = map[string]ProductInfo{%s
 }`
 
 	productsStruct := ``
 	if env, _ := os.LookupEnv("GENERATE"); env == "empty" {
-		ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, productsStruct)), 0644)
+		ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, "", productsStruct)), 0644)
 		return
 	}
 
@@ -41,7 +41,8 @@ var AvailableProducts = map[string]ProductInfo{%s
 		name := replaceBitch(product.Name)
 		typeProduct := replaceBitch(product.Type)
 		alc := product.Alc
-		taste := product.Taste
+		// taste := product.Taste
+		taste := saveText("tastes", product.Taste)
 		// taste := product.GetTaste(product)
 		volumes := ""
 		prices := ""
@@ -73,5 +74,9 @@ var AvailableProducts = map[string]ProductInfo{%s
     },`, strings.Title(name), name, typeProduct, alc, taste, volumes, prices, description)
 	}
 
-	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, productsStruct)), 0644)
+	importTexts := `
+import "devllart/foobarman/internal/texts"
+`
+
+	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, importTexts, productsStruct)), 0644)
 }

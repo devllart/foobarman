@@ -32,10 +32,10 @@ func mix() {
 
 		index := correctIndexProductName(state.Command)
 		if index != -1 {
-			drink := state.Bar[index]
-			recipes = append(recipes, drink.Type)
+			product := state.Bar[index]
+			recipes = append(recipes, product.Type)
 			barIndexes = append(barIndexes, index)
-			fmtc.Printf("%Y+ %B%s%C\n", drink.Name)
+			fmtc.Printf("%Y+ %B%s%C\n", product.Name)
 		} else {
 			fmtc.Printf("%RУ вас нет такого напитка%C\n")
 		}

@@ -14,10 +14,10 @@ import (
 func Bar() {
 	fmtc.Printf(texts.SceneBar, funcs.Indent(15)) // Print scene
 
-	// Print all barmans've drink to console
-	for i, drink := range state.Bar {
-		state.ProductsIds = append(state.ProductsIds, drink.Name) // Added drink to slice ProductsIds for available by index
-		fmtc.Printf("%d. ", i+1)                              // Print index
-		drink.Show()                                          // Print info of drink
+	// Print all barmans've product to console
+	for i, product := range state.Bar {
+		state.ProductsIds = append(state.ProductsIds, product.Name) // Added product to slice ProductsIds for available by index
+		fmtc.Printf("%d. ", i+1)                                    // Print index
+		product.Show()                                              // Print info of product
 	}
 }
