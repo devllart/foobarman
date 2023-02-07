@@ -2,7 +2,7 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
-	products "devllart/foobarman/internal/products"
+	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"

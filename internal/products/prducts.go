@@ -2,21 +2,18 @@ package products
 
 import (
 	"devllart/foobarman/internal/texts"
+	"devllart/foobarman/src/funcs"
 	"devllart/foobarman/src/mapsi"
 	"strings"
 )
 
 var ProductsStandartTypesPrice = map[string]float64{}
 
+var AvailableIngredients = []string{}
 var MapsiAvailableCoctail mapsi.Mapsi[Coctail]
 var MapsiAvailableProducts mapsi.Mapsi[ProductInfo]
-var CountAvailableCoctail = 50
 
 func init() {
-	if len(AllCoctail) < CountAvailableCoctail {
-		CountAvailableCoctail = len(AllCoctail)
-	}
-
 	for name, drink := range AvailableProducts {
 		delete(AvailableProducts, name)
 		name = strings.Title(name)
@@ -27,12 +24,13 @@ func init() {
 		} else {
 			ProductsStandartTypesPrice[drink.Type] = drink.Prices[0] * drink.AviableVolume[0]
 		}
+
+		AvailableIngredients = append(AvailableIngredients, drink.Type)
 		AvailableProducts[name] = drink
 	}
 
-	MapsiAvailableCoctail = mapsi.New(map[string]Coctail{})
-	MapsiAvailableCoctail.CopyElemntsOfMap(AllCoctail, 0, CountAvailableCoctail)
 	MapsiAvailableProducts = mapsi.New(AvailableProducts)
+	AddAvailablesCoctail(50)
 }
 
 func getTaste(drink ProductInfo) *string {
@@ -45,4 +43,26 @@ func getTaste(drink ProductInfo) *string {
 	}
 
 	return NewTastes.GetValue(texts.Unknown)
+}
+
+func AddAvailablesCoctail(count int) {
+	for _, coctail := range AllCoctail {
+		if AddAvailableCoctail(coctail) {
+			count -= 1
+		}
+		if count <= 0 {
+			return
+		}
+	}
+}
+
+func AddAvailableCoctail(coctail Coctail) bool {
+	for _, ingredient := range coctail.Ingredients {
+		if !funcs.Contains(AvailableIngredients, ingredient) {
+			return false
+		}
+	}
+
+	MapsiAvailableCoctail.SetValue(coctail.Name, coctail)
+	return true
 }

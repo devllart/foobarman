@@ -446,15 +446,15 @@ var AvailableProducts = map[string]ProductInfo{
 		Prices:        []float64{1.09},
 		Description:   texts.DescMint,
 	},
-	"Дроблённый Лёд": {
-		Type:          "Дроблённый лёд",
+	"Дроблённый Лед": {
+		Type:          "Дроблённый лед",
 		Alc:           0,
 		AviableVolume: []float64{1, 2, 5, 10},
 		Prices:        []float64{0.50, 0.80, 1.50, 2},
 		Description:   texts.DescCrushedIce,
 	},
-	"Лёд В Кубиках": {
-		Type:          "Лёд в кубиках",
+	"Лед В Кубиках": {
+		Type:          "Лед в кубиках",
 		Alc:           0,
 		AviableVolume: []float64{1, 2, 5, 10},
 		Prices:        []float64{0.50, 0.80, 1.50, 2},

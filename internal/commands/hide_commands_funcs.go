@@ -11,7 +11,6 @@ func SexInBigCity() {
 			if drink.Type == ingredient {
 				money := state.Money
 				state.Money = 999999
-				// buyTransaction(drink.Name)
 				buyProduct(drink.Name, 0, 1)
 				state.Money = money
 			}
