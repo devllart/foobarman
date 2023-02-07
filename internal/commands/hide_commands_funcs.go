@@ -6,12 +6,17 @@ import (
 )
 
 func SexInBigCity() {
-	for _, ingredient := range products.MapsiAvailableCoctail.GetValue("Космополитен").Ingredients {
-		for _, drink := range products.MapsiAvailableProducts.Values {
-			if drink.Type == ingredient {
+	cosmopolitan := products.MapsiAvailableCoctail.GetValue("Космополитен")
+	if cosmopolitan == nil {
+		state.AddInfof("%YУ вас нет такого рецепта%C")
+		return
+	}
+	for _, ingredient := range cosmopolitan.Ingredients {
+		for _, product := range products.MapsiAvailableProducts.Values {
+			if product.Type == ingredient {
 				money := state.Money
 				state.Money = 999999
-				buyProduct(drink.Name, 0, 1)
+				buyProduct(product.Name, 0, 1)
 				state.Money = money
 			}
 		}
@@ -29,4 +34,9 @@ func ManyMoney() {
 func GetMoney() {
 	state.Money += 0.01
 	state.AddInfof("%YНа%C\n")
+}
+
+func GetAllAvailabelRecipes() {
+	products.AddAvailablesCoctail(-1)
+	state.AddInfof("%YЧит-код активирован | теперь у вас есть все доступные рецепты%C\n")
 }

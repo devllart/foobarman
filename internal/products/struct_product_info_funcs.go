@@ -9,14 +9,17 @@ import (
 	"strings"
 )
 
-func (drink *ProductInfo) PrettyDescription() {
+/**
+ * Funcs for struct ProductInfo
+ */
+
+func (product *ProductInfo) PrettyDescription() {
 	if config.ShowDescription {
-		if drink.Description == "" {
-			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(15), drink.Name)
+		if product.Description == "" {
+			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(15), product.Name)
 			return
 		}
-
-		lines := strings.Split(drink.Description, "\n")
+		lines := strings.Split(product.Description, "\n")
 
 		for _, line := range lines {
 			fmtc.Printf("%s%s\n", funcs.Indent(15), line)
@@ -25,22 +28,24 @@ func (drink *ProductInfo) PrettyDescription() {
 	}
 }
 
-func (drink *ProductInfo) TypeVolume() string {
-	if typeVolume, exist := ProductsTypesVolume[drink.Type]; exist == true {
+// Calculate type of volume of ProductInfo
+func (product *ProductInfo) TypeVolume() string {
+	if typeVolume, exist := ProductsTypesVolume[product.Type]; exist == true {
 		return typeVolume
 	}
 
 	return ".л"
 }
 
-func (drink *ProductInfo) PrintPrices() {
-	for i := range drink.Prices {
-		price := drink.Prices[i]
-		fmtc.Printf(texts.StoreProductInfoPrice, price, drink.AviableVolume[i], drink.TypeVolume())
+// Print available prices (depending of volume) of ProductInfo
+func (product *ProductInfo) PrintPrices() {
+	for i := range product.Prices {
+		price := product.Prices[i]
+		fmtc.Printf(texts.StoreProductInfoPrice, price, product.AviableVolume[i], product.TypeVolume())
 	}
 	fmtc.Printf(" |\n\n")
 }
 
-func (drink *ProductInfo) PrintInStore(index int) {
-	fmtc.Printf(texts.StoreProductInfo, index, drink.Name, drink.Alc, drink.Type, *drink.Taste)
+func (product *ProductInfo) PrintInStore(index int) {
+	fmtc.Printf(texts.StoreProductInfo, index, product.Name, product.Alc, product.Type, product.Taste)
 }

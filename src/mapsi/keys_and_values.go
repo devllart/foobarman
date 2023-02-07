@@ -12,10 +12,19 @@ func (mapsi *Mapsi[T]) SetValue(key string, value T) {
 	mapsi.Values = append(mapsi.Values, value)
 }
 
-func (mapsi *Mapsi[T]) GetValue(key string) *T {
+func (mapsi *Mapsi[T]) getValue(key string) *T {
 	for i, keyMapsi := range mapsi.Keys {
 		if key == keyMapsi {
 			return &mapsi.Values[i]
+		}
+	}
+	return nil
+}
+
+func (mapsi *Mapsi[T]) GetValue(keys ...string) *T {
+	for _, key := range keys {
+		if value := mapsi.getValue(key); value != nil {
+			return value
 		}
 	}
 	return nil

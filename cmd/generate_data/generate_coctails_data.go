@@ -1,22 +1,43 @@
 package main
 
 import (
+	"devllart/foobarman/internal/products"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
-var jsonFileWithData = "data/coctails.json"
-var outFile = "internal/products/coctails_data.go"
+func getCoctails() []products.Coctail {
+	var jsonFileWithData = "data/coctails.json"
 
-var goCode = `package products
+	coctails := []products.Coctail{}
+	file, err := ioutil.ReadFile(jsonFileWithData)
+	if err != nil {
+		panic(err.Error())
+	}
 
-var AllCoctail = map[string]Coctail{%s
-}`
+	if err := json.Unmarshal([]byte(file), &coctails); err != nil {
+		panic(err.Error())
+	}
+
+	return coctails
+}
 
 func generateCoctailsData() {
+	var outFile = "internal/products/coctails_data.go"
+	var goCode = `package products
+
+var AllCoctail = []Coctail{%s
+}`
+
 	coctailsStruct := ``
+	if env, _ := os.LookupEnv("GENERATE"); env == "empty" {
+		ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, coctailsStruct)), 0644)
+		return
+	}
 
 	for _, coctail := range getCoctails() {
 		grammars := ""
@@ -36,7 +57,7 @@ func generateCoctailsData() {
 		}
 
 		coctailsStruct += fmt.Sprintf(`
-    "%s": {
+    {
       Name: "%s",
       Ingredients: []string{"%s"},
       Grammar: []float64{%s},
@@ -44,7 +65,7 @@ func generateCoctailsData() {
       Description: "%s",
       Instruction: "%s",
       Price: %.2f,
-    },`, name, name, ingredients, grammars, units, description, instruction, price)
+    },`, name, ingredients, grammars, units, description, instruction, price)
 	}
 
 	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, coctailsStruct)), 0644)

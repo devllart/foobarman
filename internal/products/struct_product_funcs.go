@@ -5,49 +5,53 @@ import (
 	"devllart/foobarman/src/fmtc"
 )
 
-func (drink *Product) Show() {
-	fmtc.Printf(texts.ShowProductInBar, drink.Name, drink.Alc, drink.Volume, drink.TypeVolume(), drink.Count, drink.LeftVolumeText(), drink.GetLastVolume(), drink.TypeVolume())
-	drink.PrettyDescription()
+/**
+ * Funcs for struct Producct
+ */
+
+func (product *Product) Show() {
+	fmtc.Printf(texts.ShowProductInBar, product.Name, product.Alc, product.Volume, product.TypeVolume(), product.Count, product.LeftVolumeText(), product.GetLastVolume(), product.TypeVolume())
+	product.PrettyDescription()
 }
 
-func (drink *Product) StandartFlow() float64 {
-	if flow, exist := ProductsStandartFlow[drink.Type]; exist == true {
+func (product *Product) StandartFlow() float64 {
+	if flow, exist := ProductsStandartFlow[product.Type]; exist == true {
 		return flow
 	}
 
-	return drink.AviableVolume[0] / 25
+	return product.AviableVolume[0] / 25
 }
 
-func (drink *Product) GetLastVolume() float64 {
-	if drink.TypeVolume() != ".л" {
-		return drink.Volume*float64(drink.Count-1) + drink.LastVolume
+func (product *Product) GetLastVolume() float64 {
+	if product.TypeVolume() != ".л" {
+		return product.Volume*float64(product.Count-1) + product.LastVolume
 	}
 
-	return drink.LastVolume
+	return product.LastVolume
 }
 
-func (drink *Product) LeftVolumeText() string {
-	if drink.TypeVolume() != ".л" {
+func (product *Product) LeftVolumeText() string {
+	if product.TypeVolume() != ".л" {
 		return texts.TotalLeftVolume
 	}
 
 	return texts.LeftVolumeInLastBottle
 }
 
-func (drink *Product) SubVolume(vol float64) error {
-	newVol := drink.LastVolume - vol
-	newCount := drink.Count
+func (product *Product) SubVolume(vol float64) error {
+	newVol := product.LastVolume - vol
+	newCount := product.Count
 
 	for true {
 		if newVol > 0 {
-			drink.Count = newCount
-			drink.LastVolume = newVol
+			product.Count = newCount
+			product.LastVolume = newVol
 			return nil
 		} else {
 			newCount -= 1
-			newVol += drink.Volume
+			newVol += product.Volume
 			if newCount < 1 {
-				return fmtc.Errorf(texts.ErrorNotEnoughtVolume, drink.Name)
+				return fmtc.Errorf(texts.ErrorNotEnoughtVolume, product.Name)
 			}
 		}
 	}

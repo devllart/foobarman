@@ -1,5 +1,9 @@
 package products
 
+/**
+ * Gloabal struct for packages products
+ */
+
 type Product struct {
 	Name       string
 	Volume     float64
@@ -15,7 +19,7 @@ type ProductInfo struct {
 	AviableVolume []float64
 	Prices        []float64
 	Description   string
-	Taste         *string
+	Taste         string
 }
 
 type Coctail struct {

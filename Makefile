@@ -1,4 +1,12 @@
+cleardata:
+	# rm -f ./internal/products/coctails_data.go
+	# rm -f ./internal/products/products_data.go
+	ENVIRONMENT=generate GENERATE=empty go run ./cmd/generate_data
+
 build:
+	make cleardata
+	ENVIRONMENT=generate go run ./cmd/generate_data
+	
 	GOOS=linux   GOARCH=386   go build -o ./bin/foobarman-386-linux         ./cmd/app
 	GOOS=linux   GOARCH=amd64 go build -o ./bin/foobarman-amd64-linux       ./cmd/app
 	GOOS=linux   GOARCH=arm   go build -o ./bin/foobarman-arm-linux         ./cmd/app
@@ -17,8 +25,14 @@ build:
 	# GOOS=android GOARCH=arm   go build -o ./bin/foobarman-arm-android       ./cmd/app
 	# GOOS=android GOARCH=arm64 go build -o ./bin/foobarman-arm64-android     ./cmd/app
 
+buildonce:
+	make cleardata
+	ENVIRONMENT=generate go run ./cmd/generate_data
+	go build -o ./foobarman ./cmd/app
+
 run:
-	go run ./cmd/app
+	make cleardata
+	ENVIRONMENT=development go run ./cmd/app
 
 readmeupdate:
 	rm -rf bin/assets

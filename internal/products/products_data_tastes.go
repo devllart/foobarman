@@ -81,8 +81,11 @@ var Tastes = map[string]string{
 	"Лед в кубиках": "Безвкусный",
 	"Соль":          "Соль",
 
-	// Invdividual
+	// Triple sec
 	"Трипл сек fruko schulz": "Ликер с экзотическим, богатым и сложным вкусом с нотками цитрусовых.",
+
+	// Invdividual
+	"Водка Царская": "Царско-горький",
 
 	// Unknow
 	texts.Unknown: texts.Unknown,

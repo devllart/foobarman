@@ -35,11 +35,7 @@ func mix() {
 			drink := state.Bar[index]
 			recipes = append(recipes, drink.Type)
 			barIndexes = append(barIndexes, index)
-			// if err := (&state.Bar[index]).SubVolume(); err != nil {
-			// 	fmtc.Printf("%s\n", err)
-			// } else {
 			fmtc.Printf("%Y+ %B%s%C\n", drink.Name)
-			// }
 		} else {
 			fmtc.Printf("%RУ вас нет такого напитка%C\n")
 		}
@@ -51,7 +47,7 @@ func mix() {
 		sort.Sort(sort.StringSlice(ingredients))
 		if funcs.SlicesEqual(ingredients, recipes) {
 			for i, vol := range coctail.Grammar {
-				if err := state.Bar[barIndexes[i]].SubVolume(vol); err != nil {
+				if err := state.Bar[barIndexes[i]].SubVolume(vol * 0.001); err != nil {
 					state.AddInfof(err.Error())
 					return
 				}

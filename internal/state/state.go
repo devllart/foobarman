@@ -18,19 +18,19 @@ var TempBool = false // Nothing say
 var TempStr = ""     // Nothing say
 
 // ** For manipulation with views
-var ProductsIds = []string{} // Printer drinks
+var ProductsIds = []string{} // Save output printers products
 
 // ** For alerts user
 var Alerts = []string{}
 var Info = ""
 
 // ** State of player
-var Scene func()           // Context of scenes
-var LastScene string       // Last scene
-var Name = ""              // Barman name
-var RawName = ""           // Barman name in raw format
-var Status = "Norm"        // Status barman
-var Money float64 = 300.33 // Player money
+var Scene func()               // Context of scenes
+var LastScene string           // Last scene
+var Name = ""                  // Barman name
+var RawName = ""               // Barman name in raw format
+var Status = "Norm"            // Status barman
+var Money float64 = 300.33     // Player money
 var Bar = []products.Product{} // State of bar
 
 // ** State of client

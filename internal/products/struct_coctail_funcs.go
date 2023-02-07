@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+/**
+ * Funcs for struct Coctail
+ */
+
 func (coctail *Coctail) Show() {
 	fmtc.Printf("%R%s%C\n%sингредиенты: ", coctail.Name, funcs.Indent(4))
 
@@ -23,7 +27,15 @@ func (coctail *Coctail) Show() {
 		}
 
 	}
-	fmtc.Printf("\n%sцена: %Y%.2f$%C\n\n", funcs.Indent(4), coctail.Price)
+
+	var price float64 = 0
+	if config.Env == "production" {
+		price = coctail.Price
+	} else {
+		price = coctail.GetPrice()
+	}
+
+	fmtc.Printf("\n%sцена: %Y%.2f$%C\n\n", funcs.Indent(4), price)
 }
 
 func (coctail *Coctail) PrettyDescription() {
@@ -68,6 +80,8 @@ func (coctail *Coctail) GetPrice() float64 {
 			}
 
 			sumPrice += price * grammar * (1.1 - GetStandartFlow(ingredient))
+		} else {
+			sumPrice += 0.5
 		}
 	}
 
