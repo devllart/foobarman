@@ -42,11 +42,11 @@ var AvailableProducts = map[string]ProductInfo{%s
 		typeProduct := replaceBitch(product.Type)
 		alc := product.Alc
 		// taste := product.Taste
-		taste := saveText("tastes", product.Taste)
+		taste := saveText("Tastes", product.Taste)
 		// taste := product.GetTaste(product)
 		volumes := ""
 		prices := ""
-		description := replaceBitch(product.Description)
+		description := saveText("DescCoctail", replaceBitch(product.Description))
 
 		for i, vol := range product.AviableVolume {
 			if i > 0 {
@@ -67,10 +67,10 @@ var AvailableProducts = map[string]ProductInfo{%s
       Name:          "%s",
       Type:          "%s",
       Alc:           %.2f,
-      Taste:         "%s",
+      Taste:         %s,
       AviableVolume: []float64{%s},
       Prices:        []float64{%s},
-      Description:   "%s",
+      Description:   %s,
     },`, strings.Title(name), name, typeProduct, alc, taste, volumes, prices, description)
 	}
 
