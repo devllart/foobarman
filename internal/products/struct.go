@@ -18,8 +18,8 @@ type ProductInfo struct {
 	Alc           float64
 	AviableVolume []float64
 	Prices        []float64
-	Description   string
-	Taste         string
+	Description   *string
+	Taste         *string
 }
 
 type Coctail struct {

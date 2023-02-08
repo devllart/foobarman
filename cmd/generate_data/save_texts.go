@@ -20,15 +20,15 @@ func saveText(context, text string) string {
 	if textsFile, exist = textsFiles[context]; exist {
 		textsFile.Index += 1
 	} else {
-		textsFile.Index = 1
-		textsFile.GoCode = "package texts\n\n"
+		textsFile.Index = 0
+		textsFile.GoCode = "package texts\n\nvar " + context + " = []string{\n"
 	}
 
-	nameVar := context + strconv.Itoa(textsFile.Index)
-	textsFile.GoCode += "var " + nameVar + " = \"" + text + "\"\n\n"
+	// nameVar := context + strconv.Itoa(textsFile.Index)
+	textsFile.GoCode += "\"" + text + "\",\n"
 
-	ioutil.WriteFile("internal/texts/"+funcs.ToSnakeCase(context)+".go", []byte(textsFile.GoCode), 0644)
+	ioutil.WriteFile("internal/texts/a_generate_"+funcs.ToSnakeCase(context)+".go", []byte(textsFile.GoCode+"}"), 0644)
 	textsFiles[context] = textsFile
 
-	return "texts." + nameVar
+	return "texts." + context + "[" + strconv.Itoa(textsFile.Index) + "]"
 }

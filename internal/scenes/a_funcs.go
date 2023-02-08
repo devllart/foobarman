@@ -20,7 +20,7 @@ func Show(scene func()) {
 
 	// If show barman is on, then show barman status (name and money)
 	if config.ShowBarman {
-		fmtc.Printf(texts.BarmanStatus, state.Name, state.Money)
+		fmtc.Printf(texts.BarmanStatus, state.Name, state.Money, state.CountVisitorsServed)
 	}
 
 	// If show commands is on, then show commands

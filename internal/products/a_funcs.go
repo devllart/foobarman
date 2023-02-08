@@ -20,7 +20,7 @@ func New(name string, volume float64, count int) Product {
 		fmtc.Perrorf(texts.ErrorNotVolumeOfProduct, name, volume)
 	}
 
-	return Product{name, volume, count, GetLastVolume(info.TypeVolume(), count, volume), &info}
+	return Product{name, volume, count, volume, &info}
 }
 
 // For show volume in last (or all) volume of product in the bar
@@ -32,6 +32,6 @@ func GetLastVolume(typeVolume string, count int, volume float64) float64 {
 	return volume
 }
 
-func GetTaste(product ProductInfo) *string {
-	return NewTastes.GetValue(product.Name, product.Type, texts.Unknown)
+func GetTaste(productType string) *string {
+	return NewTastes.GetValue(productType, texts.Unknown)
 }

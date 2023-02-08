@@ -9,9 +9,9 @@ import (
 	"strings"
 )
 
-func getProducts() map[string]products.ProductInfo {
+func getProducts() []products.ProductInfo {
 	var jsonFileWithData = "data/products.json"
-	products := map[string]products.ProductInfo{}
+	products := []products.ProductInfo{}
 	file, err := ioutil.ReadFile(jsonFileWithData)
 	if err != nil {
 		panic(err.Error())
@@ -42,11 +42,11 @@ var AvailableProducts = map[string]ProductInfo{%s
 		typeProduct := replaceBitch(product.Type)
 		alc := product.Alc
 		// taste := product.Taste
-		taste := saveText("Tastes", product.Taste)
+		taste := "GetTaste(\"" + product.Type + "\")"
 		// taste := product.GetTaste(product)
 		volumes := ""
 		prices := ""
-		description := saveText("DescCoctail", replaceBitch(product.Description))
+		description := saveText("DescProduct", replaceBitch(*product.Description))
 
 		for i, vol := range product.AviableVolume {
 			if i > 0 {
@@ -70,7 +70,7 @@ var AvailableProducts = map[string]ProductInfo{%s
       Taste:         %s,
       AviableVolume: []float64{%s},
       Prices:        []float64{%s},
-      Description:   %s,
+      Description:   &%s,
     },`, strings.Title(name), name, typeProduct, alc, taste, volumes, prices, description)
 	}
 

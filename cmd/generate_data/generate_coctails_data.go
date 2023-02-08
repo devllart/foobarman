@@ -29,13 +29,13 @@ func getCoctails() []products.Coctail {
 func generateCoctailsData() {
 	var outFile = "internal/products/coctails_data.go"
 	var goCode = `package products
-
+%s
 var AllCoctail = []Coctail{%s
 }`
 
 	coctailsStruct := ``
 	if env, _ := os.LookupEnv("GENERATE"); env == "empty" {
-		ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, coctailsStruct)), 0644)
+		ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, "", coctailsStruct)), 0644)
 		return
 	}
 
@@ -46,8 +46,8 @@ var AllCoctail = []Coctail{%s
 		ingredients := joinBitch(coctail.Ingredients)
 		units := joinBitch(coctail.Units)
 		price := coctail.GetPrice()
-		description := replaceBitch(coctail.Description)
-		instruction := replaceBitch(coctail.Instruction)
+		description := saveText("DescCoctail", replaceBitch(coctail.Description))
+		instruction := saveText("InstCoctail", replaceBitch(coctail.Instruction))
 
 		for i, gram := range coctail.Grammar {
 			if i > 0 {
@@ -62,11 +62,15 @@ var AllCoctail = []Coctail{%s
       Ingredients: []string{"%s"},
       Grammar: []float64{%s},
       Units: []string{"%s"},
-      Description: "%s",
-      Instruction: "%s",
+      Description: %s,
+      Instruction: %s,
       Price: %.2f,
     },`, name, ingredients, grammars, units, description, instruction, price)
 	}
 
-	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, coctailsStruct)), 0644)
+	importTexts := `
+import "devllart/foobarman/internal/texts"
+`
+
+	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, importTexts, coctailsStruct)), 0644)
 }

@@ -32,6 +32,8 @@ var RawName = ""               // Barman name in raw format
 var Status = "Norm"            // Status barman
 var Money float64 = 300.33     // Player money
 var Bar = []products.Product{} // State of bar
+var CountVisitorsServed = 0    // Number of visitors served
+var Stage = 0                  // STAGE
 
 // ** State of client
 

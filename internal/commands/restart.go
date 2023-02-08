@@ -14,6 +14,11 @@ func Restart() {
 	state.Restart()
 	state.Scene = scenes.Store
 	scenes.Show(scenes.Store)
+	state.ClearTemp()
+	state.Info = ""
+	state.BarOpen = false
+	state.NotSaler = true
+	state.AddInfof("%B ! Игра перезапущена%C\n")
 }
 
 // Restart and rand buy

@@ -8,6 +8,7 @@ import (
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
 	"fmt"
+	"math/rand"
 	"sort"
 )
 
@@ -42,15 +43,27 @@ func mix() {
 	}
 
 	for name, coctail := range products.MapsiAvailableCoctail.Data() {
+		fmt.Println(coctail.Ingredients)
+		fmt.Println(coctail.Grammar)
+
 		sort.Sort(sort.StringSlice(recipes))
-		ingredients := coctail.Ingredients
+		ingredients := []string{}
+		ingredients = append(ingredients, coctail.Ingredients...)
 		sort.Sort(sort.StringSlice(ingredients))
 		if funcs.SlicesEqual(ingredients, recipes) {
 			for i, vol := range coctail.Grammar {
-				if err := state.Bar[barIndexes[i]].SubVolume(vol * 0.001); err != nil {
-					state.AddInfof(err.Error())
-					return
+
+				for _, indexOfBar := range barIndexes {
+					if coctail.Ingredients[i] == state.Bar[indexOfBar].Type {
+						if err := state.Bar[indexOfBar].SubVolume(vol * 0.001); err != nil {
+							state.AddInfof(err.Error())
+							return
+						}
+						product := state.Bar[indexOfBar]
+						state.AddInfof("%R - %.3f%s %B%s%C (для %B%s%C) %C\n", vol, coctail.Units[i], product.Name, coctail.Name)
+					}
 				}
+
 			}
 			state.YourCoctail = *coctail
 			state.CoctailReady = true
@@ -60,10 +73,13 @@ func mix() {
 	}
 
 	for _, index := range barIndexes {
-		if err := state.Bar[index].SubVolume(0.1); err != nil {
+		vol := float64(10+rand.Intn(20)) * 0.01
+		if err := state.Bar[index].SubVolume(vol); err != nil {
 			state.AddInfof(err.Error())
 			return
 		}
+		product := state.Bar[index]
+		state.AddInfof("%R - %.3f%s %B%s %R(в пустую) %C\n", vol, product.TypeVolume(), product.Name)
 	}
 	alert.DontTheRecipies()
 	state.Mix = false

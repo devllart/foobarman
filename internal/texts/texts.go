@@ -31,7 +31,7 @@ const AllowCommands = "Доступные команды (регистр не в
 
 // Hint
 
-const BarmanStatus = "\nБармен %s   денег: %Y%.2f $%C\n\n"
+const BarmanStatus = "\nБармен %s   денег: %Y%.2f $%C         Количство довольных посетителей: %Y%d%C\n\n"
 const ShowProductInBar = "%B%s%C %R%.2f %%%C  (%G%.3f%s%C) %Y%dX%C | %s %G%.3f%s%C\n"
 const SelectIngredients = "%YИз каких ингредиентов будет твой коктель?%C\n"
 

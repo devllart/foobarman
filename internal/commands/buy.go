@@ -33,7 +33,7 @@ func buyRandom() {
 	for state.Money > 10 {
 		state.TempBool = false
 		for !state.TempBool {
-			index := fmt.Sprintf("%d", rand.Intn(len(products.AvailableProducts))+1)
+			index := fmt.Sprintf("%d", rand.Intn(products.MapsiAvailableProducts.Len())+1)
 
 			productName := correctProductName(index)
 			product := products.AvailableProducts[productName]

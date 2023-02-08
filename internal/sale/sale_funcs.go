@@ -40,6 +40,15 @@ func CoctailReady() {
 		}
 
 		fmtc.Printf("%Y Вы получили %.2f$ %C\n", state.Order.Price)
+
+		state.CountVisitorsServed += 1
+		if state.CountVisitorsServed >= state.Stage*state.Stage {
+			state.Stage += 1
+			countNewProducts := products.MapsiAvailableProducts.Len()
+			products.AddAvailablesCoctail(state.Stage)
+			countNewProducts = products.MapsiAvailableProducts.Len() - countNewProducts
+			fmtc.Printf("\n%Y ! Этап пройден.\n%Y рецепты: %R+%d%C\n%Y продукты: %R+%d%C\n", state.Stage, countNewProducts)
+		}
 	} else {
 		if len(state.CurrentHistory) == 2 {
 			fmtc.Printf(state.CurrentHistory[1])

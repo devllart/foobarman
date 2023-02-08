@@ -24,6 +24,8 @@ func (product *Product) StandartFlow() float64 {
 
 func (product *Product) GetLastVolume() float64 {
 	if product.TypeVolume() != ".л" {
+		// fmt.Println(product)
+		// panic("AAA")
 		return product.Volume*float64(product.Count-1) + product.LastVolume
 	}
 
@@ -46,6 +48,7 @@ func (product *Product) SubVolume(vol float64) error {
 		if newVol > 0 {
 			product.Count = newCount
 			product.LastVolume = newVol
+
 			return nil
 		} else {
 			newCount -= 1

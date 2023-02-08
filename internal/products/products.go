@@ -3,6 +3,7 @@ package products
 import (
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/src/funcs"
+	"strings"
 )
 
 func init() {
@@ -10,7 +11,11 @@ func init() {
 		return
 	} else if config.Env != "production" {
 		funcs.ParseJsonToStruct("data/coctails.json", &AllCoctail)
-		funcs.ParseJsonToStruct("data/products.json", &AvailableProducts)
+		products := []ProductInfo{}
+		funcs.ParseJsonToStruct("data/products.json", &products)
+		for _, product := range products {
+			AvailableProducts[strings.Title(product.Name)] = product
+		}
 	}
 
 	for _, product := range AvailableProducts {

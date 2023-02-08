@@ -15,11 +15,11 @@ import (
 
 func (product *ProductInfo) PrettyDescription() {
 	if config.ShowDescription {
-		if product.Description == "" {
+		if *product.Description == "" {
 			fmtc.Printf("%sО %s ничего неизвестно\n", funcs.Indent(15), product.Name)
 			return
 		}
-		lines := strings.Split(product.Description, "\n")
+		lines := strings.Split(*product.Description, "\n")
 
 		for _, line := range lines {
 			fmtc.Printf("%s%s\n", funcs.Indent(15), line)
@@ -47,5 +47,5 @@ func (product *ProductInfo) PrintPrices() {
 }
 
 func (product *ProductInfo) PrintInStore(index int) {
-	fmtc.Printf(texts.StoreProductInfo, index, product.Name, product.Alc, product.Type, product.Taste)
+	fmtc.Printf(texts.StoreProductInfo, index, product.Name, product.Alc, product.Type, *product.Taste)
 }
