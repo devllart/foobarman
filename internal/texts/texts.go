@@ -3,7 +3,7 @@ package texts
 // Typics
 
 const Unknown = "Неизвестен"
-const UnknownCommand = "%R!%C Неизвестная комманда: %s\n"
+const UnknownCommand = " %R!%C Неизвестная комманда: %B%s%C"
 
 // Scenes
 
@@ -15,7 +15,7 @@ const StoreProductInfoPrice = " | %Y%.2f$%C за %G%.3f%s%C"
 
 // ** Hello
 const WhatIsName = "%CНу и как тебя зовут юный бармен: %B"
-const NameIsOk = "%CОтлично %s, ну что пошлите в магазин закупаться? (Нажми Enter): "
+const NameIsOk = "%CОтлично %s, ну что пошли в магазин закупаться? (Нажми Enter): "
 
 // ** Bar
 
@@ -31,7 +31,7 @@ const AllowCommands = "Доступные команды (регистр не в
 
 // Hint
 
-const BarmanStatus = "\nБармен %s   денег: %Y%.2f $%C         Количство довольных посетителей: %Y%d%C\n\n"
+const BarmanStatus = "\nБармен %s   денег: %Y%.2f $%C         Количество довольных посетителей: %Y%d%C\n\n"
 const ShowProductInBar = "%B%s%C %R%.2f %%%C  (%G%.3f%s%C) %Y%dX%C | %s %G%.3f%s%C\n"
 const SelectIngredients = "%YИз каких ингредиентов будет твой коктель?%C\n"
 
@@ -40,25 +40,10 @@ const SelectIngredients = "%YИз каких ингредиентов будет
 const TotalLeftVolume = "всего осталось"
 const LeftVolumeInLastBottle = "в последней бутылке осталось"
 
-// ** Products buying error
-
-const NotAvailableProduct = "%R!%C Напитка %B%s%C нет в продаже\n"
-const NotAvailableIndexProduct = "%R!%C Напитка под номером %B%d%C нет в продаже\n"
-const NotEnoughFundsToBuy = "%R!%C Недостаточно средств для покупки %B%s%C (общая сумма составила %Y%.2f $%C)\n"
-const NotVolumeOfProduct = "%R!%C %B%s%C с объёмом %G%.3f .л%C нет в продаже, возьмите другой объём\n"
-
-const IncorrectAmountOfProduct = "%R!%C Неверно указанно количество напитка\n"
-const IncorrectVolumeOfProduct = "%R!%C Неверно указан объём напитка\n"
-
-// ** Products buy
-
-const ProductBought = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено (%Y-%.2f $%C)\n"
-const ProductBoughtYet = "%Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено ещё (общее количество: %G%d%C) (%Y-%.2f $%C)\n"
-
 // ** Coctails
 
-const CoctailIsReady = "У вас получился %B%s%C — очень хорошо\n"
-const DontTheRecipies = "Чтож жаль, но такого %Bрецепта нет%C\n"
+const CoctailIsReady = "У вас получился %B%s%C — очень хорошо"
+const DontTheRecipies = "Чтож жаль, но такого %Bрецепта нет%C"
 
 const NotSayAboutCoctail = "%sО коктейле \"%B%s%C\" нечего сказать\n\n"
 

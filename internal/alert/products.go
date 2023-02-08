@@ -1,27 +1,25 @@
 package alert
 
-import (
-	"devllart/foobarman/internal/state"
-	"devllart/foobarman/internal/texts"
-)
-
 /**
  * Alert for products don't panic
  */
 
 // Bought product
 func IncorrectAmountOfProduct() {
-	state.AddInfof(texts.IncorrectAmountOfProduct)
+	Text(" %R!%C Неверно указанно количество напитка")
 }
 
 func IncorrectVolumeOfProduct() {
-	state.AddInfof(texts.IncorrectVolumeOfProduct)
+	Text(" %R!%C Неверно указан объём напитка")
+	Line()
 }
 
 func ProductBought(productName, typeVolume string, volume float64, sumPrice float64, count int) {
-	state.AddInfof(texts.ProductBought, productName, volume, typeVolume, count, sumPrice)
+	Text(" %Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено (%Y-%.2f $%C)", productName, volume, typeVolume, count, sumPrice)
+	Line()
 }
 
 func ProductBoughtYet(productName, typeVolume string, volume, sumPrice float64, count, countSum int) {
-	state.AddInfof(texts.ProductBoughtYet, productName, volume, typeVolume, count, countSum, sumPrice)
+	Text(" %Y+%C %B%s%C %G%.3f%s%C %Y%dX%C куплено ещё (общее количество: %G%d%C) (%Y-%.2f $%C)", productName, volume, typeVolume, count, countSum, sumPrice)
+	Line()
 }

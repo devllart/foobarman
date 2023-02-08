@@ -60,7 +60,7 @@ func mix() {
 							return
 						}
 						product := state.Bar[indexOfBar]
-						state.AddInfof("%R - %.3f%s %B%s%C (для %B%s%C) %C\n", vol, coctail.Units[i], product.Name, coctail.Name)
+						alert.VolumeOfProductSpent(vol, coctail.Units[i], product.Name)
 					}
 				}
 
@@ -75,11 +75,11 @@ func mix() {
 	for _, index := range barIndexes {
 		vol := float64(10+rand.Intn(20)) * 0.01
 		if err := state.Bar[index].SubVolume(vol); err != nil {
-			state.AddInfof(err.Error())
+			alert.Error(err.Error())
 			return
 		}
 		product := state.Bar[index]
-		state.AddInfof("%R - %.3f%s %B%s %R(в пустую) %C\n", vol, product.TypeVolume(), product.Name)
+		alert.VolumeOfProductSpent(vol, product.TypeVolume(), product.Name)
 	}
 	alert.DontTheRecipies()
 	state.Mix = false

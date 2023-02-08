@@ -1,6 +1,7 @@
 package products
 
 import (
+	"devllart/foobarman/internal/config"
 	"devllart/foobarman/src/funcs"
 )
 
@@ -17,13 +18,24 @@ func AddAvailablesCoctail(count int) {
 
 	for name, product := range AvailableProducts {
 		if funcs.Contains(AvailableTypes, product.Type) && MapsiAvailableProducts.GetValue(product.Name) == nil {
-			MapsiAvailableProducts.SetValue(name, product)
+			count := 0
+			for _, availableProduct := range MapsiAvailableProducts.Values {
+				if product.Type == availableProduct.Type {
+					count += 1
+				}
+			}
+			if count < config.Stage {
+				MapsiAvailableProducts.SetValue(name, product)
+			}
 		}
 	}
 }
 
 func AddAvailableCoctail(coctail Coctail) bool {
 	availableTypes := []string{}
+	if coctail.GetPrice() > 2.0+float64(config.Stage)/2 || len(coctail.Ingredients) > 4+config.Stage {
+		return false
+	}
 	for _, ingredient := range coctail.Ingredients {
 		if !funcs.Contains(AvailableIngredients, ingredient) {
 			return false

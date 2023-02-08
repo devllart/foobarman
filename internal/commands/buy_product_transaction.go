@@ -13,15 +13,15 @@ func buyTransaction(productName string, count int, volume, price float64, rand b
 
 	sumPrice := float64(count) * price
 
-	if state.Money-sumPrice < 0 {
+	if !state.InfiniteMoney && state.Money-sumPrice < 0 {
 		if !rand {
-			alert.NotEnoughtFundsToBuy(productName, sumPrice)
+			alert.PanicNotEnoughtFundsToBuy(productName, sumPrice)
 		}
 		state.TempBool = true
 		return
 	}
 
-	state.Money -= sumPrice
+	state.SubMoney(sumPrice)
 
 	newProduct := products.New(productName, volume, count)
 

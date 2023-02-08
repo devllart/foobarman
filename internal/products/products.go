@@ -19,7 +19,6 @@ func init() {
 	}
 
 	for _, product := range AvailableProducts {
-		// product.Taste = getTaste(product)
 		if _, exist := ProductsStandartTypesPrice[product.Type]; exist {
 			ProductsStandartTypesPrice[product.Type] += product.Prices[0] * product.AviableVolume[0] * 0.5
 		} else {
@@ -27,9 +26,7 @@ func init() {
 		}
 
 		AvailableIngredients = append(AvailableIngredients, product.Type)
-		// AvailableProducts[name] = product
 	}
 
-	AddAvailablesCoctail(5)
-
+	AddAvailablesCoctail(3)
 }

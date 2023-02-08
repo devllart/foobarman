@@ -13,9 +13,7 @@ func buy() {
 		state.Scene = scenes.Bar
 		return
 	} else if CommandIs("rand") {
-		state.RandomBuy = true
 		buyRandom()
-		state.RandomBuy = false
 	} else {
 		volume := correctVolume(state.Args[0])
 		count := correctCount(state.Args[1])
@@ -26,12 +24,13 @@ func buy() {
 }
 
 func buyRandom() {
+	state.RandomBuy = true
 	for _, product := range products.MapsiAvailableProducts.Values {
 		buyProduct(product.Name, 0, 1)
 	}
 
+	state.TempBool = false
 	for state.Money > 10 {
-		state.TempBool = false
 		for !state.TempBool {
 			index := fmt.Sprintf("%d", rand.Intn(products.MapsiAvailableProducts.Len())+1)
 
@@ -53,4 +52,5 @@ func buyRandom() {
 			go buyTransaction(productName, count, volume, price, state.RandomBuy)
 		}
 	}
+	state.RandomBuy = false
 }

@@ -1,18 +1,36 @@
 package alert
 
-import (
-	"devllart/foobarman/internal/state"
-	"devllart/foobarman/internal/texts"
-)
-
 /**
  * Don't panic
  */
 
+func UnknownCommand(command string) {
+	Text(" %R!%C Неизвестная комманда: %B%s%C", command)
+	Line()
+}
+
 func CoctailIsReady(name string) {
-	state.AddInfof(texts.CoctailIsReady, name)
+	Line()
+	Text("У вас получился %B%s%C — очень хорошо", name)
+	Line()
 }
 
 func DontTheRecipies() {
-	state.AddInfof(texts.DontTheRecipies)
+	Clue("Чтож жаль, но такого %Bрецепта нет%C")
+	Line()
+}
+
+func CheatCodeActivate() {
+	Clue("Чит-код активирован")
+	Line()
+}
+
+func RestartGame() {
+	TextBlue(" ! Игра перезапущена")
+	Line()
+}
+
+func VolumeOfProductSpent(volume float64, typeVolume, name string) {
+	TextRed(" -%.3f%s %B%s%C", volume, typeVolume, name)
+	Line()
 }

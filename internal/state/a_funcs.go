@@ -29,9 +29,14 @@ func Restart() {
 	ClearTemp()
 	Bar = []products.Product{}
 	Money = 300.33
+	CloseBar()
+	Info = ""
+	NotSaler = true
+	TempBool = false
 }
 
 func SetCommand(text string) {
+	Command = ""
 	for i, word := range strings.Split(text, " ") {
 		if i == 0 {
 			Command += word + " "
@@ -41,10 +46,6 @@ func SetCommand(text string) {
 			Command += word + " "
 		}
 	}
-
-	// if len(Args) == 0 {
-	// 	Args = make([]string, 3)
-	// }
 
 	for len(Args) < 3 {
 		Args = append(Args, "")
@@ -90,4 +91,14 @@ func ExitGame() {
 
 func ToOpenBar() {
 	BarOpen = true
+}
+
+func CloseBar() {
+	BarOpen = false
+}
+
+func SubMoney(amount float64) {
+	if !InfiniteMoney {
+		Money -= amount
+	}
 }

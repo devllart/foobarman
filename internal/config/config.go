@@ -3,6 +3,7 @@ package config
 import "os"
 
 var Env = ""
+var Stage = 1
 
 func init() {
 	var exist bool
