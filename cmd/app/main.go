@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/commands"
 	"devllart/foobarman/internal/sale"
 	"devllart/foobarman/internal/scenes"
@@ -29,7 +30,7 @@ func main() {
 	for state.Run == true {
 		state.HandlerStatus()    // Turning status of barman
 		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
-		state.Info = ""          // Clear hints and warning message
+		alert.ClearInfo()        // Clear hints and warning message
 		sale.Sale()
 
 		// fmtc.Printf("\n%Y\\>%B ") // User will enter command after symbol > |  — TerminalStyle ;)

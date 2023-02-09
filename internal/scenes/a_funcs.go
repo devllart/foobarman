@@ -1,12 +1,12 @@
 package scenes
 
 import (
+	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
-	"fmt"
 )
 
 /**
@@ -32,9 +32,7 @@ func Show(scene func()) {
 
 	// If show hints is on, then show hints
 	if config.ShowHits {
-		if state.Info != "" {
-			fmt.Printf("\n%s", state.Info)
-		}
+		alert.PrintInfo()
 	}
 }
 

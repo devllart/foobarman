@@ -23,12 +23,13 @@ func CommandIs(key string) bool {
 // Skip client
 func SkipClient() {
 	state.NotSaler = true
-	state.AddInfof("%YТы упустил клиента%C\n")
-	text := state.SubtractFromSalary(state.Money / 99)
-	state.AddInfof(text)
+	textSubMoney := state.SubtractFromSalary(state.Money / 99)
+
+	alert.MissClient()
+	alert.Clue(textSubMoney)
 
 	if len(state.CurrentHistory) > 0 {
-		state.AddInfof("\n%YИ ещё похоже ты упустил интересную историю%C\n")
+		alert.MissHistory()
 	}
 }
 

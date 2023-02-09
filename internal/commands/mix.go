@@ -56,7 +56,7 @@ func mix() {
 				for _, indexOfBar := range barIndexes {
 					if coctail.Ingredients[i] == state.Bar[indexOfBar].Type {
 						if err := state.Bar[indexOfBar].SubVolume(vol * 0.001); err != nil {
-							state.AddInfof(err.Error())
+							alert.Error(err.Error())
 							return
 						}
 						product := state.Bar[indexOfBar]

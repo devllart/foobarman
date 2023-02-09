@@ -1,34 +1,34 @@
 package alert
 
-import (
-	"devllart/foobarman/internal/state"
-)
-
 // Add line
 func Line() {
-	state.AddInfo("\n")
+	AddInfo("\n")
 }
 
 // Just Text
 func Text(text string, args ...any) {
-	state.AddInfof(text, args...)
+	AddInfof(text, args...)
+}
+
+func Textf(text string, args ...any) {
+	AddInfof(text, args...)
 }
 
 // Colorized alert
 func TextYellow(text string, args ...any) {
-	state.AddInfof("%Y"+text+"%C", args...)
+	Text("%Y"+text+"%C", args...)
 }
 
 func TextRed(text string, args ...any) {
-	state.AddInfof("%R"+text+"%C", args...)
+	Text("%R"+text+"%C", args...)
 }
 
 func TextBlue(text string, args ...any) {
-	state.AddInfof("%B"+text+"%C", args...)
+	Text("%B"+text+"%C", args...)
 }
 
 func TextGreen(text string, args ...any) {
-	state.AddInfof("%G"+text+"%C", args...)
+	Text("%G"+text+"%C", args...)
 }
 
 // Aliases

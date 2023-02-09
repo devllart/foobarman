@@ -34,3 +34,14 @@ func VolumeOfProductSpent(volume float64, typeVolume, name string) {
 	TextRed(" -%.3f%s %B%s%C", volume, typeVolume, name)
 	Line()
 }
+
+func MissClient() {
+	Clue("Ты упустил клиента")
+	Line()
+}
+
+func MissHistory() {
+	Line()
+	Clue("И ещё похоже ты упустил интересную историю")
+	Line()
+}
