@@ -20,10 +20,10 @@ func Recipes() {
 	// Print all recipes to console
 	for _, coctail := range products.MapsiAvailableCoctail.Values {
 		state.ProductsIds = append(state.ProductsIds, coctail.Name) // Added coctail to slice ProductsIds for available by index
-		fmt.Printf("%d. ", i)                                   // Print index
-		coctail.Show()                                          // Print info of coctail
-		coctail.PrettyDescription()                             // Print pretty description of coctail
-		coctail.PrettyInstruction()                             // Print pretty instruction of coctail
-		i += 1                                                  // iteration index of cycle
+		fmt.Printf("%d. ", i)                                       // Print index
+		coctail.Show()                                              // Print info of coctail
+		coctail.PrettyDescription()                                 // Print pretty description of coctail
+		coctail.PrettyInstruction()                                 // Print pretty instruction of coctail
+		i += 1                                                      // iteration index of cycle
 	}
 }

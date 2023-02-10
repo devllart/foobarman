@@ -9,7 +9,6 @@ import (
 	"devllart/foobarman/src/funcs"
 	"fmt"
 	"math/rand"
-	"sort"
 )
 
 func mix() {
@@ -46,11 +45,11 @@ func mix() {
 		fmt.Println(coctail.Ingredients)
 		fmt.Println(coctail.Grammar)
 
-		sort.Sort(sort.StringSlice(recipes))
-		ingredients := []string{}
-		ingredients = append(ingredients, coctail.Ingredients...)
-		sort.Sort(sort.StringSlice(ingredients))
-		if funcs.SlicesEqual(ingredients, recipes) {
+		// sort.Sort(sort.StringSlice(recipes))
+		// ingredients := []string{}
+		// ingredients = append(ingredients, coctail.Ingredients...)
+		// sort.Sort(sort.StringSlice(ingredients))
+		if funcs.SlicesSortAndEqual(coctail.Ingredients, recipes) {
 			for i, vol := range coctail.Grammar {
 
 				for _, indexOfBar := range barIndexes {

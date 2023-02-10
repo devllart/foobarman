@@ -1,7 +1,8 @@
-package products
+package structs
 
 import (
 	"devllart/foobarman/internal/config"
+	"devllart/foobarman/internal/data"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
@@ -73,13 +74,13 @@ func (coctail *Coctail) PrettyInstruction() {
 func (coctail *Coctail) GetPrice() float64 {
 	var sumPrice float64 = 0.5
 	for i, ingredient := range coctail.Ingredients {
-		if price, exist := ProductsStandartTypesPrice[ingredient]; exist {
+		if price, exist := data.ProductsStandartTypesPrice[ingredient]; exist {
 			var grammar float64 = 0.1
 			if i < len(coctail.Grammar) {
 				grammar = coctail.Grammar[i] * 0.001
 			}
 
-			sumPrice += price * grammar * (1.1 - GetStandartFlow(ingredient))
+			sumPrice += price * grammar * (1.1 - data.GetStandartFlow(ingredient))
 		} else {
 			sumPrice += 0.5
 		}

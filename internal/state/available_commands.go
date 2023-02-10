@@ -1,25 +1,51 @@
 package state
 
 import (
+	structsdata "devllart/foobarman/internal/data/structs_data"
+	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/src/funcs"
 )
 
-func AvailableCommands() map[string]CommandStruct {
-	sceneName := funcs.FuncName(Scene)
-	if LastScene == sceneName {
-		return cmds
+// Local
+
+var cmds = map[string]structs.Command{}
+
+// Context commands
+
+var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
+var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
+var BarCommands = getCommands("start", "mix", "skip", "store", "recipes")
+var RecipesCommands = getCommands("instruction", "bar", "store")
+
+func getCommands(keys ...string) map[string]structs.Command {
+	cmds := map[string]structs.Command{}
+	for _, key := range keys {
+		cmds[key] = structsdata.AllCommands[key]
 	}
 
-	LastScene = sceneName
-	cmds = map[string]CommandStruct{}
-
-	mapsCopy(cmds, GetCommandsForScenes(sceneName))
-	mapsCopy(cmds, StandartCommands)
 	return cmds
 }
 
-func mapsCopy[M1 ~map[K]V, M2 ~map[K]V, K comparable, V any](dst M1, src M2) {
-	for k, v := range src {
-		dst[k] = v
+func AvailableCommands() map[string]structs.Command {
+	if LastScene == Scene {
+		return cmds
+	}
+	LastScene = Scene
+	cmds = map[string]structs.Command{}
+
+	funcs.MapsCopy(cmds, *GetCommandsForScenes(Scene))
+	funcs.MapsCopy(cmds, StandartCommands)
+	return cmds
+}
+
+func GetCommandsForScenes(sceneName string) *map[string]structs.Command {
+	if sceneName == "Bar" {
+		return &BarCommands
+	} else if sceneName == "Store" {
+		return &ShopCommands
+	} else if sceneName == "Recipes" {
+		return &RecipesCommands
+	} else {
+		return &StandartCommands
 	}
 }

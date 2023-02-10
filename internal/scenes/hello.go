@@ -22,11 +22,11 @@ func Hello() { // Hello
 
 	state.Name = fmtc.Sprintf("%B%s%C", state.RawName) // Set color of Name
 
-	fmtc.Printf(`
-        Добро пожаловать %s 
-`, state.Name)
+	// 	fmtc.Printf(`
+	//         Добро пожаловать %s
+	// `, state.Name)
 
 	fmtc.Printf(texts.NameIsOk, state.Name) // Say Name is valid
 	fmt.Scanln(&state.TempStr)              // Wait Input
-	state.Scene = Store                     // Change context scene
+	state.Scene = "Store"                   // Change context scene
 }

@@ -1,6 +1,7 @@
-package products
+package structs
 
 import (
+	"devllart/foobarman/internal/data"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 )
@@ -15,7 +16,7 @@ func (product *Product) Show() {
 }
 
 func (product *Product) StandartFlow() float64 {
-	if flow, exist := ProductsStandartFlow[product.Type]; exist == true {
+	if flow, exist := data.ProductsStandartFlow[product.Type]; exist == true {
 		return flow
 	}
 

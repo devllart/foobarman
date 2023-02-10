@@ -1,6 +1,7 @@
 package products
 
 import (
+	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
@@ -11,7 +12,7 @@ import (
  */
 
 // For added new product to bar
-func New(name string, volume float64, count int) Product {
+func New(name string, volume float64, count int) structs.Product {
 	info, exitst := AvailableProducts[name]
 	if exitst == false {
 		fmtc.Perrorf(texts.ErrorNotExistProduct, name)
@@ -20,18 +21,13 @@ func New(name string, volume float64, count int) Product {
 		fmtc.Perrorf(texts.ErrorNotVolumeOfProduct, name, volume)
 	}
 
-	return Product{name, volume, count, volume, &info}
-}
-
-// For show volume in last (or all) volume of product in the bar
-func GetLastVolume(typeVolume string, count int, volume float64) float64 {
-	if typeVolume != ".л" {
-		return volume * float64(count)
+	product := structs.Product{
+		Name:        name,
+		Volume:      volume,
+		Count:       count,
+		LastVolume:  volume,
+		ProductInfo: &info,
 	}
 
-	return volume
-}
-
-func GetTaste(productType string) *string {
-	return NewTastes.GetValue(productType, texts.Unknown)
+	return product
 }

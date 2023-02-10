@@ -23,6 +23,7 @@ import (
 var reader = bufio.NewReader(os.Stdin)
 
 func main() {
+	state.Load()
 	funcs.CliClear() // Clear console
 	scenes.Hello()   // Run scene "Hello", In the scene ask name's barman
 
@@ -50,6 +51,7 @@ func main() {
 
 		fmtc.Printf("%C")
 		commands.Exec() // Try execute user command's
+		state.Save()
 	}
 }
 

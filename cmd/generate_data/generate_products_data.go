@@ -1,7 +1,8 @@
 package main
 
 import (
-	"devllart/foobarman/internal/products"
+	anames "devllart/foobarman/internal/a_names"
+	"devllart/foobarman/internal/structs"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -9,9 +10,9 @@ import (
 	"strings"
 )
 
-func getProducts() []products.ProductInfo {
-	var jsonFileWithData = "data/products.json"
-	products := []products.ProductInfo{}
+func getProducts() []structs.ProductInfo {
+	var jsonFileWithData = anames.JsonDataDir + "/products.json"
+	products := []structs.ProductInfo{}
 	file, err := ioutil.ReadFile(jsonFileWithData)
 	if err != nil {
 		panic(err.Error())
@@ -27,8 +28,13 @@ func getProducts() []products.ProductInfo {
 func generateProductsData() {
 	var outFile = "internal/products/products_data.go"
 	var goCode = `package products
-%s
-var AvailableProducts = map[string]ProductInfo{%s
+
+import (
+	"devllart/foobarman/internal/structs"
+  %s
+)
+
+var AvailableProducts = map[string]structs.ProductInfo{%s
 }`
 
 	productsStruct := ``

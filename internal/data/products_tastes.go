@@ -1,4 +1,4 @@
-package products
+package data
 
 import (
 	"devllart/foobarman/internal/texts"

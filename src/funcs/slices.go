@@ -53,5 +53,10 @@ func SlicesEqual(firstSlice, secondSlice []string) bool {
 		}
 	}
 	return true
+}
 
+func SlicesSortAndEqual(firstSlice, secondSlice []string) bool {
+	first := append([]string{}, firstSlice...)
+	second := append([]string{}, secondSlice...)
+	return SlicesEqual(first, second)
 }

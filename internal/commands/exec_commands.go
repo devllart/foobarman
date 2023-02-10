@@ -4,7 +4,6 @@ import (
 	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/dontpanic"
 	"devllart/foobarman/internal/products"
-	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"errors"
 	"strconv"
@@ -29,9 +28,9 @@ func Exec() {
 		alert.CheatCodeActivate()
 	} else if commandFunc, exist := ExecHandler(); exist { // Exec command
 		commandFunc()
-	} else if scenes.CurrentIs(scenes.Store) { // Context dependent commands start here
+	} else if state.Scene == "Store" { // Context dependent commands start here
 		buy()
-	} else if scenes.CurrentIs(scenes.Bar) && CommandIs("mix") { // mix
+	} else if state.Scene == "Bar" && CommandIs("mix") { // mix
 		mix()
 	} else if state.Command == strings.ToLower(state.RawName) { // If user input name barman
 		alert.Text(" %G:)%C Что ?\n")

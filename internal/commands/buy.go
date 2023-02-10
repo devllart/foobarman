@@ -2,7 +2,6 @@ package commands
 
 import (
 	"devllart/foobarman/internal/products"
-	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 	"fmt"
 	"math/rand"
@@ -10,7 +9,7 @@ import (
 
 func buy() {
 	if CommandIs("ok") {
-		state.Scene = scenes.Bar
+		state.Scene = "Bar"
 		return
 	} else if CommandIs("rand") {
 		buyRandom()

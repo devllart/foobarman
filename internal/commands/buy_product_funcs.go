@@ -2,8 +2,8 @@ package commands
 
 import (
 	"devllart/foobarman/internal/alert"
-	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/structs"
 	"strconv"
 	"strings"
 )
@@ -13,7 +13,7 @@ import (
  * + alerting user if his index out of range product's menu.
  */
 
-func ProductExistYet(productName string, volume float64) (*products.Product, int) {
+func ProductExistYet(productName string, volume float64) (*structs.Product, int) {
 	// Cycle cycle through the bar's products list
 	for i := range state.Bar {
 		product := state.Bar[i]

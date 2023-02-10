@@ -2,6 +2,7 @@ package products
 
 import (
 	"devllart/foobarman/internal/config"
+	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/src/funcs"
 )
 
@@ -31,7 +32,7 @@ func AddAvailablesCoctail(count int) {
 	}
 }
 
-func AddAvailableCoctail(coctail Coctail) bool {
+func AddAvailableCoctail(coctail structs.Coctail) bool {
 	availableTypes := []string{}
 	if coctail.GetPrice() > 2.0+float64(config.Stage)/2 || len(coctail.Ingredients) > 4+config.Stage {
 		return false

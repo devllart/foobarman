@@ -1,4 +1,4 @@
-package products
+package data
 
 /**
  * My Static-C

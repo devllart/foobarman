@@ -1,6 +1,8 @@
-package state
+package structsdata
 
-var AllCommands = map[string]CommandStruct{
+import "devllart/foobarman/internal/structs"
+
+var AllCommands = map[string]structs.Command{
 	// Standart commands
 	"hideall": {
 		Aliases:     []string{"hideall", "hide", "спрятать всё", "спрятать"},
@@ -72,9 +74,3 @@ var AllCommands = map[string]CommandStruct{
 		Description: "Посмотреть рецепты приготовления коктелей",
 	},
 }
-
-// Context commands
-var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
-var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
-var BarCommands = getCommands("start", "mix", "skip", "store", "recipes")
-var RecipesCommands = getCommands("instruction", "bar", "store")

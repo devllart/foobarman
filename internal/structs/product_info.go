@@ -1,7 +1,8 @@
-package products
+package structs
 
 import (
 	"devllart/foobarman/internal/config"
+	"devllart/foobarman/internal/data"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
@@ -30,7 +31,7 @@ func (product *ProductInfo) PrettyDescription() {
 
 // Calculate type of volume of ProductInfo
 func (product *ProductInfo) TypeVolume() string {
-	if typeVolume, exist := ProductsTypesVolume[product.Type]; exist == true {
+	if typeVolume, exist := data.ProductsTypesVolume[product.Type]; exist == true {
 		return typeVolume
 	}
 

@@ -1,16 +1,15 @@
 package commands
 
 import (
-	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
 )
 
 func SetScenesBar() {
-	state.Scene = scenes.Bar
+	state.Scene = "Bar"
 }
 func SetScenesRecipes() {
-	state.Scene = scenes.Recipes
+	state.Scene = "Recipes"
 }
 func SetScenesStore() {
-	state.Scene = scenes.Store
+	state.Scene = "Store"
 }

@@ -1,7 +1,8 @@
 package main
 
 import (
-	"devllart/foobarman/internal/products"
+	"devllart/foobarman/internal/a_names"
+	"devllart/foobarman/internal/structs"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -10,10 +11,10 @@ import (
 	"strings"
 )
 
-func getCoctails() []products.Coctail {
-	var jsonFileWithData = "data/coctails.json"
+func getCoctails() []structs.Coctail {
+	var jsonFileWithData = anames.JsonDataDir + "/coctails.json"
 
-	coctails := []products.Coctail{}
+	coctails := []structs.Coctail{}
 	file, err := ioutil.ReadFile(jsonFileWithData)
 	if err != nil {
 		panic(err.Error())
@@ -29,8 +30,12 @@ func getCoctails() []products.Coctail {
 func generateCoctailsData() {
 	var outFile = "internal/products/coctails_data.go"
 	var goCode = `package products
-%s
-var AllCoctail = []Coctail{%s
+import (
+	"devllart/foobarman/internal/structs"
+  %s
+)
+
+var AllCoctail = []structs.Coctail{%s
 }`
 
 	coctailsStruct := ``

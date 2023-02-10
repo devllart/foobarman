@@ -1,15 +1,12 @@
-package products
+package structs
 
 /**
  * Gloabal struct for packages products
  */
 
-type Product struct {
-	Name       string
-	Volume     float64
-	Count      int
-	LastVolume float64
-	*ProductInfo
+type Command struct {
+	Aliases     []string
+	Description string
 }
 
 type ProductInfo struct {
@@ -20,6 +17,14 @@ type ProductInfo struct {
 	Prices        []float64
 	Description   *string
 	Taste         *string
+}
+
+type Product struct {
+	Name       string
+	Volume     float64
+	Count      int
+	LastVolume float64
+	*ProductInfo
 }
 
 type Coctail struct {

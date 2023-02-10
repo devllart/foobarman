@@ -1,4 +1,9 @@
 package products
 
-var AvailableProducts = map[string]ProductInfo{
+import (
+	"devllart/foobarman/internal/structs"
+  
+)
+
+var AvailableProducts = map[string]structs.ProductInfo{
 }

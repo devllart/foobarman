@@ -40,8 +40,8 @@ func SkipClient() {
 // Usualy restart
 func Restart() {
 	state.Restart()
-	state.Scene = scenes.Store
-	scenes.Show(scenes.Store)
+	state.Scene = "Store"
+	scenes.Show("Store")
 	alert.RestartGame()
 }
 
@@ -49,6 +49,6 @@ func Restart() {
 func RestartAndRandBuy() {
 	Restart()
 	buyRandom()
-	state.Scene = scenes.Bar
-	scenes.Show(scenes.Bar)
+	state.Scene = "Bar"
+	scenes.Show("Bar")
 }

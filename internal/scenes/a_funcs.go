@@ -14,9 +14,9 @@ import (
  * ( Depending on config flags )
  */
 
-func Show(scene func()) {
-	funcs.CliClear() // Clear Console
-	scene()          // Print scene to console
+func Show(scene string) {
+	funcs.CliClear()      // Clear Console
+	FuncFromName(scene)() // Print scene to console
 
 	// If show barman is on, then show barman status (name and money)
 	if config.ShowBarman {
@@ -41,6 +41,20 @@ func Show(scene func()) {
  * PS: All scenes its functions
  */
 
-func CurrentIs(scene interface{}) bool {
-	return funcs.IsFunc(state.Scene, funcs.FuncName(scene))
+// func CurrentIs(scene interface{}) bool {
+// 	return funcs.IsFunc(state.Scene, funcs.FuncName(scene))
+// }
+
+func FuncFromName(name string) (scene func()) {
+	switch name {
+	case "Hello":
+		scene = Hello
+	case "Store":
+		scene = Store
+	case "Bar":
+		scene = Bar
+	case "Recipes":
+		scene = Recipes
+	}
+	return
 }
