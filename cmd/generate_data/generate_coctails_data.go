@@ -73,9 +73,7 @@ var AllCoctail = []structs.Coctail{%s
     },`, name, ingredients, grammars, units, description, instruction, price)
 	}
 
-	importTexts := `
-import "devllart/foobarman/internal/texts"
-`
+	importTexts := `"devllart/foobarman/internal/texts"`
 
 	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, importTexts, coctailsStruct)), 0644)
 }

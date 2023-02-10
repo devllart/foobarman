@@ -80,9 +80,7 @@ var AvailableProducts = map[string]structs.ProductInfo{%s
     },`, strings.Title(name), name, typeProduct, alc, taste, volumes, prices, description)
 	}
 
-	importTexts := `
-import "devllart/foobarman/internal/texts"
-`
+	importTexts := `"devllart/foobarman/internal/texts"`
 
 	ioutil.WriteFile(outFile, []byte(fmt.Sprintf(goCode, importTexts, productsStruct)), 0644)
 }

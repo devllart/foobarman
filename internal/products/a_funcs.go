@@ -1,6 +1,7 @@
 package products
 
 import (
+	"devllart/foobarman/internal/data"
 	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/internal/texts"
 	"devllart/foobarman/src/fmtc"
@@ -30,4 +31,8 @@ func New(name string, volume float64, count int) structs.Product {
 	}
 
 	return product
+}
+
+func GetTaste(productType string) *string {
+	return data.NewTastes.GetValue(productType, texts.Unknown)
 }
