@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	data := structs.AvailableProducts
+	data := products.AvailableProducts
 	file, err := json.MarshalIndent(data, "", " ")
 	if err != nil {
 		panic(err.Error())

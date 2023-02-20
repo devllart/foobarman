@@ -80,11 +80,19 @@ func (coctail *Coctail) GetPrice() float64 {
 				grammar = coctail.Grammar[i] * 0.001
 			}
 
-			sumPrice += price * grammar * (1.1 - data.GetStandartFlow(ingredient))
+			sumPrice += price * grammar * (1.1 - GetStandartFlow(ingredient))
 		} else {
 			sumPrice += 0.5
 		}
 	}
 
 	return sumPrice * float64(len(coctail.Ingredients)) * 0.3
+}
+
+func GetStandartFlow(productType string) float64 {
+	if flow, exist := data.ProductsStandartFlow[productType]; exist == true {
+		return flow
+	}
+
+	return 0.1
 }

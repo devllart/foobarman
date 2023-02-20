@@ -1,38 +1,20 @@
 package state
 
 import (
-	"devllart/foobarman/internal/structs"
 	"encoding/json"
 	"io/ioutil"
 	"os"
 	"regexp"
 )
 
-type State struct {
-	Name    string
-	RawName string
-	Money   float64
-	Bar     []structs.Product
-	Scene   string
-}
-
-var state State
-
 func Save() {
-	if stateJson, err := json.Marshal(State{
-		Name:    Name,
-		RawName: RawName,
-		Money:   Money,
-		Bar:     Bar,
-		Scene:   Scene,
-	}); err == nil {
+	SaveState()
+	if stateJson, err := json.Marshal(State); err == nil {
 		if file, err := os.Create(RawName + "_save.json"); err == nil {
 			file.Write(stateJson)
 		} else {
 			panic(err.Error())
 		}
-
-		// ioutil.WriteFile(RawName+"_save.json", stateJson, 666)
 	} else {
 		panic(err.Error())
 	}
@@ -42,15 +24,15 @@ func Load() {
 	files := filesWithSaves()
 	if len(files) > 0 {
 		if data, err := ioutil.ReadFile(files[0]); err == nil {
-			json.Unmarshal(data, &state)
+			json.Unmarshal(data, &State)
 		} else {
 			panic(err.Error())
 		}
-
-		Money = state.Money
-		RawName = state.RawName
-		Name = state.Name
-		Scene = state.Scene
+		UpdateStateFromSave()
+		// Money = state.Money
+		// RawName = state.RawName
+		// Name = state.Name
+		// Scene = state.Scene
 	}
 }
 

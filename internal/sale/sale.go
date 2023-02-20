@@ -1,8 +1,8 @@
 package sale
 
 import (
+	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/state"
-	"devllart/foobarman/src/fmtc"
 	"fmt"
 )
 
@@ -17,6 +17,6 @@ func Sale() {
 	} else if state.CoctailReady {
 		CoctailReady()
 	} else {
-		fmtc.Printf("%YВаш покупатель до сих пор ждёт %B%s%C\n", state.Order.Name)
+		alert.Clue("%YВаш покупатель до сих пор ждёт %B%s%C\n", state.Order.Name)
 	}
 }

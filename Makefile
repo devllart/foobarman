@@ -1,6 +1,4 @@
 cleardata:
-	# rm -f ./internal/products/coctails_data.go
-	# rm -f ./internal/products/products_data.go
 	ENVIRONMENT=generate GENERATE=empty go run ./cmd/generate_data
 
 generatedata:
@@ -31,18 +29,9 @@ build:
 buildonce:
 	make cleardata
 	make generatedata	
-	go build -o ./foobarman ./cmd/app
+	go build -o ./bin/foobarman ./cmd/app
 
 run:
 	make cleardata
 	ENVIRONMENT=development go run ./cmd/app
 
-readmeupdate:
-	rm -rf bin/assets
-	cp -r assets bin/
-	rm -f bin/Readme.md
-	cp Readme.md bin/Readme.md
-
-buildfull:
-	make readmeupdate
-	make build

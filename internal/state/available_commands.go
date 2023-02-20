@@ -7,14 +7,14 @@ import (
 )
 
 // Local
-
 var cmds = map[string]structs.Command{}
 
 // Context commands
 
 var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
 var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
-var BarCommands = getCommands("start", "mix", "skip", "store", "recipes")
+var BarCommands = getCommands("start", "mix", "store", "recipes")
+var BarWithClientCommands = getCommands("skip")
 var RecipesCommands = getCommands("instruction", "bar", "store")
 
 func getCommands(keys ...string) map[string]structs.Command {
@@ -27,14 +27,19 @@ func getCommands(keys ...string) map[string]structs.Command {
 }
 
 func AvailableCommands() map[string]structs.Command {
-	if LastScene == Scene {
+	if State.LastScene == State.Scene {
 		return cmds
 	}
-	LastScene = Scene
+	State.LastScene = State.Scene
 	cmds = map[string]structs.Command{}
 
-	funcs.MapsCopy(cmds, *GetCommandsForScenes(Scene))
+	funcs.MapsCopy(cmds, *GetCommandsForScenes(State.Scene))
 	funcs.MapsCopy(cmds, StandartCommands)
+
+	if !NotSaler {
+		funcs.MapsCopy(cmds, BarWithClientCommands)
+	}
+
 	return cmds
 }
 

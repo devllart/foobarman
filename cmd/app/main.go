@@ -4,15 +4,14 @@ import (
 	"bufio"
 	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/commands"
+	"devllart/foobarman/internal/inputer"
 	"devllart/foobarman/internal/sale"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
-	"devllart/foobarman/src/fmtc"
 	"devllart/foobarman/src/funcs"
 	"os"
-	"strings"
 
-	"github.com/manifoldco/promptui"
+	"github.com/urfave/cli"
 )
 
 /**
@@ -20,42 +19,40 @@ import (
  * By playing it, you yourself may become a barman.
  * So be careful... Good luck ;)
  */
+
 var reader = bufio.NewReader(os.Stdin)
 
 func main() {
 	state.Load()
+	cliApp()
+}
+
+func cliApp() {
+	if len(os.Args) == 1 {
+		gamePlay()
+		return
+	}
+
+	app := cli.NewApp()
+	app.Name = "foobarman"
+	app.Commands = appCommands
+	app.Usage = "Foobarman cli game"
+	app.Run(os.Args)
+}
+
+func gamePlay() {
 	funcs.CliClear() // Clear console
 	scenes.Hello()   // Run scene "Hello", In the scene ask name's barman
 
 	// Run game cycle
 	for state.Run == true {
-		state.HandlerStatus()    // Turning status of barman
-		scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
-		alert.ClearInfo()        // Clear hints and warning message
-		sale.Sale()
-
-		// fmtc.Printf("\n%Y\\>%B ") // User will enter command after symbol > |  — TerminalStyle ;)
-		// state.SetCommand(fmtc.Scan('\n')) // Gets command and args from STDIN
-		fmtc.Printf("\n")
-		prompt := promptui.Prompt{
-			Label:    fmtc.Sprintf("%Y \\> "),
-			Validate: Inputer,
-		}
-
-		result, err := prompt.Run()
-
-		if err != nil {
-			panic(err.Error())
-		}
-		state.SetCommand(result)
-
-		fmtc.Printf("%C")
-		commands.Exec() // Try execute user command's
-		state.Save()
+		sale.Sale()                              // If coctail is ready then sale to client the coctail
+		state.HandlerStatus()                    // Turning status of barman
+		scenes.Show(state.Scene)                 // In scenes.Hello global scene's context was changed to "Store"
+		alert.ClearInfo()                        // Clear hints and warning message
+		command := inputer.GetCommand("%Y \\> ") // Get command from input of user
+		state.SetCommand(command)                // Set command
+		commands.Exec()                          // Try execute user command's
+		state.Save()                             // Save state game
 	}
-}
-
-func Inputer(input string) error {
-	state.SetCommand(strings.ToLower(input))
-	return commands.FakeExec()
 }

@@ -20,7 +20,7 @@ var Name = ""                 // Barman name
 var RawName = ""              // Barman name in raw format
 var Bar = []structs.Product{} // State of bar
 var CountVisitorsServed = 0   // Number of visitors served
-// var Stage = 0                  // STAGE
+var Stage = 0                 // STAGE
 
 // ** State of bar
 
