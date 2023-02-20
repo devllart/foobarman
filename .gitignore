@@ -2,3 +2,9 @@
 .repl
 tmp
 ^.air.toml
+
+data_json
+cmd/*
+!cmd/app
+
+*.json
