@@ -11,7 +11,7 @@ func UnknownCommand(command string) {
 
 func CoctailIsReady(name string) {
 	Line()
-	Text("У вас получился %B%s%C — очень хорошо", name)
+	Text("У тебя получился %B%s%C — очень хорошо", name)
 	Line()
 }
 
