@@ -54,6 +54,6 @@ Cli-Game "Foobarman" is free to play. <br>
 
 ## Technical information
 
-Game version: 0.2.6 <br>
+Game version: 0.3.2 <br>
 Main development language: Go (Golang) <br>
 Golang version: 1.19 <br>
