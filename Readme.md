@@ -42,26 +42,15 @@ Most of the information is taken from open sources. In particular from the sites
 
 ## Not Malware 
 
-- foobarman.exe (windows v0.2.6) virustotal: https://www.virustotal.com/gui/file/c125e8074b702aef19ada9734d79ff3c2f654ee139ab3eb3278788a8a117a8b0?nocache=1)
-- foobarman (linux v0.2.6) virustotal: https://www.virustotal.com/gui/file/c125e8074b702aef19ada9734d79ff3c2f654ee139ab3eb3278788a8a117a8b0
-
-If you wish, you can check it yourself. <br>
+If you wish, you can check it yourself on virustotal.com. <br>
 When uploading a file to virustotal, it asks for a password (I don't know why) — there is no password, <br>
 just leave the fields empty and press confirm. <br>
 
 ## Copyright
 
-| /***************************************************** ****** <br>
-| * Copyright (C) 2023 Ruslan <devllartone@gmail.com> <br>
-| * <br>
-| * Cli-Game "Foobarman" is free to play. <br>
-| ******************************************************* *****/
-
-## PS 
-
-The source code is closed so as not to spoil the impression of the game, <br> 
-since there are many non-typical situations, <br>
-knowing which in advance you will not get such pleasure from the game <br>
+Copyright (C) 2023 Ruslan <devllartone@gmail.com> <br>
+<br>
+Cli-Game "Foobarman" is free to play. <br>
 
 ## Technical information
 
