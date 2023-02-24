@@ -3,7 +3,7 @@
 tmp
 ^.air.toml
 
-data_json
+data_json_for_prod
 cmd/*
 !cmd/app
 
