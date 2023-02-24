@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/manifoldco/promptui v0.9.0
-	golang.org/x/exp v0.0.0-20230212135524-a684f29349b6
 	github.com/urfave/cli v1.22.12
+	golang.org/x/exp v0.0.0-20230212135524-a684f29349b6
 )
 
 require (

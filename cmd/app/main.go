@@ -10,8 +10,7 @@ import (
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/funcs"
 	"os"
-
-	"github.com/urfave/cli"
+	"strings"
 )
 
 /**
@@ -28,16 +27,15 @@ func main() {
 }
 
 func cliApp() {
-	if len(os.Args) == 1 {
+	lenArgs := len(os.Args)
+	if lenArgs == 1 {
 		gamePlay()
 		return
 	}
 
-	app := cli.NewApp()
-	app.Name = "foobarman"
-	app.Commands = appCommands
-	app.Usage = "Foobarman cli game"
-	app.Run(os.Args)
+	commandExec(strings.Join(os.Args[1:lenArgs], "")) // Execute command
+	gameActions()
+	state.Save() // Save state game
 }
 
 func gamePlay() {
@@ -46,13 +44,20 @@ func gamePlay() {
 
 	// Run game cycle
 	for state.Run == true {
-		sale.Sale()                              // If coctail is ready then sale to client the coctail
-		state.HandlerStatus()                    // Turning status of barman
-		scenes.Show(state.Scene)                 // In scenes.Hello global scene's context was changed to "Store"
-		alert.ClearInfo()                        // Clear hints and warning message
-		command := inputer.GetCommand("%Y \\> ") // Get command from input of user
-		state.SetCommand(command)                // Set command
-		commands.Exec()                          // Try execute user command's
-		state.Save()                             // Save state game
+		gameActions()                              // Run game actions
+		commandExec(inputer.GetCommand("%Y \\> ")) // Get command from input of user and execute
+		state.Save()                               // Save state game
 	}
+}
+
+func gameActions() {
+	sale.Sale()              // If coctail is ready then sale to client the coctail
+	state.HandlerStatus()    // Turning status of barman
+	scenes.Show(state.Scene) // In scenes.Hello global scene's context was changed to "Store"
+	alert.ClearInfo()        // Clear hints and warning message
+}
+
+func commandExec(command string) {
+	state.SetCommand(command) // Set command
+	commands.Exec()           // Try execute user command's
 }
