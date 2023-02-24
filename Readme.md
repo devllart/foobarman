@@ -5,6 +5,9 @@
   <img src="./assets/logogame.jpg" alt="Foobarman cli-game"/>
 </p>
 
+> download the game you wash from the link in the release
+> well, or build it manually using the command: make build (need golang v 1.^19 and make)
+
 ## Description
 
 Welcome, this repo with cli-game that show what its like to be a bartender <br>
