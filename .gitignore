@@ -1,10 +1,19 @@
+# dirs
+data_json_for_prod
+bin
+
+# cmd
+cmd/*
+!cmd/app
+
+# extension
+## json
+*.json
+!data_json/*.json
+
+# others
 .git
 .repl
 tmp
 ^.air.toml
 
-data_json_for_prod
-cmd/*
-!cmd/app
-
-*.json
