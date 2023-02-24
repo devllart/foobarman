@@ -37,7 +37,7 @@ func mix() {
 			barIndexes = append(barIndexes, index)
 			fmtc.Printf("%Y+ %B%s%C\n", product.Name)
 		} else {
-			fmtc.Printf("%RУ вас нет такого напитка%C\n")
+			fmtc.Printf("%RУ тебя нет такого напитка%C\n")
 		}
 	}
 
