@@ -31,9 +31,11 @@ func init() {
 }
 
 func useJsonData() {
-	funcs.ParseJsonToStruct(anames.JsonDataDir+"/coctails.json", &AllCoctail)
 	products := []structs.ProductInfo{}
+
+	funcs.ParseJsonToStruct(anames.JsonDataDir+"/coctails.json", &AllCoctail)
 	funcs.ParseJsonToStruct(anames.JsonDataDir+"/products.json", &products)
+
 	for _, product := range products {
 		AvailableProducts[strings.Title(product.Name)] = product
 	}
