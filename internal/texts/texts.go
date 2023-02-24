@@ -42,7 +42,7 @@ const LeftVolumeInLastBottle = "в последней бутылке остал�
 
 // ** Coctails
 
-const CoctailIsReady = "У вас получился %B%s%C — очень хорошо"
+const CoctailIsReady = "У тебя получился %B%s%C — очень хорошо"
 const DontTheRecipies = "Чтож жаль, но такого %Bрецепта нет%C"
 
 const NotSayAboutCoctail = "%sО коктейле \"%B%s%C\" нечего сказать\n\n"
