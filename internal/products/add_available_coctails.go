@@ -34,7 +34,7 @@ func AddAvailablesCoctail(count int) {
 
 func AddAvailableCoctail(coctail structs.Coctail) bool {
 	availableTypes := []string{}
-	if coctail.GetPrice() > 2.0+float64(config.Stage)/2 || len(coctail.Ingredients) > 4+config.Stage {
+	if coctail.GetPrice() > 3.0+float64(config.Stage)/2 || len(coctail.Ingredients) > 4+config.Stage {
 		return false
 	}
 	for _, ingredient := range coctail.Ingredients {
