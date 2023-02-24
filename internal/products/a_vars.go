@@ -1,6 +1,7 @@
 package products
 
 import (
+	generateddata "devllart/foobarman/internal/data/generated_data"
 	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/src/mapsi"
 )
@@ -8,6 +9,8 @@ import (
 /**
  * Global varialbles for package products
  */
+var AllCoctail = generateddata.AllCoctail
+var AvailableProducts = generateddata.AvailableProducts
 
 // Storage (Mapsi) for available products and coctails
 var MapsiAvailableCoctail mapsi.Mapsi[structs.Coctail]
