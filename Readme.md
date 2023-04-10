@@ -2,7 +2,7 @@
 # Simulator barman "Foobarman" (cli-game)
 
 <p align="left">
-  <img src="./assets/logogame.jpg" alt="Foobarman cli-game"/>
+  <img src="./assets/foobarman_logogame.jpg" alt="Foobarman cli-game"/>
 </p>
 
 > **download the game you wash from the link in the releases**<br>
