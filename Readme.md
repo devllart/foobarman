@@ -1,10 +1,6 @@
 
 # Simulator barman "Foobarman" (cli-game)
 
-<p align="center">
-  <img src="./assets/foobarman_logogame.jpg" alt="Foobarman cli-game"/>
-</p>
-
 > **download the game you wash from the link in the releases**<br>
 > **well, or build it manually using the command: make build (need golang v 1.^19 and make)**
 
