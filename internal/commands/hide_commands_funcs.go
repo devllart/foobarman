@@ -35,6 +35,7 @@ func GetMoney() {
 }
 
 func GetAllAvailabelRecipes() {
+	state.Stage += 100
 	products.AddAvailablesCoctail(-1)
 }
 

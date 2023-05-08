@@ -2,7 +2,6 @@ package sale
 
 import (
 	"devllart/foobarman/internal/alert"
-	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/funcs"
@@ -42,12 +41,12 @@ func CoctailReady() {
 		alert.Clue(" Ты получили %.2f$ \n", state.Order.GetPrice())
 
 		state.CountVisitorsServed += 1
-		if state.CountVisitorsServed >= config.Stage*config.Stage {
-			config.Stage += 1
+		if state.CountVisitorsServed >= state.Stage*state.Stage {
+			state.Stage += 1
 			countNewProducts := products.MapsiAvailableProducts.Len()
-			products.AddAvailablesCoctail(config.Stage)
+			products.AddAvailablesCoctail(state.Stage)
 			countNewProducts = products.MapsiAvailableProducts.Len() - countNewProducts
-			alert.AddInfof("\n%G ! Этап пройден.\n\n%B   рецепты: %Y+%d%C\n%B   продукты: %Y+%d%C\n", config.Stage, countNewProducts)
+			alert.AddInfof("\n%G ! Этап пройден.\n\n%B   рецепты: %Y+%d%C\n%B   продукты: %Y+%d%C\n", state.Stage, countNewProducts)
 		}
 	} else {
 		if len(state.CurrentHistory) == 2 {

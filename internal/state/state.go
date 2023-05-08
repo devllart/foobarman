@@ -76,4 +76,5 @@ func UpdateStateFromSave() {
 	// Temps
 	TempBool = State.TempBool
 	TempStr = State.TempStr
+
 }
