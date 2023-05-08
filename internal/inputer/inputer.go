@@ -4,7 +4,6 @@ import (
 	"devllart/foobarman/internal/commands"
 	"devllart/foobarman/internal/state"
 	"devllart/foobarman/src/fmtc"
-	"errors"
 	"strings"
 
 	"github.com/manifoldco/promptui"
@@ -38,9 +37,6 @@ var err error
 
 func CheckInput(input string) error {
 	cmd := strings.ToLower(input)
-	if err != nil && state.Command == cmd {
-		return errors.New("AAa")
-	}
 	state.SetCommand(cmd)
 	err = commands.FakeExec()
 	return err

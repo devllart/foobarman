@@ -1,10 +1,10 @@
 # dirs
-data_json_for_prod
 bin
 
 # cmd
-cmd/*
-!cmd/app
+# cmd/*
+# !cmd/app
+cmd/playground
 
 # extension
 ## json
