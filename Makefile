@@ -4,16 +4,25 @@ cleardata:
 generatedata:
 	ENVIRONMENT=generate go run ./cmd/generatedata
 
-build_full:
+prebuild:
 	make cleardata
 	make generatedata
-	GOOS=linux   GOARCH=amd64 go build -o ./bin/foobarman-linux       ./cmd/app
-	GOOS=windows GOARCH=amd64 go build -o ./bin/foobarman-windows.exe ./cmd/app
+
+build_all_platform:
+	GOOS=linux   GOARCH=amd64 go build -o ./.dist/bin/foobarman-linux       ./cmd/app
+	GOOS=windows GOARCH=amd64 go build -o ./.dist/bin/foobarman-windows.exe ./cmd/app
+
+build_full:
+	make prebuild
+	make build_all_platform
+	make build_web_app
+
+build_web_app:
+	gopherjs build ./cmd/web_app -o ./.dist/web_app/index.js
 
 build:
-	make cleardata
-	make generatedata	
-	go build -o ./bin/foobarman ./cmd/app
+	make prebuild
+	go build -o ./.dist/bin/foobarman ./cmd/app
 
 run:
 	make cleardata

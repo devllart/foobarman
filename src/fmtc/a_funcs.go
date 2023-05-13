@@ -11,6 +11,8 @@ func Scan(sym byte) string {
 }
 
 func Sprintf(text string, args ...any) string {
+	SaveOutput += text
+
 	for i, arg := range args {
 		switch v := arg.(type) {
 		case string:

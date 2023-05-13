@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <form id="myForm">
+      <input type="text" name="cmd" value="" id="myInput">
+      <button type="submit" id="myButton" class="hide">OK</button>
+    </form>
+
+    <div class="content" id="myContent">
+      Nothing
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+      var form = document.getElementById("myForm");
+      function handleForm(event) { event.preventDefault(); } 
+      form.addEventListener('submit', handleForm);
+      document.onclick = function(e) {
+        var input = document.getElementById("myInput");
+        input.focus();
+      }
+    </script>
+
+  </body>
+</html>

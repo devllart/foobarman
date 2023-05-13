@@ -29,9 +29,6 @@ func main() {
 		products.AddAvailablesCoctail(i)
 	} // duct tape
 
-	// fmt.Print(products.NotExitst)
-	// panic("Aaa")
-
 	cliApp()
 }
 
