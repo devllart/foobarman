@@ -6,9 +6,11 @@ import (
 	"strings"
 )
 
-var Reader *bufio.Reader
-var PreReplacer *strings.Replacer
-var ColorReplacer *strings.Replacer
+var (
+	Reader *bufio.Reader
+	PreReplacer *strings.Replacer
+	ColorReplacer *strings.Replacer
+)
 
 func init() {
 	AddManyReplace(manyReplaceMap)

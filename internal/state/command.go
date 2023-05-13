@@ -6,8 +6,11 @@ import (
 )
 
 // ** For work with commands
-var Command = ""      // Current command
-var Args = []string{} // Current args of command
+
+var (
+ 	Command = ""      // Current command
+ 	Args = []string{} // Current args of command
+)
 
 func SetCommand(text string) {
 	Command = ""

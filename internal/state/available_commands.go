@@ -6,16 +6,18 @@ import (
 	"devllart/foobarman/src/funcs"
 )
 
-// Local
-var cmds = map[string]structs.Command{}
+var (
+	// Local
+	cmds = map[string]structs.Command{}
 
-// Context commands
-
-var StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
-var ShopCommands = getCommands("rand", "ok", "bar", "recipes")
-var BarCommands = getCommands("start", "mix", "store", "recipes")
-var BarWithClientCommands = getCommands("skip")
-var RecipesCommands = getCommands("instruction", "bar", "store")
+	// Context commands
+	
+	 StandartCommands = getCommands("hideall", "showall", "description", "cmds", "restart", "restartrand", "exit")
+	 ShopCommands = getCommands("rand", "ok", "bar", "recipes")
+	 BarCommands = getCommands("start", "mix", "store", "recipes")
+	 BarWithClientCommands = getCommands("skip")
+	 RecipesCommands = getCommands("instruction", "bar", "store")
+)
 
 func getCommands(keys ...string) map[string]structs.Command {
 	cmds := map[string]structs.Command{}
