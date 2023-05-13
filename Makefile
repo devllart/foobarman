@@ -4,18 +4,24 @@ cleardata:
 generatedata:
 	ENVIRONMENT=generate go run ./cmd/generatedata
 
-build_full:
+build-prod:
 	make cleardata
 	make generatedata
+	make build	
+
+build:
 	GOOS=linux   GOARCH=amd64 go build -o ./bin/foobarman-linux       ./cmd/app
 	GOOS=windows GOARCH=amd64 go build -o ./bin/foobarman-windows.exe ./cmd/app
 
-build:
+buildonce:
 	make cleardata
 	make generatedata	
 	go build -o ./bin/foobarman ./cmd/app
 
-run:
+run-prod:
 	make cleardata
+	make run
+
+run:
 	ENVIRONMENT=development go run ./cmd/app
 
