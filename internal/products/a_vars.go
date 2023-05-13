@@ -16,9 +16,6 @@ var AvailableProducts = generateddata.AvailableProducts
 var MapsiAvailableCoctail mapsi.Mapsi[structs.Coctail]
 var MapsiAvailableProducts mapsi.Mapsi[structs.ProductInfo]
 
-// var MapsiAvailableCoctail = state.AvailableCoctail  // NOT WORK
-// var MapsiAvailableProducts = state.AvailableProduct // NOT WORK
-
 // Pre-settings
 var AvailableTypes = []string{"Пиво", "Кола", "Содовая", "Обуховская"} // Products types available default || append another in here
 

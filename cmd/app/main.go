@@ -5,7 +5,6 @@ import (
 	"devllart/foobarman/internal/alert"
 	"devllart/foobarman/internal/commands"
 	"devllart/foobarman/internal/inputer"
-	"devllart/foobarman/internal/products"
 	"devllart/foobarman/internal/sale"
 	"devllart/foobarman/internal/scenes"
 	"devllart/foobarman/internal/state"
@@ -25,9 +24,9 @@ var reader = bufio.NewReader(os.Stdin)
 func main() {
 	state.Load()
 
-	for i := 2; i <= state.Stage; i++ {
-		products.AddAvailablesCoctail(i)
-	} // duct tape
+	// for i := 2; i <= state.Stage; i++ {
+	// 	products.AddAvailablesCoctail(i)
+	// } // duct tape
 
 	cliApp()
 }

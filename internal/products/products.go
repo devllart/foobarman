@@ -1,7 +1,7 @@
 package products
 
 import (
-	anames "devllart/foobarman/internal/a_names"
+	"devllart/foobarman/internal/a_names"
 	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/data"
 	"devllart/foobarman/internal/structs"
@@ -28,13 +28,6 @@ func init() {
 	}
 
 	AddAvailablesCoctail(3)
-
-	// if state.LoadSave {
-	// panic(state.Stage)
-	// for i := 2; i <= state.Stage; i++ {
-	// 	AddAvailablesCoctail(i)
-	// }
-	// }
 }
 
 func useJsonData() {

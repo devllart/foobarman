@@ -1,7 +1,7 @@
 package products
 
 import (
-	"devllart/foobarman/internal/state"
+	"devllart/foobarman/internal/config"
 	"devllart/foobarman/internal/structs"
 	"devllart/foobarman/src/funcs"
 )
@@ -25,24 +25,20 @@ func AddAvailablesCoctail(count int) {
 					count += 1
 				}
 			}
-			if count < state.Stage {
+			if count < config.Stage {
 				MapsiAvailableProducts.SetValue(name, product)
 			}
 		}
 	}
 }
 
-var NotExitst = map[string]int{}
-
 func AddAvailableCoctail(coctail structs.Coctail) bool {
 	availableTypes := []string{}
-	if coctail.GetPrice() > 3.0+float64(state.Stage)/2 || len(coctail.Ingredients) > 4+state.Stage {
+	if coctail.GetPrice() > 3.0+float64(config.Stage)/2 || len(coctail.Ingredients) > 4+config.Stage {
 		return false
 	}
-
 	for _, ingredient := range coctail.Ingredients {
 		if !funcs.Contains(AvailableIngredients, ingredient) {
-			NotExitst[ingredient] += 1
 			return false
 		} else {
 			availableTypes = append(availableTypes, ingredient)

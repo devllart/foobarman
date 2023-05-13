@@ -24,7 +24,10 @@ build:
 	make prebuild
 	go build -o ./.dist/bin/foobarman ./cmd/app
 
-run:
+run-prod:
 	make cleardata
+	make run
+
+run:
 	ENVIRONMENT=development go run ./cmd/app
 

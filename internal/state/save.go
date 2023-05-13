@@ -7,8 +7,6 @@ import (
 	"regexp"
 )
 
-var LoadSave = false
-
 func Save() {
 	SaveState()
 	if stateJson, err := json.Marshal(State); err == nil {
@@ -27,7 +25,6 @@ func Load() {
 	if len(files) > 0 {
 		if data, err := ioutil.ReadFile(files[0]); err == nil {
 			json.Unmarshal(data, &State)
-			LoadSave = true
 		} else {
 			panic(err.Error())
 		}
