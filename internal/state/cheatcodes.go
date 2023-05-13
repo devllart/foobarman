@@ -1,5 +1,7 @@
 package state
 
 // ** For cheatcodes
-var InfiniteMoney = false
-var GodMod = false
+var (
+	InfiniteMoney = false
+	GodMod = false
+)

@@ -22,6 +22,9 @@ run-prod:
 	make cleardata
 	make run
 
+run-linter:
+	golangci-lint run
+
 run:
 	ENVIRONMENT=development go run ./cmd/app
 

@@ -1,8 +1,10 @@
 package state
 
 // ** Temp State
-var TempBool = false // Nothing say
-var TempStr = ""     // Nothing say
+var (
+	TempBool = false // Nothing say
+	TempStr = ""     // Nothing say
+)
 
 func ClearTemp() {
 	Command = ""

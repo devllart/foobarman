@@ -2,14 +2,13 @@ package state
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"regexp"
 )
 
 func Save() {
 	SaveState()
-	if stateJson, err := json.Marshal(State); err == nil {
+	if stateJson, err := json.MarshalIndent(State, "", "  "); err == nil {
 		if file, err := os.Create(RawName + "_save.json"); err == nil {
 			file.Write(stateJson)
 		} else {
@@ -23,7 +22,7 @@ func Save() {
 func Load() {
 	files := filesWithSaves()
 	if len(files) > 0 {
-		if data, err := ioutil.ReadFile(files[0]); err == nil {
+		if data, err := os.ReadFile(files[0]); err == nil {
 			json.Unmarshal(data, &State)
 		} else {
 			panic(err.Error())

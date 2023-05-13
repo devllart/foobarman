@@ -4,9 +4,11 @@ package config
  * Flags
  */
 
-var ShowBarman = true
-var ShowCommands = true
-var ShowHits = true
-var ShowDescription = false
-var ShowInstruction = true
-var ShowIngredients = false
+var (
+	ShowBarman = true
+	ShowCommands = true
+	ShowHits = true
+	ShowDescription = false
+	ShowInstruction = true
+	ShowIngredients = false
+)
